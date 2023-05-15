@@ -6,7 +6,9 @@ import pandas as pd
 import time
 import json
 
-#%%
+# %%
+
+
 def get_genre(soup):
     """
     Get the genre information from a song's Wikipedia page
@@ -15,7 +17,8 @@ def get_genre(soup):
 
     if genre_element:
         genre_text = genre_element.find_next().text
-        genres = [genre.strip().split('[')[0] for genre in re.split(r"\n|,", genre_text) if genre]
+        genres = [genre.strip().split('[')[0]
+                  for genre in re.split(r"\n|,", genre_text) if genre]
     else:
         genres = []
 
@@ -28,12 +31,14 @@ def get_genre(soup):
 
     return genres
 
+
 def parse_year(the_year, yeartext_dict):
     soup = BeautifulSoup(yeartext_dict[str(the_year)], 'html.parser')
     tables_wikitable = soup.find_all('table', 'wikitable')
     rows = [row for row in tables_wikitable[0].find_all('tr')][1:]
     yearinfo = [get_single_dict(row) for row in rows]
     return yearinfo
+
 
 def get_single_dict(row):
     children = [child for child in row.children]
@@ -66,12 +71,14 @@ def get_single_dict(row):
         genre = []
 
     single_dict = {'band_singer': band_singer, 'ranking': ranking, 'song': song,
-                   'song_url':songurl, 'title':title, 'singer_url': url, 'genre': genre}
+                   'song_url': songurl, 'title': title, 'singer_url': url, 'genre': genre}
     return single_dict
 
-#%%
+
+# %%
 # generate list of urls
-urls = ['http://en.wikipedia.org/wiki/Billboard_Year-End_Hot_100_singles_of_{0}'.format(str(i)) for i in range(1959, 2023)]
+urls = ['http://en.wikipedia.org/wiki/Billboard_Year-End_Hot_100_singles_of_{0}'.format(
+    str(i)) for i in range(1959, 2023)]
 
 
 # download text for all years
@@ -81,26 +88,27 @@ for url in urls:
     yearstext[url.split('_')[-1]] = req.text
     time.sleep(1)
 
-#%% 
+# %%
 # create JSON file for each year's Billboard Hot 100s: 1959-2023
-for year in range(1959, 2023):
+for year in range(2007, 2023):
     print("Extracting year {0}".format(str(year)))
     yearinfo = parse_year(year, yearstext)
-    fd = open("data/year_info/{0}info.json".format(str(year)),"w")
-    json.dump(yearinfo,fd)
+    fd = open("data/year_info/{0}info.json".format(str(year)), "w")
+    json.dump(yearinfo, fd)
     fd.close()
     print("Finished extracting year {0}".format(str(year)))
 
-
-# %%
-#create DataFrame for Billboard Hot 100's: 1959-2023
-flatframe = pd.DataFrame(columns=['band_singer', 'ranking', 'song', 'song_url', 'title', 'singer_url', 'genre','year'])
-for year in range(1959,2023):
+   # %%
+# create DataFrame for Billboard Hot 100's: 1959-2023
+flatframe = pd.DataFrame(columns=[
+                         'band_singer', 'ranking', 'song', 'song_url', 'title', 'singer_url', 'genre', 'year'])
+for year in range(1959, 2023):
     with open("data/year_info/{0}info.json".format(str(year)), "r") as f:
         curyearinfo = json.load(f)
         year_df = pd.DataFrame(curyearinfo)
         year_df['year'] = year
-        flatframe = pd.concat([flatframe, year_df], axis=0, ignore_index=True,copy=True)
+        flatframe = pd.concat([flatframe, year_df], axis=0,
+                              ignore_index=True, copy=True)
 
 
 flatframe['ranking'] = flatframe['ranking'].replace('Tie', 100)
@@ -115,8 +123,9 @@ def extract_substring(x):
         return x
 
 
-flatframe[['band_singer','song']] = flatframe[['band_singer','song']].applymap(extract_substring)
-flatframe = flatframe.drop(columns=['song_url','singer_url'])
+flatframe[['band_singer', 'song']] = flatframe[[
+    'band_singer', 'song']].applymap(extract_substring)
+flatframe = flatframe.drop(columns=['song_url', 'singer_url'])
 
 flatframe.to_csv('data/billboard.csv', index=False)
 # %%
