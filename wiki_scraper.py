@@ -90,7 +90,7 @@ for url in urls:
 
 # %%
 # create JSON file for each year's Billboard Hot 100s: 1959-2023
-for year in range(2007, 2023):
+for year in range(2012, 2023):
     print("Extracting year {0}".format(str(year)))
     yearinfo = parse_year(year, yearstext)
     fd = open("data/year_info/{0}info.json".format(str(year)), "w")
