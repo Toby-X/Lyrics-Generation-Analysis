@@ -7,8 +7,8 @@ library(glmnet)
 
 # base model
 # perform cross validation on elastic net
-a = seq(from=0,to=1,length=1e2)
-lam = log(seq(from = exp(0), to = exp(.5), length=500))
+a = seq(from=0,to=.02,length=50)
+lam = log(seq(from = exp(0.4), to = exp(.8), length=100))
 idx = rep(1:5,length.out=nrow(dat_train))
 set.seed(516)
 idx = sample(idx)
@@ -19,7 +19,7 @@ err_cal <- function(pred,k){
 
 err = matrix(rep(0,length(a)*length(lam)),nrow=length(a))
 err.tmp = matrix(rep(0,5*length(lam)),nrow=5)
-for (i in length(a)){
+for (i in 1:length(a)){
   for (k in 1:5){
     mr.tmp = glmnet(data.matrix(dat_train[idx!=k,-ncol(dat_train)]),as.factor(dat_train[idx!=k,ncol(dat_train)])
                     ,family="multinomial",alpha = a[i],lambda = lam)
@@ -28,6 +28,9 @@ for (i in length(a)){
   }
   err[i,] = colMeans(err.tmp)
 }
+
+plot(a,rowMeans(err))
+
 m1 = glmnet(data.matrix(dat_train[,-ncol(dat_train)]),as.factor(dat_train[,ncol(dat_train)])
             ,family="multinomial",alpha = a[1])
 str(dat_train[,-ncol(dat_train)])
