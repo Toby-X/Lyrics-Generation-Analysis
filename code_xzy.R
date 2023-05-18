@@ -7,14 +7,14 @@ library(glmnet)
 
 # base model
 # perform cross validation on elastic net
-a = seq(from=0,to=.02,length=50)
+a = seq(from=0,to=.1,length=100)
 lam = log(seq(from = exp(0.4), to = exp(.8), length=100))
 idx = rep(1:5,length.out=nrow(dat_train))
 set.seed(516)
 idx = sample(idx)
 
 err_cal <- function(pred,k){
-  sum(as.numeric(pred)==dat_train[idx==k,ncol(dat_train)])/sum(idx==k)
+  mean((as.numeric(pred)-dat_train[idx==k,ncol(dat_train)])^2)
 }
 
 err = matrix(rep(0,length(a)*length(lam)),nrow=length(a))
@@ -24,12 +24,27 @@ for (i in 1:length(a)){
     mr.tmp = glmnet(data.matrix(dat_train[idx!=k,-ncol(dat_train)]),as.factor(dat_train[idx!=k,ncol(dat_train)])
                     ,family="multinomial",alpha = a[i],lambda = lam)
     pre.tmp = predict(mr.tmp,data.matrix(dat_train[idx==k,-ncol(dat_train)]),type="class")
-    err.tmp[k,] = apply(pre.tmp,2,err_cal,k=1)
+    err.tmp[k,] = apply(pre.tmp,2,err_cal,k=k)
   }
   err[i,] = colMeans(err.tmp)
 }
 
 plot(a,rowMeans(err))
+persp(a,lam,err,theta=180)
+plot(lam,err[5,])
+
+# choose alpha = 0(ridge) and lambda = 
+lam = log(seq(from = exp(.7), to = exp(1.5), length=100))
+for (k in 1:5){
+  mr.tmp = glmnet(data.matrix(dat_train[idx!=k,-ncol(dat_train)]),as.factor(dat_train[idx!=k,ncol(dat_train)])
+                  ,family="multinomial",alpha = 0,lambda = lam)
+  pre.tmp = predict(mr.tmp,data.matrix(dat_train[idx==k,-ncol(dat_train)]),type="class")
+  err.tmp[k,] = apply(pre.tmp,2,err_cal,k=k)
+}
+err[1,] = colMeans(err.tmp)
+plot(lam,err[1,])
+
+persp(a,lam,err,theta=180)
 
 m1 = glmnet(data.matrix(dat_train[,-ncol(dat_train)]),as.factor(dat_train[,ncol(dat_train)])
             ,family="multinomial",alpha = a[1])
@@ -42,3 +57,9 @@ pre.res[1]
 head(dat_test[,ncol(dat_test)])
 
 head(apply(pre.tmp,2,err_cal,k=1))
+
+# SVM
+library(kernlab)
+svm = ksvm(data.matrix(dat_train[,-ncol(dat_train)]),as.factor(dat_train[,ncol(dat_train)]))
+pre = predict(svm,data.matrix(dat_test[,-ncol(dat_test)]))
+sum(pre==dat_test[,ncol(dat_test)])/length(pre)
