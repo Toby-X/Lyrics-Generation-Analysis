@@ -31,6 +31,20 @@ def get_genre(soup):
 
     return genres
 
+def get_active_year(soup):
+    """
+    Get the active year from an artist's Wikipedia page
+    """
+    active_year_element = soup.find(text=re.compile("Years active"))
+
+    if active_year_element:
+        active_year_text = active_year_element.find_next().text
+        active_year = [active_year.strip().split('[')[0]
+                       for active_year in re.split(r"\n|,", active_year_text) if active_year]
+    else:
+        active_year = []
+    
+    return active_year
 
 def parse_year(the_year, yeartext_dict):
     soup = BeautifulSoup(yeartext_dict[str(the_year)], 'html.parser')

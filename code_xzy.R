@@ -1,21 +1,28 @@
 #-*-coding:utf-8-*-
 library(glmnet)
-library(data.table)
-dat_train = fread("data/train_data.csv")
+# library(data.table)
+# library(tictoc)
+# library(parallel)
+# library(foreach)
+# library(doSNOW)
+# numCores = 6
+# cl = makeCluster(numCores)
+# registerDoSNOW(cl)
+dat_train = read.csv("data/train_data_all.csv")
 dat_train = dat_train[,-1]
-dat_test = fread("data/test_data.csv")
+dat_test = read.csv("data/test_data_all.csv")
 dat_test = dat_test[,-1]
 
 # for 60s classification first perform bootstrap
+set.seed(3701)
 label_60 = dat_train$label.1
 idx60 = (1:length(label_60))[label_60==0]
-boot60 = sample(idx60,sum(label_60!=0)-sum(label_60==0),replace = T)
+boot60 = sample(idx60,sum(label_60!=0)/2-sum(label_60==0),replace = T)
 dat_train_60 = rbind(dat_train,dat_train[boot60,])
 
 # base model
 # perform cross validation on elastic net
-a = seq(from=0,to=1,length=100)
-lam = log(seq(from = exp(0.01), to = exp(.5), length=100))
+lam = log(seq(from = exp(1e-2), to = exp(.5), length=100))
 idx = rep(1:5,length.out=nrow(dat_train_60))
 set.seed(516)
 idx = sample(idx)
@@ -33,58 +40,55 @@ err_cal <- function(pred,k){
   mean((pred!=(dat_train_60[idx==k,ncol(dat_train_60)]==0)))
 }
 
-err = matrix(rep(0,length(a)*length(lam)),nrow=length(a))
 err.tmp = matrix(rep(0,5*length(lam)),nrow=5)
-for (i in 1:length(a)){
-  for (k in 1:5){
-    mr.tmp = glmnet(data.matrix(dat_train_60[idx!=k,-ncol(dat_train)]),dat_train_60[idx!=k,ncol(dat_train)]==0
-                    ,family="binomial",alpha = a[i],lambda = lam)
-    pre.tmp = predict(mr.tmp,data.matrix(dat_train_60[idx==k,-ncol(dat_train)]),type="class")
-    err.tmp[k,] = apply(pre.tmp,2,err_cal,k=k)
-  }
-  err[i,] = colMeans(err.tmp)
-}
-
-plot(a,rowMeans(err))
-persp(a,lam,err,theta=180)
-plot(lam,err[2,])
-
-# choose alpha = 0 and lambda = .4
-mr60 = glmnet(data.matrix(dat_train_60[,-c(ncol(dat_train),1:14)]),dat_train_60[,ncol(dat_train)]==0
-                ,family="binomial",alpha=0,lambda=.4)
-pre60 = predict(mr60,data.matrix(dat_test[,-ncol(dat_test)]),type="class")
-pre60 = sapply(pre60,ch2int)
-err60 = mean(pre60==dat_test[,ncol(dat_test)])
-
-mr60.beta = as.matrix(mr60$beta)
-fwrite(mr60.beta,"beta.csv")
-
-lam = log(seq(from = exp(.7), to = exp(1.5), length=100))
-for (k in 1:5){
-  mr.tmp = glmnet(data.matrix(dat_train[idx!=k,-ncol(dat_train)]),as.factor(dat_train[idx!=k,ncol(dat_train)])
-                  ,family="multinomial",alpha = 0,lambda = lam)
-  pre.tmp = predict(mr.tmp,data.matrix(dat_train[idx==k,-ncol(dat_train)]),type="class")
+for (k in 1:5) {
+  mr.tmp = glmnet(data.matrix(dat_train_60[idx!=k,-ncol(dat_train)]),dat_train_60[idx!=k,ncol(dat_train)]==0
+                  ,family="binomial",alpha = 0,lambda = lam)
+  pre.tmp = predict(mr.tmp,data.matrix(dat_train_60[idx==k,-ncol(dat_train)]),type="class")
   err.tmp[k,] = apply(pre.tmp,2,err_cal,k=k)
 }
-err[1,] = colMeans(err.tmp)
-plot(lam,err[1,])
+plot(rev(lam),colMeans(err.tmp),"l",xlab = "lambda",ylab = "error rate")
 
-persp(a,lam,err,theta=180)
-
-m1 = glmnet(data.matrix(dat_train[,-ncol(dat_train)]),as.factor(dat_train[,ncol(dat_train)])
-            ,family="multinomial",alpha = a[1])
-str(dat_train[,-ncol(dat_train)])
-sum(dat_train[,ncol(dat_train)]==5)
-
+# ridge lambda = .07
+m1 = glmnet(data.matrix(dat_train_60[,-ncol(dat_train)]),dat_train_60[,ncol(dat_train)]==0
+            ,family="binomial",alpha = 0,lambda=.07)
 pre.res = predict(m1,data.matrix(dat_test[,-ncol(dat_test)]),type = "class")
-sum(as.numeric(pre.res)==dat_test[,ncol(dat_test)])/nrow(dat_test)
-pre.res[1]
-head(dat_test[,ncol(dat_test)])
+pred=  pre.res
+pred = sapply(pred, ch2int)
+mean((pred!=(dat_test[,ncol(dat_train_60)]==0)))
 
-head(apply(pre.tmp,2,err_cal,k=1))
+# for 60s classification first perform bootstrap
+set.seed(3701)
+label_70 = dat_train$label.1
+idx70 = (1:length(label_70))[label_70==1]
+boot70 = sample(idx70,sum(label_70!=0)/2-sum(label_70==0),replace = T)
+dat_train_70 = rbind(dat_train,dat_train[boot70,])
 
-# SVM
-library(kernlab)
-svm = ksvm(data.matrix(dat_train[,-ncol(dat_train)]),as.factor(dat_train[,ncol(dat_train)]))
-pre = predict(svm,data.matrix(dat_test[,-ncol(dat_test)]))
-sum(pre==dat_test[,ncol(dat_test)])/length(pre)
+# base model
+# perform cross validation on elastic net
+lam = log(seq(from = exp(1e-2), to = exp(.5), length=100))
+idx = rep(1:5,length.out=nrow(dat_train_70))
+set.seed(516)
+idx = sample(idx)
+
+err_cal <- function(pred,k){
+  pred = sapply(pred, ch2int)
+  mean((pred!=(dat_train_70[idx==k,ncol(dat_train_70)]==0)))
+}
+
+err.tmp = matrix(rep(0,5*length(lam)),nrow=5)
+for (k in 1:5) {
+  mr.tmp = glmnet(data.matrix(dat_train_70[idx!=k,-ncol(dat_train)]),dat_train_70[idx!=k,ncol(dat_train)]==0
+                  ,family="binomial",alpha = 0,lambda = lam)
+  pre.tmp = predict(mr.tmp,data.matrix(dat_train_70[idx==k,-ncol(dat_train)]),type="class")
+  err.tmp[k,] = apply(pre.tmp,2,err_cal,k=k)
+}
+plot(rev(lam),colMeans(err.tmp),"l",xlab = "lambda",ylab = "error rate")
+
+# ridge lambda = .07
+m1 = glmnet(data.matrix(dat_train_60[,-ncol(dat_train)]),dat_train_60[,ncol(dat_train)]==0
+            ,family="binomial",alpha = 0,lambda=.07)
+pre.res = predict(m1,data.matrix(dat_test[,-ncol(dat_test)]),type = "class")
+pred=  pre.res
+pred = sapply(pred, ch2int)
+mean((pred!=(dat_test[,ncol(dat_train_60)]==0)))
