@@ -254,7 +254,50 @@ pred=  pre.res
 pred = sapply(pred, ch2int)
 mean((pred!=(dat_test[,ncol(dat_train_00)]==4)))
 
+
 #10s classifier
+err_cal <- function(pred,k){
+  pred = sapply(pred, ch2int)
+  mean((pred!=(dat_train[idx==k,"country"]==1)))
+}
+
+err.tmp = matrix(rep(0,5*length(lam)),nrow=5)
+for (k in 1:5) {
+  # Bootstrap
+  set.seed(k)
+  dat_train.tmp = dat_train[idx!=k,]
+  label_country = dat_train.tmp$country
+  idxcountry = (1:length(label_country))[label_country==1]
+  bootcountry = sample(idxcountry,round(sum(label_country!=1)/2)-sum(label_country==1),replace = T)
+  dat_train_country = rbind(dat_train.tmp,dat_train.tmp[bootcountry,])
+  
+  # Model Estimation
+  mr.tmp = glmnet(data.matrix(dat_train_country[,-c(1:13,ncol(dat_train))]),dat_train_country$country
+                  ,family="binomial",alpha = 0,lambda = lam)
+  pre.tmp = predict(mr.tmp,data.matrix(dat_train[idx==k,-c(1:13,ncol(dat_train))]),type="class")
+  err.tmp[k,] = apply(pre.tmp,2,err_cal,k=k)
+}
+plot(rev(lam),colMeans(err.tmp),"l",xlab = "lambda",ylab = "error rate")
+
+# ridge lambda = .7
+set.seed(3701)
+label_country = dat_train$country
+idxcountry = (1:length(label_country))[label_country==1]
+bootcountry = sample(idxcountry,sum(label_country!=1)/2-sum(label_country==1),replace = T)
+dat_train_country = rbind(dat_train,dat_train[bootcountry,])
+m1 = glmnet(data.matrix(dat_train_country[,-c(1:13,ncol(dat_train))]),dat_train_country$country
+            ,family="binomial",alpha = 0,lambda=.8)
+pre.res = predict(m1,data.matrix(dat_test[,-c(1:13,ncol(dat_test))]),type = "class")
+pred=  pre.res
+pred = sapply(pred, ch2int)
+mean((pred!=(dat_test[,"country"]==1)))
+# recall
+mean((pred[(dat_test[,"country"]==1)]==1)) # 1
+# precision
+mean((dat_test[pred==1,"country"]==1)) # .10
+
+# Maybe Counting on Genre
+# first try it on Alternative
 err_cal <- function(pred,k){
   pred = sapply(pred, ch2int)
   mean((pred!=(dat_train[idx==k,ncol(dat_train)]==5)))
@@ -278,6 +321,8 @@ for (k in 1:5) {
 }
 plot(rev(lam),colMeans(err.tmp),"l",xlab = "lambda",ylab = "error rate")
 
+
+
 # ridge lambda = .7
 set.seed(3701)
 label_10 = dat_train$label.1
@@ -290,5 +335,3 @@ pre.res = predict(m1,data.matrix(dat_test[,-ncol(dat_test)]),type = "class")
 pred=  pre.res
 pred = sapply(pred, ch2int)
 mean((pred!=(dat_test[,ncol(dat_train_10)]==5)))
-
-# 扩大年代的区划
