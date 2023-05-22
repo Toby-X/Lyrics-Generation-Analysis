@@ -1,10 +1,10 @@
-# word embedding + svm/logistic regression
+# word embedding + svm/logistic regression -> classification
+# i.e. predict year from lyrics
 # %%
 import numpy as np
 from sklearn.metrics import accuracy_score
 from sklearn.svm import SVC
 from sklearn.model_selection import GridSearchCV
-import sklearn.svm as svm
 from sklearn.linear_model import LogisticRegression, ElasticNet
 from sklearn.kernel_approximation import RBFSampler
 from sklearn.kernel_approximation import Nystroem
@@ -36,7 +36,7 @@ train_lyrics['lyrics'] = train_lyrics['lyrics'].apply(str2list)
 
 # word2vec embedding
 all_lyrics = test_lyrics['lyrics'].tolist() + train_lyrics['lyrics'].tolist()
-model = Word2Vec(all_lyrics, min_count=1)
+model = Word2Vec(all_lyrics, sg=1, min_count=1)
 
 # add a new column to the data matrix
 test_lyrics['embedded_lyrics'] = test_lyrics['lyrics'].apply(
@@ -96,7 +96,19 @@ y_pred_decades = best_model.predict(X_test)
 accuracy = accuracy_score(y_test_decades, y_pred_decades)
 print("SVC Accuracy:", accuracy)
 
+# %%
+# without grid search
+# Train the model
+model = SVC(kernel='rbf')
+model.fit(X_train, y_train_decades)
 
+# Predict on the test set
+y_pred_decades = model.predict(X_test)
+
+# Evaluate the model
+accuracy = accuracy_score(y_test_decades, y_pred_decades)
+print("Accuracy:", accuracy)
+print(model.get_params())
 # %%
 # elastic net
 elasticnet_model = LogisticRegression(
