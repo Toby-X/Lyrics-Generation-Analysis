@@ -17,7 +17,7 @@ train_other = read.csv("data/train_other.csv")
 corr = apply(dat_train[,14:(ncol(dat_train)-1)],2,cor,y=train_other$year)
 boxplot(corr)
 sum(abs(corr)>0.05)
-idx_avail = abs(corr)>.02
+idx_avail = abs(corr)>.1
 dat_train_word = dat_train[,14:(ncol(dat_train)-1)]
 dat_train_word = dat_train_word[,idx_avail]
 dat_train_fil = cbind(dat_train[,1:13],dat_train_word,dat_train[,ncol(dat_train)])
@@ -172,9 +172,9 @@ pred=  pre.res
 pred = sapply(pred, ch2int)
 mean((pred!=(dat_test[,ncol(dat_train_80)]==2)))
 # recall
-mean((pred[(dat_test[,ncol(dat_train_60)]==2)]==1)) # .07→0.02（1.0→1.4）
+mean((pred[(dat_test[,ncol(dat_train_80)]==2)]==1)) # .07→0.02（1.0→1.4）
 # precision
-mean((dat_test[pred==1,ncol(dat_train_60)]==2)) # .24→.25
+mean((dat_test[pred==1,ncol(dat_train_80)]==2)) # .24→.25
 
 # 90s classifier
 err_cal <- function(pred,k){
