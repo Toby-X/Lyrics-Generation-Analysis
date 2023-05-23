@@ -1,101 +1,101 @@
 ,band_singer,singer_url,active_years
-0,['Beyoncé'],['/wiki/Beyonc%C3%A9'],
-1,"['Rihanna', 'Jay-Z']","['/wiki/Rihanna', '/wiki/Jay-Z']",
-2,"['Gwen Stefani', 'Akon']","['/wiki/Gwen_Stefani', '/wiki/Akon']",
-3,['Fergie'],['/wiki/Fergie_(singer)'],
-4,"['T-Pain', 'Yung Joc']","['/wiki/T-Pain', '/wiki/Yung_Joc']",1999 2003
-5,['Carrie Underwood'],['/wiki/Carrie_Underwood'],
-6,"[""Plain White T's""]",['/wiki/Plain_White_T%27s'],1997
-7,"['Akon', 'Snoop Dogg']","['/wiki/Akon', '/wiki/Snoop_Dogg']",
-8,['Nelly Furtado'],['/wiki/Nelly_Furtado'],
-9,"['Fergie', 'Ludacris']","['/wiki/Fergie_(singer)', '/wiki/Ludacris']",
-10,['Akon'],['/wiki/Akon'],
-11,['Avril Lavigne'],['/wiki/Avril_Lavigne'],
-12,['Maroon 5'],['/wiki/Maroon_5'],1994
-13,['Shop Boyz'],['/wiki/Shop_Boyz'],2004 2020
-14,"['Akon', 'Eminem']","['/wiki/Akon', '/wiki/Eminem']",
-15,['Mims'],['/wiki/Mims_(rapper)'],2001
-16,['Daughtry'],['/wiki/Daughtry_(band)'],2006
-17,"['Timbaland', 'Keri Hilson']","['/wiki/Timbaland', '/wiki/Keri_Hilson']",
-18,"['Fergie', 'will.i.am']","['/wiki/Fergie_(singer)', '/wiki/Will.i.am']",1988
-19,"[""Soulja Boy Tell 'Em""]",['/wiki/Soulja_Boy'],2004
-20,"['Timbaland', 'Nelly Furtado', 'Justin Timberlake']","['/wiki/Timbaland', '/wiki/Nelly_Furtado', '/wiki/Justin_Timberlake']",
-21,['Justin Timberlake'],['/wiki/Justin_Timberlake'],
-22,"['Gym Class Heroes', 'Patrick Stump']","['/wiki/Gym_Class_Heroes', '/wiki/Patrick_Stump']",1997–2012 2018–2019 2023‒present
-23,['The Fray'],['/wiki/The_Fray'],2002
-24,['Daughtry'],['/wiki/Daughtry_(band)'],2006
-25,"['Justin Timberlake', 'T.I.']","['/wiki/Justin_Timberlake', '/wiki/T.I.']",
-26,['Kanye West'],['/wiki/Kanye_West'],
-27,['Jim Jones'],['/wiki/Jim_Jones_(rapper)'],1997
-28,['Pink'],['/wiki/Pink_(singer)'],
-29,['Unk'],['/wiki/Unk'],1998
-30,['Sean Kingston'],['/wiki/Sean_Kingston'],2007
+0,['Beyoncé'],['/wiki/Beyonc%C3%A9'],1997–present
+1,"['Rihanna', 'Jay-Z']","['/wiki/Rihanna', '/wiki/Jay-Z']",2003–present 1986–present
+2,"['Gwen Stefani', 'Akon']","['/wiki/Gwen_Stefani', '/wiki/Akon']",1986–present 1996–present
+3,['Fergie'],['/wiki/Fergie_(singer)'],1984–present
+4,"['T-Pain', 'Yung Joc']","['/wiki/T-Pain', '/wiki/Yung_Joc']",1999–present 2003–present
+5,['Carrie Underwood'],['/wiki/Carrie_Underwood'],2005–present
+6,"[""Plain White T's""]",['/wiki/Plain_White_T%27s'],1997–present
+7,"['Akon', 'Snoop Dogg']","['/wiki/Akon', '/wiki/Snoop_Dogg']",1996–present 1992–present
+8,['Nelly Furtado'],['/wiki/Nelly_Furtado'],1996–present
+9,"['Fergie', 'Ludacris']","['/wiki/Fergie_(singer)', '/wiki/Ludacris']",1984–present 1998–present
+10,['Akon'],['/wiki/Akon'],1996–present
+11,['Avril Lavigne'],['/wiki/Avril_Lavigne'],1999–present
+12,['Maroon 5'],['/wiki/Maroon_5'],1994–present
+13,['Shop Boyz'],['/wiki/Shop_Boyz'],2004 2020–present
+14,"['Akon', 'Eminem']","['/wiki/Akon', '/wiki/Eminem']",1996–present 1988–present
+15,['Mims'],['/wiki/Mims_(rapper)'],2001–present
+16,['Daughtry'],['/wiki/Daughtry_(band)'],2006–present
+17,"['Timbaland', 'Keri Hilson']","['/wiki/Timbaland', '/wiki/Keri_Hilson']",1986–present 2002–present
+18,"['Fergie', 'will.i.am']","['/wiki/Fergie_(singer)', '/wiki/Will.i.am']",1984–present 1988–present
+19,"[""Soulja Boy Tell 'Em""]",['/wiki/Soulja_Boy'],2004–present
+20,"['Timbaland', 'Nelly Furtado', 'Justin Timberlake']","['/wiki/Timbaland', '/wiki/Nelly_Furtado', '/wiki/Justin_Timberlake']",1986–present 1996–present 1992–present
+21,['Justin Timberlake'],['/wiki/Justin_Timberlake'],1992–present
+22,"['Gym Class Heroes', 'Patrick Stump']","['/wiki/Gym_Class_Heroes', '/wiki/Patrick_Stump']",1997–2012 2018–2019 2023 2001–present
+23,['The Fray'],['/wiki/The_Fray'],2002–present
+24,['Daughtry'],['/wiki/Daughtry_(band)'],2006–present
+25,"['Justin Timberlake', 'T.I.']","['/wiki/Justin_Timberlake', '/wiki/T.I.']",1992–present 1999–present
+26,['Kanye West'],['/wiki/Kanye_West'],1996–present
+27,['Jim Jones'],['/wiki/Jim_Jones_(rapper)'],1997–present
+28,['Pink'],['/wiki/Pink_(singer)'],1995–present
+29,['Unk'],['/wiki/Unk'],1998–present
+30,['Sean Kingston'],['/wiki/Sean_Kingston'],2007–present
 31,['Fall Out Boy'],['/wiki/Fall_Out_Boy'],2001–2009 2013–present
-32,"['T-Pain', 'Akon']","['/wiki/T-Pain', '/wiki/Akon']",1999
-33,['Huey'],['/wiki/Huey_(rapper)'],2006 2020
-34,"['Ludacris', 'Mary J. Blige']","['/wiki/Ludacris', '/wiki/Mary_J._Blige']",
+32,"['T-Pain', 'Akon']","['/wiki/T-Pain', '/wiki/Akon']",1999–present 1996–present
+33,['Huey'],['/wiki/Huey_(rapper)'],2006–2020
+34,"['Ludacris', 'Mary J. Blige']","['/wiki/Ludacris', '/wiki/Mary_J._Blige']",1998–present 1988–present
 35,['Nickelback'],['/wiki/Nickelback'],1995 1995
 36,['Fall Out Boy'],['/wiki/Fall_Out_Boy'],2001–2009 2013–present
-37,['Linkin Park'],['/wiki/Linkin_Park'],1996 2017
-38,['Justin Timberlake'],['/wiki/Justin_Timberlake'],
-39,"['Lloyd', 'Lil Wayne']","['/wiki/Lloyd_(singer)', '/wiki/Lil_Wayne']",2003
-40,['Elliott Yamin'],['/wiki/Elliott_Yamin'],2005
-41,"['Diddy', 'Keyshia Cole']","['/wiki/Sean_Combs', '/wiki/Keyshia_Cole']",
-42,"['Fat Joe', 'Lil Wayne']","['/wiki/Fat_Joe', '/wiki/Lil_Wayne']",1992
-43,"['Fabolous', 'Ne-Yo']","['/wiki/Fabolous', '/wiki/Ne-Yo']",1997
-44,"['Omarion', 'Timbaland']","['/wiki/Omarion', '/wiki/Timbaland']",1998
-45,['Hinder'],['/wiki/Hinder'],2001
-46,['John Mayer'],['/wiki/John_Mayer'],1998
-47,['Robin Thicke'],['/wiki/Robin_Thicke'],
-48,"['R. Kelly', 'T.I.', 'T-Pain']","['/wiki/R._Kelly', '/wiki/T.I.', '/wiki/T-Pain']",1999
+37,['Linkin Park'],['/wiki/Linkin_Park'],1996–2017
+38,['Justin Timberlake'],['/wiki/Justin_Timberlake'],1992–present
+39,"['Lloyd', 'Lil Wayne']","['/wiki/Lloyd_(singer)', '/wiki/Lil_Wayne']",2003–present 1995–present
+40,['Elliott Yamin'],['/wiki/Elliott_Yamin'],2005–present
+41,"['Diddy', 'Keyshia Cole']","['/wiki/Sean_Combs', '/wiki/Keyshia_Cole']",1990–present 2004–present
+42,"['Fat Joe', 'Lil Wayne']","['/wiki/Fat_Joe', '/wiki/Lil_Wayne']",1992–present 1995–present
+43,"['Fabolous', 'Ne-Yo']","['/wiki/Fabolous', '/wiki/Ne-Yo']",1997–present 1998–present
+44,"['Omarion', 'Timbaland']","['/wiki/Omarion', '/wiki/Timbaland']",1998–present 1986–present
+45,['Hinder'],['/wiki/Hinder'],2001–present
+46,['John Mayer'],['/wiki/John_Mayer'],1998–present
+47,['Robin Thicke'],['/wiki/Robin_Thicke'],1994–present
+48,"['R. Kelly', 'T.I.', 'T-Pain']","['/wiki/R._Kelly', '/wiki/T.I.', '/wiki/T-Pain']",1989–2019 1999–present 1999–present
 49,['Nickelback'],['/wiki/Nickelback'],1995 1995
-50,['Lloyd'],['/wiki/Lloyd_(singer)'],2003
-51,['The Red Jumpsuit Apparatus'],['/wiki/The_Red_Jumpsuit_Apparatus'],2003
-52,['Baby Boy da Prince'],['/wiki/Baby_Boy_da_Prince'],2002
-53,"['Bow Wow', 'Chris Brown', 'Johntá Austin']","['/wiki/Bow_Wow_(rapper)', '/wiki/Chris_Brown', '/wiki/Johnt%C3%A1_Austin']",1993 1995
-54,['The All-American Rejects'],['/wiki/The_All-American_Rejects'],1999
-55,['Hurricane Chris'],['/wiki/Hurricane_Chris_(rapper)'],2006
-56,['Ne-Yo'],['/wiki/Ne-Yo'],
-57,"['Bone Thugs-n-Harmony', 'Akon']","['/wiki/Bone_Thugs-n-Harmony', '/wiki/Akon']",1991
+50,['Lloyd'],['/wiki/Lloyd_(singer)'],2003–present
+51,['The Red Jumpsuit Apparatus'],['/wiki/The_Red_Jumpsuit_Apparatus'],2003–present
+52,['Baby Boy da Prince'],['/wiki/Baby_Boy_da_Prince'],2002–present
+53,"['Bow Wow', 'Chris Brown', 'Johntá Austin']","['/wiki/Bow_Wow_(rapper)', '/wiki/Chris_Brown', '/wiki/Johnt%C3%A1_Austin']",1993–present 2002–present 1995–present
+54,['The All-American Rejects'],['/wiki/The_All-American_Rejects'],1999–present
+55,['Hurricane Chris'],['/wiki/Hurricane_Chris_(rapper)'],2006–present
+56,['Ne-Yo'],['/wiki/Ne-Yo'],1998–present
+57,"['Bone Thugs-n-Harmony', 'Akon']","['/wiki/Bone_Thugs-n-Harmony', '/wiki/Akon']",1991–present 1996–present
 58,['My Chemical Romance'],['/wiki/My_Chemical_Romance'],2001–2013 2019–present
-59,"['Plies', 'T-Pain']","['/wiki/Plies_(rapper)', '/wiki/T-Pain']",2001 1999
-60,['Snow Patrol'],['/wiki/Snow_Patrol'],1994
-61,"['Beyoncé', 'Shakira']","['/wiki/Beyonc%C3%A9_Knowles', '/wiki/Shakira']",
-62,"['Justin Timberlake', 'Timbaland']","['/wiki/Justin_Timberlake', '/wiki/Timbaland']",
-63,['Avril Lavigne'],['/wiki/Avril_Lavigne'],
-64,"['Keyshia Cole', 'Missy Elliott', ""Lil' Kim""]","['/wiki/Keyshia_Cole', '/wiki/Missy_Elliott', '/wiki/Lil%27_Kim']",
-65,['OneRepublic'],['/wiki/OneRepublic'],2002
-66,['Colbie Caillat'],['/wiki/Colbie_Caillat'],
-67,['Ciara'],['/wiki/Ciara'],
-68,['Pink'],['/wiki/Pink_(singer)'],
-69,['Kelly Clarkson'],['/wiki/Kelly_Clarkson'],
-70,['Ciara'],['/wiki/Ciara'],
-71,['J. Holiday'],['/wiki/J._Holiday'],2006
-72,"['Rich Boy', 'Polow da Don']","['/wiki/Rich_Boy', '/wiki/Polow_da_Don']",2003 1997
-73,['Amy Winehouse'],['/wiki/Amy_Winehouse'],
-74,['T.I.'],['/wiki/T.I.'],
-75,['Alicia Keys'],['/wiki/Alicia_Keys'],
-76,['Boys Like Girls'],['/wiki/Boys_Like_Girls'],2005
-77,['Unk'],['/wiki/Unk'],1998
-78,"['Paula DeAnda', 'The D.E.Y.']","['/wiki/Paula_DeAnda', '/wiki/The_D.E.Y.']",2005 2006
-79,"['Young Jeezy', 'R. Kelly']","['/wiki/Young_Jeezy', '/wiki/R._Kelly']",
-80,['Hellogoodbye'],['/wiki/Hellogoodbye'],2001
+59,"['Plies', 'T-Pain']","['/wiki/Plies_(rapper)', '/wiki/T-Pain']",2001–present 1999–present
+60,['Snow Patrol'],['/wiki/Snow_Patrol'],1994–present
+61,"['Beyoncé', 'Shakira']","['/wiki/Beyonc%C3%A9_Knowles', '/wiki/Shakira']",1997–present 1990–present
+62,"['Justin Timberlake', 'Timbaland']","['/wiki/Justin_Timberlake', '/wiki/Timbaland']",1992–present 1986–present
+63,['Avril Lavigne'],['/wiki/Avril_Lavigne'],1999–present
+64,"['Keyshia Cole', 'Missy Elliott', ""Lil' Kim""]","['/wiki/Keyshia_Cole', '/wiki/Missy_Elliott', '/wiki/Lil%27_Kim']",2004–present 1991–present 1994–present
+65,['OneRepublic'],['/wiki/OneRepublic'],2002–present
+66,['Colbie Caillat'],['/wiki/Colbie_Caillat'],2004–present
+67,['Ciara'],['/wiki/Ciara'],2003–present
+68,['Pink'],['/wiki/Pink_(singer)'],1995–present
+69,['Kelly Clarkson'],['/wiki/Kelly_Clarkson'],2000–present
+70,['Ciara'],['/wiki/Ciara'],2003–present
+71,['J. Holiday'],['/wiki/J._Holiday'],2006–present
+72,"['Rich Boy', 'Polow da Don']","['/wiki/Rich_Boy', '/wiki/Polow_da_Don']",2003–present 1997–present
+73,['Amy Winehouse'],['/wiki/Amy_Winehouse'],2002–2011
+74,['T.I.'],['/wiki/T.I.'],1999–present
+75,['Alicia Keys'],['/wiki/Alicia_Keys'],1993–present
+76,['Boys Like Girls'],['/wiki/Boys_Like_Girls'],2005–present
+77,['Unk'],['/wiki/Unk'],1998–present
+78,"['Paula DeAnda', 'The D.E.Y.']","['/wiki/Paula_DeAnda', '/wiki/The_D.E.Y.']",2005–present 2006–present
+79,"['Young Jeezy', 'R. Kelly']","['/wiki/Young_Jeezy', '/wiki/R._Kelly']",1997–present 1989–2019
+80,['Hellogoodbye'],['/wiki/Hellogoodbye'],2001–present
 81,['Pretty Ricky'],['/wiki/Pretty_Ricky'],1997 1997
-82,['Gwen Stefani'],['/wiki/Gwen_Stefani'],
-83,"['Baby Bash', 'T-Pain']","['/wiki/Baby_Bash', '/wiki/T-Pain']",1996 1999
-84,"['Rihanna', 'Sean Paul']","['/wiki/Rihanna', '/wiki/Sean_Paul']",
-85,['Lifehouse'],['/wiki/Lifehouse_(band)'],1995
-86,"['50 Cent', 'Justin Timberlake', 'Timbaland']","['/wiki/50_Cent', '/wiki/Justin_Timberlake', '/wiki/Timbaland']",
-87,"['Bow Wow', 'T-Pain', 'Johntá Austin']","['/wiki/Bow_Wow_(rapper)', '/wiki/T-Pain', '/wiki/Johnt%C3%A1_Austin']",1993 1999 1995
-88,['Taylor Swift'],['/wiki/Taylor_Swift'],
-89,['Rihanna'],['/wiki/Rihanna'],
+82,['Gwen Stefani'],['/wiki/Gwen_Stefani'],1986–present
+83,"['Baby Bash', 'T-Pain']","['/wiki/Baby_Bash', '/wiki/T-Pain']",1996–present 1999–present
+84,"['Rihanna', 'Sean Paul']","['/wiki/Rihanna', '/wiki/Sean_Paul']",2003–present 1994–present
+85,['Lifehouse'],['/wiki/Lifehouse_(band)'],1995–present
+86,"['50 Cent', 'Justin Timberlake', 'Timbaland']","['/wiki/50_Cent', '/wiki/Justin_Timberlake', '/wiki/Timbaland']",1996 1996 1992–present 1986–present
+87,"['Bow Wow', 'T-Pain', 'Johntá Austin']","['/wiki/Bow_Wow_(rapper)', '/wiki/T-Pain', '/wiki/Johnt%C3%A1_Austin']",1993–present 1999–present 1995–present
+88,['Taylor Swift'],['/wiki/Taylor_Swift'],2004–present
+89,['Rihanna'],['/wiki/Rihanna'],2003–present
 90,['Red Hot Chili Peppers'],['/wiki/Red_Hot_Chili_Peppers'],1982 1982
-91,"['Ludacris', 'Pharrell']","['/wiki/Ludacris', '/wiki/Pharrell_Williams']",
-92,"['Chris Brown', 'T-Pain']","['/wiki/Chris_Brown', '/wiki/T-Pain']",1999
+91,"['Ludacris', 'Pharrell']","['/wiki/Ludacris', '/wiki/Pharrell_Williams']",1998–present 1990–present
+92,"['Chris Brown', 'T-Pain']","['/wiki/Chris_Brown', '/wiki/T-Pain']",2002–present 1999–present
 93,['Nickelback'],['/wiki/Nickelback'],1995 1995
-94,"['Crime Mob', ""Lil' Scrappy""]","['/wiki/Crime_Mob', '/wiki/Lil%27_Scrappy']",2002 2008 2016 2003
-95,['Justin Timberlake'],['/wiki/Justin_Timberlake'],
-96,['Hinder'],['/wiki/Hinder'],2001
-97,['Finger Eleven'],['/wiki/Finger_Eleven'],1990
-98,"['Snoop Dogg', 'R. Kelly']","['/wiki/Snoop_Dogg', '/wiki/R._Kelly']",
-99,"['R. Kelly', 'Usher']","['/wiki/R._Kelly', '/wiki/Usher_(musician)']",
+94,"['Crime Mob', ""Lil' Scrappy""]","['/wiki/Crime_Mob', '/wiki/Lil%27_Scrappy']",2002–2008 2016-present 2003–present
+95,['Justin Timberlake'],['/wiki/Justin_Timberlake'],1992–present
+96,['Hinder'],['/wiki/Hinder'],2001–present
+97,['Finger Eleven'],['/wiki/Finger_Eleven'],1990–present
+98,"['Snoop Dogg', 'R. Kelly']","['/wiki/Snoop_Dogg', '/wiki/R._Kelly']",1992–present 1989–2019
+99,"['R. Kelly', 'Usher']","['/wiki/R._Kelly', '/wiki/Usher_(musician)']",1989–2019 1993–present

@@ -1,101 +1,101 @@
 ,band_singer,singer_url,active_years
 0,['Blondie'],['/wiki/Blondie_(band)'],1974–1982 1997–present
 1,['Pink Floyd'],['/wiki/Pink_Floyd'],1965–1994 2005 2007 2013–2014 2022
-2,['Olivia Newton-John'],['/wiki/Olivia_Newton-John'],
-3,['Michael Jackson'],['/wiki/Michael_Jackson'],1964 2009
-4,['Captain & Tennille'],['/wiki/Captain_%26_Tennille'],1972 2013
-5,['Queen'],['/wiki/Queen_(band)'],1970
-6,['Paul McCartney'],['/wiki/Paul_McCartney'],
-7,['Lipps Inc'],['/wiki/Lipps_Inc'],1979 1985
-8,['Billy Joel'],['/wiki/Billy_Joel'],
-9,['Bette Midler'],['/wiki/Bette_Midler'],
-10,['Rupert Holmes'],['/wiki/Rupert_Holmes'],1969
-11,['Gary Numan'],['/wiki/Gary_Numan'],1977
-12,['Smokey Robinson'],['/wiki/Smokey_Robinson'],1955
-13,['The Spinners'],['/wiki/The_Spinners_(American_band)'],1954
-14,['Air Supply'],['/wiki/Air_Supply'],1975
-15,['Elton John'],['/wiki/Elton_John'],
-16,['Christopher Cross'],['/wiki/Christopher_Cross'],1971
-17,['Diana Ross'],['/wiki/Diana_Ross'],
-18,['KC and the Sunshine Band'],['/wiki/KC_and_the_Sunshine_Band'],1973–1985 1991–present
+2,['Olivia Newton-John'],['/wiki/Olivia_Newton-John'],1963–2022
+3,['Michael Jackson'],['/wiki/Michael_Jackson'],1964–2009
+4,['Captain & Tennille'],['/wiki/Captain_%26_Tennille'],1972–2013
+5,['Queen'],['/wiki/Queen_(band)'],1970–present
+6,['Paul McCartney'],['/wiki/Paul_McCartney'],1957–present
+7,['Lipps Inc'],['/wiki/Lipps_Inc'],1979–1985
+8,['Billy Joel'],['/wiki/Billy_Joel'],1964
+9,['Bette Midler'],['/wiki/Bette_Midler'],1965–present
+10,['Rupert Holmes'],['/wiki/Rupert_Holmes'],1969–present
+11,['Gary Numan'],['/wiki/Gary_Numan'],1977–present
+12,['Smokey Robinson'],['/wiki/Smokey_Robinson'],1955–present
+13,['The Spinners'],['/wiki/The_Spinners_(American_band)'],1954–present
+14,['Air Supply'],['/wiki/Air_Supply'],1975–present
+15,['Elton John'],['/wiki/Elton_John'],1962–present
+16,['Christopher Cross'],['/wiki/Christopher_Cross'],1971–present
+17,['Diana Ross'],['/wiki/Diana_Ross'],1959–present
+18,['KC and the Sunshine Band'],['/wiki/KC_and_the_Sunshine_Band'],1973
 19,['Styx'],['/wiki/Styx_(band)'],1972–1984 1990–1991 1995–present
-20,"['Billy Preston', 'Syreeta']","['/wiki/Billy_Preston', '/wiki/Syreeta_Wright']",1956 2005 1967 2004
-21,['The Manhattans'],['/wiki/The_Manhattans'],1962
-22,['Commodores'],['/wiki/Commodores'],1968
-23,"['Teri DeSario', 'KC']","['/wiki/Teri_DeSario', '/wiki/Harry_Wayne_Casey']",1970 1973
-24,['Dr. Hook'],['/wiki/Dr._Hook'],1968 1985 1988-2015 2019
-25,['Robbie Dupree'],['/wiki/Robbie_Dupree'],1978
-26,['Ambrosia'],['/wiki/Ambrosia_(band)'],1970 1982 1989
-27,['Kenny Loggins'],['/wiki/Kenny_Loggins'],1968
-28,['The Spinners'],['/wiki/The_Spinners_(American_band)'],1954
-29,['Jermaine Jackson'],['/wiki/Jermaine_Jackson'],
-30,"['Kenny Rogers', 'Kim Carnes']","['/wiki/Kenny_Rogers', '/wiki/Kim_Carnes']",1956 2017 1962
-31,['Christopher Cross'],['/wiki/Christopher_Cross'],1971
-32,['Dan Fogelberg'],['/wiki/Dan_Fogelberg'],1968 2007
-33,['Kenny Rogers'],['/wiki/Kenny_Rogers'],1956 2017
-34,['Kool & the Gang'],['/wiki/Kool_%26_the_Gang'],1964
-35,['Kool & the Gang'],['/wiki/Kool_%26_the_Gang'],1964
-36,['The S.O.S. Band'],['/wiki/The_S.O.S._Band'],1977
-37,"['Barbra Streisand', 'Donna Summer']","['/wiki/Barbra_Streisand', '/wiki/Donna_Summer']",1960 1968 2012
-38,['Kim Carnes'],['/wiki/Kim_Carnes'],1962
-39,['M'],['/wiki/M_(band)'],1978 1984
-40,['The Pretenders'],['/wiki/The_Pretenders'],1978
-41,"['Ray, Goodman & Brown']","['/wiki/Ray,_Goodman_%26_Brown']",1965 1978 1978
-42,['Stevie Wonder'],['/wiki/Stevie_Wonder'],
-43,['Shalamar'],['/wiki/Shalamar'],1977 1991 1996 1997 1999
-44,['Cliff Richard'],['/wiki/Cliff_Richard'],
-45,['The Brothers Johnson'],['/wiki/The_Brothers_Johnson'],1975 1982 1984 2015
-46,['Eagles'],['/wiki/Eagles_(band)'],1971–1980 1994–2016 2017–present
-47,['Rocky Burnette'],['/wiki/Rocky_Burnette'],1979
-48,['Dr. Hook'],['/wiki/Dr._Hook'],1968 1985 1988-2015 2019
-49,['Rupert Holmes'],['/wiki/Rupert_Holmes'],1969
-50,['Bob Seger and the Silver Bullet Band'],['/wiki/Bob_Seger'],1961–1996 2000–present
-51,['Donna Summer'],['/wiki/Donna_Summer'],1968 2012
-52,['The Rolling Stones'],['/wiki/The_Rolling_Stones'],1962
-53,['Herb Alpert'],['/wiki/Herb_Alpert'],1956
-54,['Air Supply'],['/wiki/Air_Supply'],1975
+20,"['Billy Preston', 'Syreeta']","['/wiki/Billy_Preston', '/wiki/Syreeta_Wright']",1956–2005 1967–2004
+21,['The Manhattans'],['/wiki/The_Manhattans'],1962–present
+22,['Commodores'],['/wiki/Commodores'],1968–present
+23,"['Teri DeSario', 'KC']","['/wiki/Teri_DeSario', '/wiki/Harry_Wayne_Casey']",1970–present 1973–present
+24,['Dr. Hook'],['/wiki/Dr._Hook'],1968–1985 1988-2015 2019-present
+25,['Robbie Dupree'],['/wiki/Robbie_Dupree'],1978–present
+26,['Ambrosia'],['/wiki/Ambrosia_(band)'],1970–1982 1989–present
+27,['Kenny Loggins'],['/wiki/Kenny_Loggins'],1968–present
+28,['The Spinners'],['/wiki/The_Spinners_(American_band)'],1954–present
+29,['Jermaine Jackson'],['/wiki/Jermaine_Jackson'],1965–present
+30,"['Kenny Rogers', 'Kim Carnes']","['/wiki/Kenny_Rogers', '/wiki/Kim_Carnes']",1956–2017 1962–present
+31,['Christopher Cross'],['/wiki/Christopher_Cross'],1971–present
+32,['Dan Fogelberg'],['/wiki/Dan_Fogelberg'],1968–2007
+33,['Kenny Rogers'],['/wiki/Kenny_Rogers'],1956–2017
+34,['Kool & the Gang'],['/wiki/Kool_%26_the_Gang'],1964–present
+35,['Kool & the Gang'],['/wiki/Kool_%26_the_Gang'],1964–present
+36,['The S.O.S. Band'],['/wiki/The_S.O.S._Band'],1977–present
+37,"['Barbra Streisand', 'Donna Summer']","['/wiki/Barbra_Streisand', '/wiki/Donna_Summer']",1960–present 1968–2012
+38,['Kim Carnes'],['/wiki/Kim_Carnes'],1962–present
+39,['M'],['/wiki/M_(band)'],1978–1984
+40,['The Pretenders'],['/wiki/The_Pretenders'],1978–present
+41,"['Ray, Goodman & Brown']","['/wiki/Ray,_Goodman_%26_Brown']",1965–1978 1978–present
+42,['Stevie Wonder'],['/wiki/Stevie_Wonder'],1961–present
+43,['Shalamar'],['/wiki/Shalamar'],1977–1991 1996–1997 1999–present
+44,['Cliff Richard'],['/wiki/Cliff_Richard'],1958–present
+45,['The Brothers Johnson'],['/wiki/The_Brothers_Johnson'],1975–1982 1984–2015
+46,['Eagles'],['/wiki/Eagles_(band)'],1971
+47,['Rocky Burnette'],['/wiki/Rocky_Burnette'],1979–present
+48,['Dr. Hook'],['/wiki/Dr._Hook'],1968–1985 1988-2015 2019-present
+49,['Rupert Holmes'],['/wiki/Rupert_Holmes'],1969–present
+50,['Bob Seger and the Silver Bullet Band'],['/wiki/Bob_Seger'],1961
+51,['Donna Summer'],['/wiki/Donna_Summer'],1968–2012
+52,['The Rolling Stones'],['/wiki/The_Rolling_Stones'],1962–present
+53,['Herb Alpert'],['/wiki/Herb_Alpert'],1956–present
+54,['Air Supply'],['/wiki/Air_Supply'],1975–present
 55,['Little River Band'],['/wiki/Little_River_Band'],1975 1975
-56,['J.D. Souther'],['/wiki/J.D._Souther'],1965
-57,['Andy Gibb'],['/wiki/Andy_Gibb'],
-58,['Pete Townshend'],['/wiki/Pete_Townshend'],1962
-59,['Steve Forbert'],['/wiki/Steve_Forbert'],1978
-60,['Anne Murray'],['/wiki/Anne_Murray'],1967 2008
-61,['Eagles'],['/wiki/Eagles_(band)'],1971–1980 1994–2016 2017–present
-62,['Isaac Hayes'],['/wiki/Isaac_Hayes'],
-63,['Tom Petty and the Heartbreakers'],['/wiki/Tom_Petty_and_the_Heartbreakers'],1976 2017
-64,['Michael Jackson'],['/wiki/Michael_Jackson'],1964 2009
-65,['Irene Cara'],['/wiki/Irene_Cara'],
-66,['Bob Seger and the Silver Bullet Band'],['/wiki/Bob_Seger_and_the_Silver_Bullet_Band'],1961–1996 2000–present
-67,['Linda Ronstadt'],['/wiki/Linda_Ronstadt'],1967 2011
-68,['Benny Mardones'],['/wiki/Benny_Mardones'],1978 2017
-69,['Pure Prairie League'],['/wiki/Pure_Prairie_League'],1970 1988 1998 2002 2004
-70,['Genesis'],['/wiki/Genesis_(band)'],1967–2000 2006–2007 2020–2022
-71,['The Dirt Band'],['/wiki/The_Dirt_Band'],1966
-72,['Carole King'],['/wiki/Carole_King'],
-73,['Donna Summer'],['/wiki/Donna_Summer'],1968 2012
-74,['Billy Joel'],['/wiki/Billy_Joel'],
-75,['Neil'],['/wiki/Neil_Sedaka'],1957
+56,['J.D. Souther'],['/wiki/J.D._Souther'],1965–present
+57,['Andy Gibb'],['/wiki/Andy_Gibb'],1967 1988
+58,['Pete Townshend'],['/wiki/Pete_Townshend'],1962–present
+59,['Steve Forbert'],['/wiki/Steve_Forbert'],1978–present
+60,['Anne Murray'],['/wiki/Anne_Murray'],1967–2008
+61,['Eagles'],['/wiki/Eagles_(band)'],1971
+62,['Isaac Hayes'],['/wiki/Isaac_Hayes'],2008
+63,['Tom Petty and the Heartbreakers'],['/wiki/Tom_Petty_and_the_Heartbreakers'],1976–2017
+64,['Michael Jackson'],['/wiki/Michael_Jackson'],1964–2009
+65,['Irene Cara'],['/wiki/Irene_Cara'],1965–2011
+66,['Bob Seger and the Silver Bullet Band'],['/wiki/Bob_Seger_and_the_Silver_Bullet_Band'],1961
+67,['Linda Ronstadt'],['/wiki/Linda_Ronstadt'],1967–2011
+68,['Benny Mardones'],['/wiki/Benny_Mardones'],1978–2017
+69,['Pure Prairie League'],['/wiki/Pure_Prairie_League'],1970–1988 1998–2002 2004–present
+70,['Genesis'],['/wiki/Genesis_(band)'],1967 2022
+71,['The Dirt Band'],['/wiki/The_Dirt_Band'],1966–present
+72,['Carole King'],['/wiki/Carole_King'],1958–present
+73,['Donna Summer'],['/wiki/Donna_Summer'],1968–2012
+74,['Billy Joel'],['/wiki/Billy_Joel'],1964
+75,['Neil'],['/wiki/Neil_Sedaka'],1957–present
 76,['Charlie Dore'],['/wiki/Charlie_Dore'],
-77,['Linda Ronstadt'],['/wiki/Linda_Ronstadt'],1967 2011
-78,['Michael Jackson'],['/wiki/Michael_Jackson'],1964 2009
-79,['Peaches & Herb'],['/wiki/Peaches_%26_Herb'],1966
-80,['Eagles'],['/wiki/Eagles_(band)'],1971–1980 1994–2016 2017–present
-81,['Mickey Gilley'],['/wiki/Mickey_Gilley'],1957 2022
-82,['Pat Benatar'],['/wiki/Pat_Benatar'],1972
-83,['Dionne Warwick'],['/wiki/Dionne_Warwick'],
-84,['Eddie Rabbitt'],['/wiki/Eddie_Rabbitt'],1964 1998
-85,['Supertramp'],['/wiki/Supertramp'],1970–1988 1996–2002 2010–2012 2015
-86,['Fleetwood Mac'],['/wiki/Fleetwood_Mac'],1967 (1967)–1995 (1995) 1997 (1997)–present
-87,['Hall & Oates'],['/wiki/Hall_%26_Oates'],1970
-88,['Boz Scaggs'],['/wiki/Boz_Scaggs'],1963
-89,['Neil Diamond'],['/wiki/Neil_Diamond'],
-90,['George Benson'],['/wiki/George_Benson'],1964
-91,['Anne Murray'],['/wiki/Anne_Murray'],1967 2008
-92,['Kenny Rogers'],['/wiki/Kenny_Rogers'],1956 2017
-93,['Fleetwood Mac'],['/wiki/Fleetwood_Mac'],1967 (1967)–1995 (1995) 1997 (1997)–present
-94,['Prince'],['/wiki/Prince_(musician)'],
-95,['Charlie Daniels Band'],['/wiki/Charlie_Daniels'],1958 2020
-96,['Boz Scaggs'],['/wiki/Boz_Scaggs'],1963
-97,['Barry Manilow'],['/wiki/Barry_Manilow'],1964
-98,['Joe Walsh'],['/wiki/Joe_Walsh'],1965
-99,['Tom Petty and the Heartbreakers'],['/wiki/Tom_Petty_and_the_Heartbreakers'],1976 2017
+77,['Linda Ronstadt'],['/wiki/Linda_Ronstadt'],1967–2011
+78,['Michael Jackson'],['/wiki/Michael_Jackson'],1964–2009
+79,['Peaches & Herb'],['/wiki/Peaches_%26_Herb'],1966–present
+80,['Eagles'],['/wiki/Eagles_(band)'],1971
+81,['Mickey Gilley'],['/wiki/Mickey_Gilley'],1957–2022
+82,['Pat Benatar'],['/wiki/Pat_Benatar'],1972–present
+83,['Dionne Warwick'],['/wiki/Dionne_Warwick'],1955–present
+84,['Eddie Rabbitt'],['/wiki/Eddie_Rabbitt'],1964–1998
+85,['Supertramp'],['/wiki/Supertramp'],1970
+86,['Fleetwood Mac'],['/wiki/Fleetwood_Mac'],1967 1967 1995 1995 1997 1997
+87,['Hall & Oates'],['/wiki/Hall_%26_Oates'],1970–present
+88,['Boz Scaggs'],['/wiki/Boz_Scaggs'],1963–present
+89,['Neil Diamond'],['/wiki/Neil_Diamond'],1962–present
+90,['George Benson'],['/wiki/George_Benson'],1964–present
+91,['Anne Murray'],['/wiki/Anne_Murray'],1967–2008
+92,['Kenny Rogers'],['/wiki/Kenny_Rogers'],1956–2017
+93,['Fleetwood Mac'],['/wiki/Fleetwood_Mac'],1967 1967 1995 1995 1997 1997
+94,['Prince'],['/wiki/Prince_(musician)'],1975–2016
+95,['Charlie Daniels Band'],['/wiki/Charlie_Daniels'],1958–2020
+96,['Boz Scaggs'],['/wiki/Boz_Scaggs'],1963–present
+97,['Barry Manilow'],['/wiki/Barry_Manilow'],1964–present
+98,['Joe Walsh'],['/wiki/Joe_Walsh'],1965–present
+99,['Tom Petty and the Heartbreakers'],['/wiki/Tom_Petty_and_the_Heartbreakers'],1976–2017

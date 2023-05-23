@@ -1,101 +1,101 @@
 ,band_singer,singer_url,active_years
-0,['50 Cent'],['/wiki/50_Cent'],
-1,['R. Kelly'],['/wiki/R._Kelly'],
-2,['Sean Paul'],['/wiki/Sean_Paul'],
-3,"['Beyoncé', 'Jay-Z']","['/wiki/Beyonc%C3%A9', '/wiki/Jay-Z']",
-4,['3 Doors Down'],['/wiki/3_Doors_Down'],1996
+0,['50 Cent'],['/wiki/50_Cent'],1996 1996
+1,['R. Kelly'],['/wiki/R._Kelly'],1989–2019
+2,['Sean Paul'],['/wiki/Sean_Paul'],1994–present
+3,"['Beyoncé', 'Jay-Z']","['/wiki/Beyonc%C3%A9', '/wiki/Jay-Z']",1997–present 1986–present
+4,['3 Doors Down'],['/wiki/3_Doors_Down'],1996–present
 5,['Matchbox Twenty'],['/wiki/Matchbox_Twenty'],1995–2004 2007–present
-6,['Chingy'],['/wiki/Chingy'],2000
-7,['Aaliyah'],['/wiki/Aaliyah'],
-8,"['Kid Rock', 'Sheryl Crow']","['/wiki/Kid_Rock', '/wiki/Sheryl_Crow']",1988 1987
-9,"['Evanescence', 'Paul McCoy']","['/wiki/Evanescence', '/wiki/Paul_McCoy']",1995 2000
-10,"['Lil Jon & The East Side Boyz', 'Ying Yang Twins']","['/wiki/Lil_Jon', '/wiki/Ying_Yang_Twins']",1991 1999
-11,"['Beyoncé', 'Sean Paul']","['/wiki/Beyonc%C3%A9', '/wiki/Sean_Paul']",
-12,"['Nelly', 'P. Diddy', 'Murphy Lee']","['/wiki/Nelly', '/wiki/Sean_Combs', '/wiki/Murphy_Lee']",1993
-13,"['50 Cent', 'Nate Dogg']","['/wiki/50_Cent', '/wiki/Nate_Dogg']",1990 2008
-14,"['Jennifer Lopez', 'LL Cool J']","['/wiki/Jennifer_Lopez', '/wiki/LL_Cool_J']",
-15,['Christina Aguilera'],['/wiki/Christina_Aguilera'],
-16,"['Busta Rhymes', 'Mariah Carey']","['/wiki/Busta_Rhymes', '/wiki/Mariah_Carey']",1994 2014
-17,['Avril Lavigne'],['/wiki/Avril_Lavigne'],
-18,"['Uncle Kracker', 'Dobie Gray']","['/wiki/Uncle_Kracker', '/wiki/Dobie_Gray']",1987 1960 2011
-19,"[""Lil' Kim"", '50 Cent']","['/wiki/Lil%27_Kim', '/wiki/50_Cent']",
-20,['50 Cent'],['/wiki/50_Cent'],
-21,"['B2K', 'P. Diddy']","['/wiki/B2K', '/wiki/Sean_Combs']",1998–2004 2018–2019
-22,"['Fabolous', 'Tamia']","['/wiki/Fabolous', '/wiki/Tamia']",1997
-23,"['Fabolous', ""Lil' Mo""]","['/wiki/Fabolous', '/wiki/Lil%27_Mo']",1997
-24,"['Ja Rule', 'Ashanti']","['/wiki/Ja_Rule', '/wiki/Ashanti_(singer)']",1994 1994 2001
+6,['Chingy'],['/wiki/Chingy'],2000–present
+7,['Aaliyah'],['/wiki/Aaliyah'],1989–2001
+8,"['Kid Rock', 'Sheryl Crow']","['/wiki/Kid_Rock', '/wiki/Sheryl_Crow']",1988–present 1987–present
+9,"['Evanescence', 'Paul McCoy']","['/wiki/Evanescence', '/wiki/Paul_McCoy']",1995–present 2000–present
+10,"['Lil Jon & The East Side Boyz', 'Ying Yang Twins']","['/wiki/Lil_Jon', '/wiki/Ying_Yang_Twins']",1991–present 1999–present
+11,"['Beyoncé', 'Sean Paul']","['/wiki/Beyonc%C3%A9', '/wiki/Sean_Paul']",1997–present 1994–present
+12,"['Nelly', 'P. Diddy', 'Murphy Lee']","['/wiki/Nelly', '/wiki/Sean_Combs', '/wiki/Murphy_Lee']",1993–present 1990–present 1993–present
+13,"['50 Cent', 'Nate Dogg']","['/wiki/50_Cent', '/wiki/Nate_Dogg']",1996 1996 1990–2008
+14,"['Jennifer Lopez', 'LL Cool J']","['/wiki/Jennifer_Lopez', '/wiki/LL_Cool_J']",1986–present 1984–present
+15,['Christina Aguilera'],['/wiki/Christina_Aguilera'],1993–present
+16,"['Busta Rhymes', 'Mariah Carey']","['/wiki/Busta_Rhymes', '/wiki/Mariah_Carey']",1986–present 1988–present
+17,['Avril Lavigne'],['/wiki/Avril_Lavigne'],1999–present
+18,"['Uncle Kracker', 'Dobie Gray']","['/wiki/Uncle_Kracker', '/wiki/Dobie_Gray']",1987–present 1960–2011
+19,"[""Lil' Kim"", '50 Cent']","['/wiki/Lil%27_Kim', '/wiki/50_Cent']",1994–present 1996 1996
+20,['50 Cent'],['/wiki/50_Cent'],1996 1996
+21,"['B2K', 'P. Diddy']","['/wiki/B2K', '/wiki/Sean_Combs']",1998–2004 2018–2019 1990–present
+22,"['Fabolous', 'Tamia']","['/wiki/Fabolous', '/wiki/Tamia']",1997–present 1994–present
+23,"['Fabolous', ""Lil' Mo""]","['/wiki/Fabolous', '/wiki/Lil%27_Mo']",1997–present 1998–present
+24,"['Ja Rule', 'Ashanti']","['/wiki/Ja_Rule', '/wiki/Ashanti_(singer)']",1994 1994 2001–present
 25,['Black Eyed Peas'],['/wiki/Black_Eyed_Peas'],1995–2011 2015–present
-26,"['Santana', 'Michelle Branch']","['/wiki/Santana_(band)', '/wiki/Michelle_Branch']",1966
-27,['Eminem'],['/wiki/Eminem'],
-28,['Ashanti'],['/wiki/Ashanti_(singer)'],2001
-29,['Justin Timberlake'],['/wiki/Justin_Timberlake'],
-30,['Tyrese'],['/wiki/Tyrese_Gibson'],
-31,['Justin Timberlake'],['/wiki/Justin_Timberlake'],
-32,['Wayne Wonder'],['/wiki/Wayne_Wonder'],1985
-33,"['Pharrell', 'Jay-Z']","['/wiki/Pharrell_Williams', '/wiki/Jay-Z']",
-34,['Dixie Chicks'],['/wiki/Dixie_Chicks'],1989
-35,['Missy Elliott'],['/wiki/Missy_Elliott'],
-36,"['Jay-Z', 'Beyoncé']","['/wiki/Jay-Z', '/wiki/Beyonc%C3%A9']",
-37,"['Nivea', 'Jagged Edge']","['/wiki/Nivea_(singer)', '/wiki/Jagged_Edge_(American_group)']",1995
-38,['Monica'],['/wiki/Monica_(entertainer)'],
-39,"['Nelly', 'St. Lunatics']","['/wiki/Nelly', '/wiki/St._Lunatics']",1993 2010
-40,['Lumidee'],['/wiki/Lumidee'],2003
-41,"['Snoop Dogg', 'Pharrell', 'Charlie Wilson']","['/wiki/Snoop_Dogg', '/wiki/Pharrell_Williams', '/wiki/Charlie_Wilson_(singer)']",1972
-42,"['Missy Elliott', 'Ludacris']","['/wiki/Missy_Elliott', '/wiki/Ludacris']",
-43,['Kelly Clarkson'],['/wiki/Kelly_Clarkson'],
-44,['Train'],['/wiki/Train_(band)'],1993
-45,"['YoungBloodZ', 'Lil Jon']","['/wiki/YoungBloodZ', '/wiki/Lil_Jon']",1997 2008 2014 1991
-46,['Clay Aiken'],['/wiki/Clay_Aiken'],2003
-47,['John Mayer'],['/wiki/John_Mayer'],1998
-48,['Trapt'],['/wiki/Trapt'],1995
-49,['Ginuwine'],['/wiki/Ginuwine'],1991
-50,"['Ludacris', 'Shawnna']","['/wiki/Ludacris', '/wiki/Shawnna']",1996
-51,['Jason Mraz'],['/wiki/Jason_Mraz'],
-52,"['Santana', 'Alex Band']","['/wiki/Santana_(band)', '/wiki/Alex_Band']",1966 1999
-53,['Jay-Z'],['/wiki/Jay-Z'],
-54,"['Jennifer Lopez', 'Jadakiss', 'Styles P']","['/wiki/Jennifer_Lopez', '/wiki/Jadakiss', '/wiki/Styles_P']",1994 1994
-55,['Michelle Branch'],['/wiki/Michelle_Branch'],
-56,['Shania Twain'],['/wiki/Shania_Twain'],
-57,['Nas'],['/wiki/Nas'],
-58,"['No Doubt', 'Lady Saw']","['/wiki/No_Doubt', '/wiki/Lady_Saw']",1986–2004 2008–2015 (on hiatus) 1987 2020
+26,"['Santana', 'Michelle Branch']","['/wiki/Santana_(band)', '/wiki/Michelle_Branch']",1966–present 1999–present
+27,['Eminem'],['/wiki/Eminem'],1988–present
+28,['Ashanti'],['/wiki/Ashanti_(singer)'],2001–present
+29,['Justin Timberlake'],['/wiki/Justin_Timberlake'],1992–present
+30,['Tyrese'],['/wiki/Tyrese_Gibson'],1994–present
+31,['Justin Timberlake'],['/wiki/Justin_Timberlake'],1992–present
+32,['Wayne Wonder'],['/wiki/Wayne_Wonder'],1985–present
+33,"['Pharrell', 'Jay-Z']","['/wiki/Pharrell_Williams', '/wiki/Jay-Z']",1990–present 1986–present
+34,['Dixie Chicks'],['/wiki/Dixie_Chicks'],1989–present
+35,['Missy Elliott'],['/wiki/Missy_Elliott'],1991–present
+36,"['Jay-Z', 'Beyoncé']","['/wiki/Jay-Z', '/wiki/Beyonc%C3%A9']",1986–present 1997–present
+37,"['Nivea', 'Jagged Edge']","['/wiki/Nivea_(singer)', '/wiki/Jagged_Edge_(American_group)']",2000–present 1995–present
+38,['Monica'],['/wiki/Monica_(entertainer)'],1993–present
+39,"['Nelly', 'St. Lunatics']","['/wiki/Nelly', '/wiki/St._Lunatics']",1993–present 1993–2010
+40,['Lumidee'],['/wiki/Lumidee'],2003–present
+41,"['Snoop Dogg', 'Pharrell', 'Charlie Wilson']","['/wiki/Snoop_Dogg', '/wiki/Pharrell_Williams', '/wiki/Charlie_Wilson_(singer)']",1992–present 1990–present 1972–present
+42,"['Missy Elliott', 'Ludacris']","['/wiki/Missy_Elliott', '/wiki/Ludacris']",1991–present 1998–present
+43,['Kelly Clarkson'],['/wiki/Kelly_Clarkson'],2000–present
+44,['Train'],['/wiki/Train_(band)'],1993–present
+45,"['YoungBloodZ', 'Lil Jon']","['/wiki/YoungBloodZ', '/wiki/Lil_Jon']",1997–2008 2014–present 1991–present
+46,['Clay Aiken'],['/wiki/Clay_Aiken'],2003–present
+47,['John Mayer'],['/wiki/John_Mayer'],1998–present
+48,['Trapt'],['/wiki/Trapt'],1995–present
+49,['Ginuwine'],['/wiki/Ginuwine'],1991–present
+50,"['Ludacris', 'Shawnna']","['/wiki/Ludacris', '/wiki/Shawnna']",1998–present 1996–present
+51,['Jason Mraz'],['/wiki/Jason_Mraz'],1999–present
+52,"['Santana', 'Alex Band']","['/wiki/Santana_(band)', '/wiki/Alex_Band']",1966–present 1999–present
+53,['Jay-Z'],['/wiki/Jay-Z'],1986–present
+54,"['Jennifer Lopez', 'Jadakiss', 'Styles P']","['/wiki/Jennifer_Lopez', '/wiki/Jadakiss', '/wiki/Styles_P']",1986–present 1994–present 1994–present
+55,['Michelle Branch'],['/wiki/Michelle_Branch'],1999–present
+56,['Shania Twain'],['/wiki/Shania_Twain'],1983–present
+57,['Nas'],['/wiki/Nas'],1991–present
+58,"['No Doubt', 'Lady Saw']","['/wiki/No_Doubt', '/wiki/Lady_Saw']",1986–2004 2008–2015 1987–2020
 59,['Daniel Bedingfield'],['/wiki/Daniel_Bedingfield'],2000–present
-60,['R. Kelly'],['/wiki/R._Kelly'],
-61,['3 Doors Down'],['/wiki/3_Doors_Down'],1996
-62,['50 Cent'],['/wiki/50_Cent'],
-63,['Mýa'],['/wiki/M%C3%BDa'],1996
-64,"['Alan Jackson', 'Jimmy Buffett']","['/wiki/Alan_Jackson', '/wiki/Jimmy_Buffett']",1983 1964
-65,['Sean Paul'],['/wiki/Sean_Paul'],
-66,"['Christina Aguilera', ""Lil' Kim""]","['/wiki/Christina_Aguilera', '/wiki/Lil%27_Kim']",
-67,['Lonestar'],['/wiki/Lonestar'],1992
-68,['Amanda Perez'],['/wiki/Amanda_Perez'],2001
-69,['Puddle of Mudd'],['/wiki/Puddle_of_Mudd'],1992
-70,['Frankie J'],['/wiki/Frankie_J'],1993
-71,"[""Lil' Kim"", 'Mr. Cheeks']","['/wiki/Lil%27_Kim', '/wiki/Mr._Cheeks']",1991
-72,['Jewel'],['/wiki/Jewel_(singer)'],
-73,"['Ginuwine', 'Baby']","['/wiki/Ginuwine', '/wiki/Birdman_(rapper)']",1991
-74,"['Toby Keith', 'Willie Nelson']","['/wiki/Toby_Keith', '/wiki/Willie_Nelson']",1993
-75,"['Chingy', 'Ludacris', 'Snoop Dogg']","['/wiki/Chingy', '/wiki/Ludacris', '/wiki/Snoop_Dogg']",2000
-76,"['Baby Bash', 'Frankie J']","['/wiki/Baby_Bash', '/wiki/Frankie_J']",1996 1993
-77,"['Erykah Badu', 'Common']","['/wiki/Erykah_Badu', '/wiki/Common_(rapper)']",
-78,['Christina Aguilera'],['/wiki/Christina_Aguilera'],
-79,['2Pac'],['/wiki/Tupac_Shakur'],
-80,['Coldplay'],['/wiki/Coldplay'],1997
-81,['Jaheim'],['/wiki/Jaheim'],1996
-82,['Ashanti'],['/wiki/Ashanti_(singer)'],2001
-83,['Mark Wills'],['/wiki/Mark_Wills'],1996
-84,['Young Gunz'],['/wiki/Young_Gunz'],2001
-85,['Brooks & Dunn'],['/wiki/Brooks_%26_Dunn'],1990 2010 2015
-86,['Dierks Bentley'],['/wiki/Dierks_Bentley'],2001
-87,['Ruben Studdard'],['/wiki/Ruben_Studdard'],2002
-88,['Eminem'],['/wiki/Eminem'],
-89,['Darryl Worley'],['/wiki/Darryl_Worley'],1999
-90,['Kenny Chesney'],['/wiki/Kenny_Chesney'],1988
-91,['Aaliyah'],['/wiki/Aaliyah'],
-92,['Field Mob'],['/wiki/Field_Mob'],1999
-93,['R. Kelly'],['/wiki/R._Kelly'],
-94,"['Thalía', 'Fat Joe']","['/wiki/Thal%C3%ADa', '/wiki/Fat_Joe']",1981–present (singer) 1986–2000 (actress) 1992
+60,['R. Kelly'],['/wiki/R._Kelly'],1989–2019
+61,['3 Doors Down'],['/wiki/3_Doors_Down'],1996–present
+62,['50 Cent'],['/wiki/50_Cent'],1996 1996
+63,['Mýa'],['/wiki/M%C3%BDa'],1996–present
+64,"['Alan Jackson', 'Jimmy Buffett']","['/wiki/Alan_Jackson', '/wiki/Jimmy_Buffett']",1983–present 1964–present
+65,['Sean Paul'],['/wiki/Sean_Paul'],1994–present
+66,"['Christina Aguilera', ""Lil' Kim""]","['/wiki/Christina_Aguilera', '/wiki/Lil%27_Kim']",1993–present 1994–present
+67,['Lonestar'],['/wiki/Lonestar'],1992–present
+68,['Amanda Perez'],['/wiki/Amanda_Perez'],2001–present
+69,['Puddle of Mudd'],['/wiki/Puddle_of_Mudd'],1992–present
+70,['Frankie J'],['/wiki/Frankie_J'],1993–present
+71,"[""Lil' Kim"", 'Mr. Cheeks']","['/wiki/Lil%27_Kim', '/wiki/Mr._Cheeks']",1994–present 1991–present
+72,['Jewel'],['/wiki/Jewel_(singer)'],1994–present
+73,"['Ginuwine', 'Baby']","['/wiki/Ginuwine', '/wiki/Birdman_(rapper)']",1991–present 1988–present
+74,"['Toby Keith', 'Willie Nelson']","['/wiki/Toby_Keith', '/wiki/Willie_Nelson']",1993–present 1956–present
+75,"['Chingy', 'Ludacris', 'Snoop Dogg']","['/wiki/Chingy', '/wiki/Ludacris', '/wiki/Snoop_Dogg']",2000–present 1998–present 1992–present
+76,"['Baby Bash', 'Frankie J']","['/wiki/Baby_Bash', '/wiki/Frankie_J']",1996–present 1993–present
+77,"['Erykah Badu', 'Common']","['/wiki/Erykah_Badu', '/wiki/Common_(rapper)']",1994–present 1991–present
+78,['Christina Aguilera'],['/wiki/Christina_Aguilera'],1993–present
+79,['2Pac'],['/wiki/Tupac_Shakur'],1989–1996
+80,['Coldplay'],['/wiki/Coldplay'],1997–present
+81,['Jaheim'],['/wiki/Jaheim'],1996–present
+82,['Ashanti'],['/wiki/Ashanti_(singer)'],2001–present
+83,['Mark Wills'],['/wiki/Mark_Wills'],1996–present
+84,['Young Gunz'],['/wiki/Young_Gunz'],2001–present
+85,['Brooks & Dunn'],['/wiki/Brooks_%26_Dunn'],1990–2010 2015–present
+86,['Dierks Bentley'],['/wiki/Dierks_Bentley'],2001–present
+87,['Ruben Studdard'],['/wiki/Ruben_Studdard'],2002–present
+88,['Eminem'],['/wiki/Eminem'],1988–present
+89,['Darryl Worley'],['/wiki/Darryl_Worley'],1999–present
+90,['Kenny Chesney'],['/wiki/Kenny_Chesney'],1988–present
+91,['Aaliyah'],['/wiki/Aaliyah'],1989–2001
+92,['Field Mob'],['/wiki/Field_Mob'],1999–present
+93,['R. Kelly'],['/wiki/R._Kelly'],1989–2019
+94,"['Thalía', 'Fat Joe']","['/wiki/Thal%C3%ADa', '/wiki/Fat_Joe']",1981–present 1986–2000 1992–present
 95,['Audioslave'],['/wiki/Audioslave'],2001–2007 2017
-96,['Norah Jones'],['/wiki/Norah_Jones'],2000
-97,['Eminem'],['/wiki/Eminem'],
-98,['Tim McGraw'],['/wiki/Tim_McGraw'],
+96,['Norah Jones'],['/wiki/Norah_Jones'],2000–present
+97,['Eminem'],['/wiki/Eminem'],1988–present
+98,['Tim McGraw'],['/wiki/Tim_McGraw'],1990–present
 99,['Floetry'],['/wiki/Floetry'],1997–2005 2015–2016

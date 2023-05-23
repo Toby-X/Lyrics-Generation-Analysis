@@ -1,101 +1,101 @@
 ,band_singer,singer_url,active_years
-0,['Boyz II Men'],['/wiki/Boyz_II_Men'],1985
-1,['Sir Mix-a-Lot'],['/wiki/Sir_Mix-a-Lot'],1981
-2,['Kris Kross'],['/wiki/Kris_Kross'],1991–2001 2007–2013
-3,['Vanessa Williams'],['/wiki/Vanessa_L._Williams'],
+0,['Boyz II Men'],['/wiki/Boyz_II_Men'],1985–present
+1,['Sir Mix-a-Lot'],['/wiki/Sir_Mix-a-Lot'],1981–present
+2,['Kris Kross'],['/wiki/Kris_Kross'],1990–2002 2007–2013
+3,['Vanessa Williams'],['/wiki/Vanessa_L._Williams'],1979–present
 4,['TLC'],['/wiki/TLC_(band)'],1990–present
-5,['Eric Clapton'],['/wiki/Eric_Clapton'],
-6,['En Vogue'],['/wiki/En_Vogue'],1989
+5,['Eric Clapton'],['/wiki/Eric_Clapton'],1962–present
+6,['En Vogue'],['/wiki/En_Vogue'],1989–present
 7,['Red Hot Chili Peppers'],['/wiki/Red_Hot_Chili_Peppers'],1982 1982
-8,['Color Me Badd'],['/wiki/Color_Me_Badd'],1985 1985 1998 2010 2019 2022
-9,['Jon Secada'],['/wiki/Jon_Secada'],
-10,['Shanice'],['/wiki/Shanice'],1984
-11,['Mr. Big'],['/wiki/Mr._Big_(American_band)'],1988–2002 2009–present
-12,['Right Said Fred'],['/wiki/Right_Said_Fred'],1989
-13,['Michael Jackson'],['/wiki/Michael_Jackson'],1964 2009
-14,['Billy Ray Cyrus'],['/wiki/Billy_Ray_Cyrus'],
-15,['Mariah Carey'],['/wiki/Mariah_Carey'],
-16,"[""Guns N' Roses""]",['/wiki/Guns_N%27_Roses'],1985
-17,['Tom Cochrane'],['/wiki/Tom_Cochrane'],1973
-18,['Michael Jackson'],['/wiki/Michael_Jackson'],1964 2009
-19,['CeCe Peniston'],['/wiki/CeCe_Peniston'],
-20,['Madonna'],['/wiki/Madonna'],
-21,"['Patty Smyth', 'Don Henley']","['/wiki/Patty_Smyth', '/wiki/Don_Henley']",1981 1970
-22,['Mariah Carey'],['/wiki/Mariah_Carey'],
-23,['House of Pain'],['/wiki/House_of_Pain'],1990–1996 2010–2011 2017
-24,"['Prince', 'The New Power Generation']","['/wiki/Prince_(entertainer)', '/wiki/The_New_Power_Generation']",1990 2013 2015 2017
-25,"['George Michael', 'Elton John']","['/wiki/George_Michael', '/wiki/Elton_John']",
-26,['Atlantic Starr'],['/wiki/Atlantic_Starr'],1976
-27,['Celine Dion'],['/wiki/Celine_Dion'],
-28,['En Vogue'],['/wiki/En_Vogue'],1989
-29,['Joe Public'],['/wiki/Joe_Public_(band)'],1989
-30,['Jodeci'],['/wiki/Jodeci'],1989 1996 2014
-31,['Nirvana'],['/wiki/Nirvana_(band)'],1987 1994
-32,['Bobby Brown'],['/wiki/Bobby_Brown'],
-33,['Sophie B. Hawkins'],['/wiki/Sophie_B._Hawkins'],1990
-34,['Tevin Campbell'],['/wiki/Tevin_Campbell'],1988
+8,['Color Me Badd'],['/wiki/Color_Me_Badd'],1985 1985 1998 2010–2019 2022–present
+9,['Jon Secada'],['/wiki/Jon_Secada'],1991–present
+10,['Shanice'],['/wiki/Shanice'],1984–present
+11,['Mr. Big'],['/wiki/Mr._Big_(American_band)'],1988
+12,['Right Said Fred'],['/wiki/Right_Said_Fred'],1989–present
+13,['Michael Jackson'],['/wiki/Michael_Jackson'],1964–2009
+14,['Billy Ray Cyrus'],['/wiki/Billy_Ray_Cyrus'],1989–present
+15,['Mariah Carey'],['/wiki/Mariah_Carey'],1988–present
+16,"[""Guns N' Roses""]",['/wiki/Guns_N%27_Roses'],1985–present
+17,['Tom Cochrane'],['/wiki/Tom_Cochrane'],1973–present
+18,['Michael Jackson'],['/wiki/Michael_Jackson'],1964–2009
+19,['CeCe Peniston'],['/wiki/CeCe_Peniston'],1991–present
+20,['Madonna'],['/wiki/Madonna'],1979–present
+21,"['Patty Smyth', 'Don Henley']","['/wiki/Patty_Smyth', '/wiki/Don_Henley']",1981–present 1970–present
+22,['Mariah Carey'],['/wiki/Mariah_Carey'],1988–present
+23,['House of Pain'],['/wiki/House_of_Pain'],1990
+24,"['Prince', 'The New Power Generation']","['/wiki/Prince_(entertainer)', '/wiki/The_New_Power_Generation']",1975–2016 1990–2013 2015 2017
+25,"['George Michael', 'Elton John']","['/wiki/George_Michael', '/wiki/Elton_John']",1981–2016 1962–present
+26,['Atlantic Starr'],['/wiki/Atlantic_Starr'],1976–present
+27,['Celine Dion'],['/wiki/Celine_Dion'],1980–present
+28,['En Vogue'],['/wiki/En_Vogue'],1989–present
+29,['Joe Public'],['/wiki/Joe_Public_(band)'],1989–present
+30,['Jodeci'],['/wiki/Jodeci'],1989–1996 2014–present
+31,['Nirvana'],['/wiki/Nirvana_(band)'],1987–1994
+32,['Bobby Brown'],['/wiki/Bobby_Brown'],1978–present
+33,['Sophie B. Hawkins'],['/wiki/Sophie_B._Hawkins'],1990–present
+34,['Tevin Campbell'],['/wiki/Tevin_Campbell'],1988–present
 35,['TLC'],['/wiki/TLC_(band)'],1990–present
-36,['Boyz II Men'],['/wiki/Boyz_II_Men'],1985
-37,"['Technotronic', 'Ya Kid K']","['/wiki/Technotronic', '/wiki/Ya_Kid_K']",1987 2002
-38,['Queen'],['/wiki/Queen_(band)'],1970
-39,['Arrested Development'],['/wiki/Arrested_Development_(group)'],1988 1996 2000
-40,"['Luther Vandross', 'Janet Jackson']","['/wiki/Luther_Vandross', '/wiki/Janet_Jackson']",1969 2004
-41,['Mariah Carey'],['/wiki/Mariah_Carey'],
-42,['Elton John'],['/wiki/Elton_John'],
-43,['P.M. Dawn'],['/wiki/P.M._Dawn'],1988
+36,['Boyz II Men'],['/wiki/Boyz_II_Men'],1985–present
+37,"['Technotronic', 'Ya Kid K']","['/wiki/Technotronic', '/wiki/Ya_Kid_K']",1987–2002
+38,['Queen'],['/wiki/Queen_(band)'],1970–present
+39,['Arrested Development'],['/wiki/Arrested_Development_(group)'],1988–1996 2000–present
+40,"['Luther Vandross', 'Janet Jackson']","['/wiki/Luther_Vandross', '/wiki/Janet_Jackson']",1969–2004 1974–present
+41,['Mariah Carey'],['/wiki/Mariah_Carey'],1988–present
+42,['Elton John'],['/wiki/Elton_John'],1962–present
+43,['P.M. Dawn'],['/wiki/P.M._Dawn'],1988–present
 44,['Shakespears Sister'],['/wiki/Shakespears_Sister'],1988–1996 2009–2010 2019–present
-45,['Hammer'],['/wiki/MC_Hammer'],1985
-46,['KWS'],['/wiki/KWS_(band)'],1991 1994
-47,['Mint Condition'],['/wiki/Mint_Condition'],1985
-48,['The Cover Girls'],['/wiki/The_Cover_Girls'],1986 1996 2001
-49,['Hi-Five'],['/wiki/Hi-Five'],1989 1994 2007
-50,['P.M. Dawn'],['/wiki/P.M._Dawn'],1988
-51,['Amy Grant'],['/wiki/Amy_Grant'],1976
-52,['Toad the Wet Sprocket'],['/wiki/Toad_the_Wet_Sprocket'],1986–1998 2002 2010–present
-53,['Michael Bolton'],['/wiki/Michael_Bolton'],1975
-54,['Genesis'],['/wiki/Genesis_(band)'],1967–2000 2006–2007 2020–2022
-55,['Richard Marx'],['/wiki/Richard_Marx'],1980
-56,['U2'],['/wiki/U2'],1976
-57,['George Michael'],['/wiki/George_Michael'],
+45,['Hammer'],['/wiki/MC_Hammer'],1985–present
+46,['KWS'],['/wiki/KWS_(band)'],1991–1994
+47,['Mint Condition'],['/wiki/Mint_Condition'],1985–present
+48,['The Cover Girls'],['/wiki/The_Cover_Girls'],1986–1996 2001–present
+49,['Hi-Five'],['/wiki/Hi-Five'],1989
+50,['P.M. Dawn'],['/wiki/P.M._Dawn'],1988–present
+51,['Amy Grant'],['/wiki/Amy_Grant'],1976–present
+52,['Toad the Wet Sprocket'],['/wiki/Toad_the_Wet_Sprocket'],1986
+53,['Michael Bolton'],['/wiki/Michael_Bolton'],1975–present
+54,['Genesis'],['/wiki/Genesis_(band)'],1967 2022
+55,['Richard Marx'],['/wiki/Richard_Marx'],1980–present
+56,['U2'],['/wiki/U2'],1976–present
+57,['George Michael'],['/wiki/George_Michael'],1981–2016
 58,['The Heights'],['/wiki/The_Heights_(American_TV_series)'],
-59,['U2'],['/wiki/U2'],1976
-60,['CeCe Peniston'],['/wiki/CeCe_Peniston'],
-61,['Genesis'],['/wiki/Genesis_(band)'],1967–2000 2006–2007 2020–2022
-62,['Karyn White'],['/wiki/Karyn_White'],1986 1995
-63,"['Celine Dion', 'Peabo Bryson']","['/wiki/Celine_Dion', '/wiki/Peabo_Bryson']",1965
-64,['Kris Kross'],['/wiki/Kris_Kross'],1991–2001 2007–2013
-65,['Michael Jackson'],['/wiki/Michael_Jackson'],1964 2009
-66,['Arrested Development'],['/wiki/Arrested_Development_(group)'],1988 1996 2000
-67,['Genesis'],['/wiki/Genesis_(band)'],1967–2000 2006–2007 2020–2022
-68,['Marky Mark and the Funky Bunch'],['/wiki/Marky_Mark_and_the_Funky_Bunch'],1991 1993
-69,['Bryan Adams'],['/wiki/Bryan_Adams'],1975
-70,['The Cure'],['/wiki/The_Cure'],1978
+59,['U2'],['/wiki/U2'],1976–present
+60,['CeCe Peniston'],['/wiki/CeCe_Peniston'],1991–present
+61,['Genesis'],['/wiki/Genesis_(band)'],1967 2022
+62,['Karyn White'],['/wiki/Karyn_White'],1986
+63,"['Celine Dion', 'Peabo Bryson']","['/wiki/Celine_Dion', '/wiki/Peabo_Bryson']",1980–present 1965–present
+64,['Kris Kross'],['/wiki/Kris_Kross'],1990–2002 2007–2013
+65,['Michael Jackson'],['/wiki/Michael_Jackson'],1964–2009
+66,['Arrested Development'],['/wiki/Arrested_Development_(group)'],1988–1996 2000–present
+67,['Genesis'],['/wiki/Genesis_(band)'],1967 2022
+68,['Marky Mark and the Funky Bunch'],['/wiki/Marky_Mark_and_the_Funky_Bunch'],1991–1993
+69,['Bryan Adams'],['/wiki/Bryan_Adams'],1975–present
+70,['The Cure'],['/wiki/The_Cure'],1978–present
 71,['Ugly Kid Joe'],['/wiki/Ugly_Kid_Joe'],1987–1997 2010–present
-72,['Paula Abdul'],['/wiki/Paula_Abdul'],
-73,['Bryan Adams'],['/wiki/Bryan_Adams'],1975
-74,['Snap!'],['/wiki/Snap!'],1989 1996 2000
-75,['Hammer'],['/wiki/MC_Hammer'],1985
-76,['Michael Bolton'],['/wiki/Michael_Bolton'],1975
-77,['N2Deep'],['/wiki/N2Deep'],1989
+72,['Paula Abdul'],['/wiki/Paula_Abdul'],1978–present
+73,['Bryan Adams'],['/wiki/Bryan_Adams'],1975–present
+74,['Snap!'],['/wiki/Snap!'],1989–1996 2000–present
+75,['Hammer'],['/wiki/MC_Hammer'],1985–present
+76,['Michael Bolton'],['/wiki/Michael_Bolton'],1975–present
+77,['N2Deep'],['/wiki/N2Deep'],1989–present
 78,['Kathy Troccoli'],['/wiki/Kathy_Troccoli'],1982 1982
-79,['Def Leppard'],['/wiki/Def_Leppard'],1976
-80,['Richard Marx'],['/wiki/Richard_Marx'],1980
-81,['FireHouse'],['/wiki/FireHouse_(band)'],1984
-82,['Jade'],['/wiki/Jade_(American_band)'],1991–1997 2014 2021–present
-83,['Boyz II Men'],['/wiki/Boyz_II_Men'],1985
-84,['Mary J. Blige'],['/wiki/Mary_J._Blige'],
-85,['The KLF'],['/wiki/The_KLF'],1987–1992 1993–1995 1997 2017–present
-86,['Color Me Badd'],['/wiki/Color_Me_Badd'],1985 1985 1998 2010 2019 2022
+79,['Def Leppard'],['/wiki/Def_Leppard'],1976–present
+80,['Richard Marx'],['/wiki/Richard_Marx'],1980–present
+81,['FireHouse'],['/wiki/FireHouse_(band)'],1984–present
+82,['Jade'],['/wiki/Jade_(American_band)'],1991
+83,['Boyz II Men'],['/wiki/Boyz_II_Men'],1985–present
+84,['Mary J. Blige'],['/wiki/Mary_J._Blige'],1988–present
+85,['The KLF'],['/wiki/The_KLF'],1987
+86,['Color Me Badd'],['/wiki/Color_Me_Badd'],1985 1985 1998 2010–2019 2022–present
 87,['TLC'],['/wiki/TLC_(band)'],1990–present
-88,['Color Me Badd'],['/wiki/Color_Me_Badd'],1985 1985 1998 2010 2019 2022
-89,['Charles & Eddie'],['/wiki/Charles_%26_Eddie'],1990 1995
-90,['Amy Grant'],['/wiki/Amy_Grant'],1976
-91,['Richard Marx'],['/wiki/Richard_Marx'],1980
-92,['En Vogue'],['/wiki/En_Vogue'],1989
-93,['Keith Sweat'],['/wiki/Keith_Sweat'],1975
-94,['Mr. Big'],['/wiki/Mr._Big_(American_band)'],1988–2002 2009–present
-95,['Amy Grant'],['/wiki/Amy_Grant'],1976
-96,['CeCe Peniston'],['/wiki/CeCe_Peniston'],
-97,['Def Leppard'],['/wiki/Def_Leppard'],1976
-98,['Das EFX'],['/wiki/Das_EFX'],1988
-99,['Bonnie Raitt'],['/wiki/Bonnie_Raitt'],1971
+88,['Color Me Badd'],['/wiki/Color_Me_Badd'],1985 1985 1998 2010–2019 2022–present
+89,['Charles & Eddie'],['/wiki/Charles_%26_Eddie'],1990–1995
+90,['Amy Grant'],['/wiki/Amy_Grant'],1976–present
+91,['Richard Marx'],['/wiki/Richard_Marx'],1980–present
+92,['En Vogue'],['/wiki/En_Vogue'],1989–present
+93,['Keith Sweat'],['/wiki/Keith_Sweat'],1975–present
+94,['Mr. Big'],['/wiki/Mr._Big_(American_band)'],1988
+95,['Amy Grant'],['/wiki/Amy_Grant'],1976–present
+96,['CeCe Peniston'],['/wiki/CeCe_Peniston'],1991–present
+97,['Def Leppard'],['/wiki/Def_Leppard'],1976–present
+98,['Das EFX'],['/wiki/Das_EFX'],1988–present
+99,['Bonnie Raitt'],['/wiki/Bonnie_Raitt'],1971–present

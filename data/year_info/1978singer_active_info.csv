@@ -1,101 +1,101 @@
 ,band_singer,singer_url,active_years
 0,['Andy Gibb'],['/wiki/Andy_Gibb'],
 1,['Bee Gees'],['/wiki/Bee_Gees'],1958–1969 1970–2003 2006 2009–2012
-2,['Debby Boone'],['/wiki/Debby_Boone'],1971
+2,['Debby Boone'],['/wiki/Debby_Boone'],1971–present
 3,['Bee Gees'],['/wiki/Bee_Gees'],1958–1969 1970–2003 2006 2009–2012
-4,['Exile'],['/wiki/Exile_(American_band)'],1963 1963 1993 1995
+4,['Exile'],['/wiki/Exile_(American_band)'],1963 1963 1993 1995–present
 5,['Bee Gees'],['/wiki/Bee_Gees'],1958–1969 1970–2003 2006 2009–2012
-6,['Player'],['/wiki/Player_(band)'],1976 1982 1995 2003 2007
-7,['Andy Gibb'],['/wiki/Andy_Gibb'],
-8,['A Taste of Honey'],['/wiki/A_Taste_of_Honey_(band)'],1972 1983
-9,['Commodores'],['/wiki/Commodores'],1968
-10,['Frankie Valli'],['/wiki/Frankie_Valli'],1953
-11,['Paul Davis'],['/wiki/Paul_Davis_(singer)'],1958 1988
-12,"['John Travolta', 'Olivia Newton-John']","['/wiki/John_Travolta', '/wiki/Olivia_Newton-John']",
-13,['Samantha Sang'],['/wiki/Samantha_Sang'],1966 1981 1999 2004 2007
-14,['Eric Clapton'],['/wiki/Eric_Clapton'],
-15,['The Rolling Stones'],['/wiki/The_Rolling_Stones'],1962
-16,['Billy Joel'],['/wiki/Billy_Joel'],
-17,['Wings'],['/wiki/Paul_McCartney_and_Wings'],1971 1981
-18,['Yvonne Elliman'],['/wiki/Yvonne_Elliman'],1969 1980 2004
-19,['Chic'],['/wiki/Chic_(band)'],1972 1983 1990 1992 1996
-20,['Chuck Mangione'],['/wiki/Chuck_Mangione'],1960 2010
-21,['Nick Gilder'],['/wiki/Nick_Gilder'],1975
-22,['Sweet'],['/wiki/The_Sweet'],1968 (1968)–1982 (1982) 1985 (1985)–present
-23,['Bonnie Tyler'],['/wiki/Bonnie_Tyler'],1969
-24,['Queen'],['/wiki/Queen_(band)'],1970
-25,['Gerry Rafferty'],['/wiki/Gerry_Rafferty'],1965 2011
-26,['Barry Manilow'],['/wiki/Barry_Manilow'],1964
-27,"['Johnny Mathis', 'Deniece Williams']","['/wiki/Johnny_Mathis', '/wiki/Deniece_Williams']",1956 1968
+6,['Player'],['/wiki/Player_(band)'],1976–1982 1995–2003 2007–present
+7,['Andy Gibb'],['/wiki/Andy_Gibb'],1967 1988
+8,['A Taste of Honey'],['/wiki/A_Taste_of_Honey_(band)'],1972–1983
+9,['Commodores'],['/wiki/Commodores'],1968–present
+10,['Frankie Valli'],['/wiki/Frankie_Valli'],1953–present
+11,['Paul Davis'],['/wiki/Paul_Davis_(singer)'],1958–1988
+12,"['John Travolta', 'Olivia Newton-John']","['/wiki/John_Travolta', '/wiki/Olivia_Newton-John']",1972–present 1963–2022
+13,['Samantha Sang'],['/wiki/Samantha_Sang'],1966–1981 1999 2004 2007
+14,['Eric Clapton'],['/wiki/Eric_Clapton'],1962–present
+15,['The Rolling Stones'],['/wiki/The_Rolling_Stones'],1962–present
+16,['Billy Joel'],['/wiki/Billy_Joel'],1964
+17,['Wings'],['/wiki/Paul_McCartney_and_Wings'],1971–1981
+18,['Yvonne Elliman'],['/wiki/Yvonne_Elliman'],1969–1980 2004–present
+19,['Chic'],['/wiki/Chic_(band)'],1972–1983 1990–1992 1996–present
+20,['Chuck Mangione'],['/wiki/Chuck_Mangione'],1960–2010
+21,['Nick Gilder'],['/wiki/Nick_Gilder'],1975–present
+22,['Sweet'],['/wiki/The_Sweet'],1968 1968 1982 1982 1985 1985
+23,['Bonnie Tyler'],['/wiki/Bonnie_Tyler'],1969–present
+24,['Queen'],['/wiki/Queen_(band)'],1970–present
+25,['Gerry Rafferty'],['/wiki/Gerry_Rafferty'],1965–2011
+26,['Barry Manilow'],['/wiki/Barry_Manilow'],1964–present
+27,"['Johnny Mathis', 'Deniece Williams']","['/wiki/Johnny_Mathis', '/wiki/Deniece_Williams']",1956–present 1968–present
 28,['Peter Brown'],['/wiki/Peter_Brown_(singer)'],
-29,['Meat Loaf'],['/wiki/Meat_Loaf'],1968 2021
-30,['Raydio'],['/wiki/Raydio'],1977 1981 2014
+29,['Meat Loaf'],['/wiki/Meat_Loaf'],1968–2021
+30,['Raydio'],['/wiki/Raydio'],1977–1981 2014–present
 31,['ABBA'],['/wiki/ABBA'],1972–1982 2016–present
-32,['Dan Hill'],['/wiki/Dan_Hill'],1975
-33,['Donna Summer'],['/wiki/Donna_Summer'],1968 2012
-34,['Olivia Newton-John'],['/wiki/Olivia_Newton-John'],
+32,['Dan Hill'],['/wiki/Dan_Hill'],1975–present
+33,['Donna Summer'],['/wiki/Donna_Summer'],1968–2012
+34,['Olivia Newton-John'],['/wiki/Olivia_Newton-John'],1963–2022
 35,['Foreigner'],['/wiki/Foreigner_(band)'],1976 1976
 36,['Rod Stewart'],['/wiki/Rod_Stewart'],
-37,"['Roberta Flack', 'Donny Hathaway']","['/wiki/Roberta_Flack', '/wiki/Donny_Hathaway']",1968 2022 1967 1979
-38,['Kansas'],['/wiki/Kansas_(band)'],"1973–1984, 1985–present"
-39,['Walter Egan'],['/wiki/Walter_Egan'],1969
-40,['Randy Newman'],['/wiki/Randy_Newman'],
-41,"[""The O'Jays""]",['/wiki/The_O%27Jays'],1958
-42,['Natalie Cole'],['/wiki/Natalie_Cole'],
-43,['Pablo Cruise'],['/wiki/Pablo_Cruise'],1973 1986 1996
-44,['Andy Gibb'],['/wiki/Andy_Gibb'],
-45,['John Paul Young'],['/wiki/John_Paul_Young'],1967
-46,['David Gates'],['/wiki/David_Gates'],1957 2007
-47,['Paul Simon'],['/wiki/Paul_Simon'],1956
-48,['Heatwave'],['/wiki/Heatwave_(band)'],1975
-49,['Jay Ferguson'],['/wiki/Jay_Ferguson_(American_musician)'],1968
+37,"['Roberta Flack', 'Donny Hathaway']","['/wiki/Roberta_Flack', '/wiki/Donny_Hathaway']",1968–2022 1967–1979
+38,['Kansas'],['/wiki/Kansas_(band)'],1973–1984 1985–present
+39,['Walter Egan'],['/wiki/Walter_Egan'],1969–present
+40,['Randy Newman'],['/wiki/Randy_Newman'],1961–present
+41,"[""The O'Jays""]",['/wiki/The_O%27Jays'],1958–present
+42,['Natalie Cole'],['/wiki/Natalie_Cole'],1956–2015
+43,['Pablo Cruise'],['/wiki/Pablo_Cruise'],1973–1986 1996–present
+44,['Andy Gibb'],['/wiki/Andy_Gibb'],1967 1988
+45,['John Paul Young'],['/wiki/John_Paul_Young'],1967–present
+46,['David Gates'],['/wiki/David_Gates'],1957–2007
+47,['Paul Simon'],['/wiki/Paul_Simon'],1956–present
+48,['Heatwave'],['/wiki/Heatwave_(band)'],1975–present
+49,['Jay Ferguson'],['/wiki/Jay_Ferguson_(American_musician)'],1968–present
 50,['Atlanta Rhythm Section'],['/wiki/Atlanta_Rhythm_Section'],1970 1970
-51,['Bob Seger & The Silver Bullet Band'],['/wiki/Bob_Seger'],1961–1996 2000–present
+51,['Bob Seger & The Silver Bullet Band'],['/wiki/Bob_Seger'],1961
 52,['Toby Beau'],['/wiki/Toby_Beau_(band)'],
-53,['The Trammps'],['/wiki/The_Trammps'],1972
-54,['George Benson'],['/wiki/George_Benson'],1964
+53,['The Trammps'],['/wiki/The_Trammps'],1972–present
+54,['George Benson'],['/wiki/George_Benson'],1964–present
 55,['Styx'],['/wiki/Styx_(band)'],1972–1984 1990–1991 1995–present
-56,['L.T.D.'],['/wiki/L.T.D._(band)'],1968
-57,['Player'],['/wiki/Player_(band)'],1976 1982 1995 2003 2007
-58,['Carly Simon'],['/wiki/Carly_Simon'],
-59,['Dolly Parton'],['/wiki/Dolly_Parton'],
-60,['Linda Ronstadt'],['/wiki/Linda_Ronstadt'],1967 2011
-61,['Steely Dan'],['/wiki/Steely_Dan'],1971 1981 1993
-62,['Anne Murray'],['/wiki/Anne_Murray'],1967 2008
-63,"['Evelyn ""Champagne"" King']",['/wiki/Evelyn_King_(singer)'],1977
+56,['L.T.D.'],['/wiki/L.T.D._(band)'],1968–present
+57,['Player'],['/wiki/Player_(band)'],1976–1982 1995–2003 2007–present
+58,['Carly Simon'],['/wiki/Carly_Simon'],1963–present
+59,['Dolly Parton'],['/wiki/Dolly_Parton'],1956–present
+60,['Linda Ronstadt'],['/wiki/Linda_Ronstadt'],1967–2011
+61,['Steely Dan'],['/wiki/Steely_Dan'],1971–1981 1993–present
+62,['Anne Murray'],['/wiki/Anne_Murray'],1967–2008
+63,"['Evelyn ""Champagne"" King']",['/wiki/Evelyn_King_(singer)'],1977–present
 64,['Little River Band'],['/wiki/Little_River_Band'],1975 1975
-65,['Jefferson Starship'],['/wiki/Jefferson_Starship'],1974 1984 1992
-66,['Eddie Money'],['/wiki/Eddie_Money'],
-67,['Shaun Cassidy'],['/wiki/Shaun_Cassidy'],1976
-68,"['John Travolta', 'Olivia Newton-John']","['/wiki/John_Travolta', '/wiki/Olivia_Newton-John']",
-69,['Lynyrd Skynyrd'],['/wiki/Lynyrd_Skynyrd'],1964 (1964)–1977 (1977) 1979 1987 (1987)–present (present)
-70,['Crystal Gayle'],['/wiki/Crystal_Gayle'],
-71,['Patti Smith Group'],['/wiki/Patti_Smith'],1967
-72,['Robert Palmer'],['/wiki/Robert_Palmer_(singer)'],1964 2003
-73,['Barry Manilow'],['/wiki/Barry_Manilow'],1964
-74,['Heatwave'],['/wiki/Heatwave_(band)'],1975
-75,['Rick James'],['/wiki/Rick_James'],
-76,"['Earth, Wind & Fire']","['/wiki/Earth,_Wind_%26_Fire']",1969
-77,['Bob Welch'],['/wiki/Bob_Welch_(musician)'],1964 2011
-78,"['LeBlanc', 'Carr']","['/wiki/Lenny_LeBlanc', '/wiki/Pete_Carr']",1975 1965 2020
-79,['Santa Esmeralda'],['/wiki/Santa_Esmeralda'],1977 1983 2002
-80,['Michael Johnson'],['/wiki/Michael_Johnson_(singer)'],1957 2017
-81,['Jackson Browne'],['/wiki/Jackson_Browne'],1966
-82,"['Kenny Loggins', 'Stevie Nicks']","['/wiki/Kenny_Loggins', '/wiki/Stevie_Nicks']",1968
-83,['Chris Rea'],['/wiki/Chris_Rea'],1973
-84,['Foxy'],['/wiki/Foxy_(band)'],1976 1980
-85,['Electric Light Orchestra'],['/wiki/Electric_Light_Orchestra'],1970–1983 1984–1986 2000–2001 2014–present
-86,['Joe Walsh'],['/wiki/Joe_Walsh'],1965
-87,['Alicia Bridges'],['/wiki/Alicia_Bridges'],1977
-88,['High Inergy'],['/wiki/High_Inergy'],1977 1983
-89,['Linda Ronstadt'],['/wiki/Linda_Ronstadt'],1967 2011
-90,['Odyssey'],['/wiki/Odyssey_(band)'],1977
-91,['Parliament'],['/wiki/Parliament_(band)'],1968 1970 1974 1980 2018
-92,['Boston'],['/wiki/Boston_(band)'],1975
-93,['Electric Light Orchestra'],['/wiki/Electric_Light_Orchestra'],1970–1983 1984–1986 2000–2001 2014–present
-94,['Eruption'],['/wiki/Eruption_(band)'],1969 1985
-95,['Bob Welch'],['/wiki/Bob_Welch_(musician)'],1964 2011
+65,['Jefferson Starship'],['/wiki/Jefferson_Starship'],1974–1984 1992–present
+66,['Eddie Money'],['/wiki/Eddie_Money'],1974–2019
+67,['Shaun Cassidy'],['/wiki/Shaun_Cassidy'],1976–present
+68,"['John Travolta', 'Olivia Newton-John']","['/wiki/John_Travolta', '/wiki/Olivia_Newton-John']",1972–present 1963–2022
+69,['Lynyrd Skynyrd'],['/wiki/Lynyrd_Skynyrd'],1964 1964 1977 1977 1987
+70,['Crystal Gayle'],['/wiki/Crystal_Gayle'],1969–present
+71,['Patti Smith Group'],['/wiki/Patti_Smith'],1967–present
+72,['Robert Palmer'],['/wiki/Robert_Palmer_(singer)'],1964–2003
+73,['Barry Manilow'],['/wiki/Barry_Manilow'],1964–present
+74,['Heatwave'],['/wiki/Heatwave_(band)'],1975–present
+75,['Rick James'],['/wiki/Rick_James'],1965
+76,"['Earth, Wind & Fire']","['/wiki/Earth,_Wind_%26_Fire']",1969–present
+77,['Bob Welch'],['/wiki/Bob_Welch_(musician)'],1964–2011
+78,"['LeBlanc', 'Carr']","['/wiki/Lenny_LeBlanc', '/wiki/Pete_Carr']",1975–present 1965–2020
+79,['Santa Esmeralda'],['/wiki/Santa_Esmeralda'],1977–1983 2002–present
+80,['Michael Johnson'],['/wiki/Michael_Johnson_(singer)'],1957–2017
+81,['Jackson Browne'],['/wiki/Jackson_Browne'],1966–present
+82,"['Kenny Loggins', 'Stevie Nicks']","['/wiki/Kenny_Loggins', '/wiki/Stevie_Nicks']",1968–present 1966–present
+83,['Chris Rea'],['/wiki/Chris_Rea'],1973–present
+84,['Foxy'],['/wiki/Foxy_(band)'],1976–1980
+85,['Electric Light Orchestra'],['/wiki/Electric_Light_Orchestra'],1970
+86,['Joe Walsh'],['/wiki/Joe_Walsh'],1965–present
+87,['Alicia Bridges'],['/wiki/Alicia_Bridges'],1977–present
+88,['High Inergy'],['/wiki/High_Inergy'],1977–1983
+89,['Linda Ronstadt'],['/wiki/Linda_Ronstadt'],1967–2011
+90,['Odyssey'],['/wiki/Odyssey_(band)'],1977–present
+91,['Parliament'],['/wiki/Parliament_(band)'],1968–1970 1974–1980 2018
+92,['Boston'],['/wiki/Boston_(band)'],1975–present
+93,['Electric Light Orchestra'],['/wiki/Electric_Light_Orchestra'],1970
+94,['Eruption'],['/wiki/Eruption_(band)'],1969–1985
+95,['Bob Welch'],['/wiki/Bob_Welch_(musician)'],1964–2011
 96,['ABBA'],['/wiki/ABBA'],1972–1982 2016–present
-97,['Rita Coolidge'],['/wiki/Rita_Coolidge'],1969
-98,['Bob Seger & The Silver Bullet Band'],['/wiki/Bob_Seger'],1961–1996 2000–present
-99,['Steely Dan'],['/wiki/Steely_Dan'],1971 1981 1993
+97,['Rita Coolidge'],['/wiki/Rita_Coolidge'],1969–present
+98,['Bob Seger & The Silver Bullet Band'],['/wiki/Bob_Seger'],1961
+99,['Steely Dan'],['/wiki/Steely_Dan'],1971–1981 1993–present

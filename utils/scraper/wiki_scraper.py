@@ -34,23 +34,27 @@ def get_active_year(soup):
     """
     Get the active year from an artist's Wikipedia page
     """
-    active_year_element = soup.find(string=re.compile("Years active"))
+    active_year_element = soup.find(string=re.compile("Years\sactive"))
     active_year = []
 
     if active_year_element:
-        # Try to find 'li' elements in the next sibling of 'active_year_element'
-        active_years_list = active_year_element.find_next().find_all('li')
-        active_year_text = active_year_element.find_next().find_all('td')
 
-        if active_years_list:
-            # If 'li' elements are found, get the text from each of them
-            active_year = [year.text for year in active_years_list]
-        elif active_year_text:
-            # If no 'li' elements are found, get the text of the 'td' tag
-            active_year = [active_year_text.text]
-        # Use regular expressions to find all 4-digit year patterns in the text
-        else:
-            active_year = re.findall(r"\b\d{4}(?:-\d{4})?", active_year_text.text)
+    #     # Try to find 'li' elements in the next sibling of 'active_year_element'
+    #     active_years_list = active_year_element.find_next().find_all('li')
+    #     active_year_text = active_year_element.find_next().find_all('td')
+    #     if active_years_list:
+    #         # If 'li' elements are found, get the text from each of them
+    #         active_year = [year.text for year in active_years_list]
+    #     elif active_year_text:
+    #         # If no 'li' elements are found, get the text of the 'td' tag
+    #         active_year = [text.text for text in active_year_text]
+    #     else:
+    #         # if there is no 'li' or 'td' tag, extract the 4-digit year of the next sibling
+    #         # Use regular expressions to find all 4-digit year patterns in the text
+    #         next_element_text = active_year_element.find_next().text
+    #         active_year = re.findall(r"\b\d{4}[–-]\d{4}\b|\b\d{4}[–-]present\b|\b\d{4}\b", next_element_text)
+
+        active_year = re.findall(r"\b\d{4}[–-]\d{4}\b|\b\d{4}[–-]present\b|\b\d{4}\b",active_year_element.find_next().text)
             
     return active_year
 
@@ -174,7 +178,7 @@ for url in urls:
 
 # %%
 # Create a new dataframe for each year's Billboard Hot 100s: 1959-2023
-for year in range(1959, 2023):
+for year in range(2010, 2023):
     time.sleep(1)
     print("Extracting year {0}".format(str(year)))
     try:
@@ -189,7 +193,7 @@ for year in range(1959, 2023):
 flatframe = pd.DataFrame(columns=[
                          'band_singer', 'ranking', 'song', 'song_url', 'title', 'singer_url', 'genre', 'year'])
 for year in range(1959, 2023):
-    with open("data/year_info/{0}info.json".format(str(year)), "r") as f:
+    with open("../../data/year_info/{0}info.json".format(str(year)), "r") as f:
         curyearinfo = json.load(f)
         year_df = pd.DataFrame(curyearinfo)
         year_df['year'] = year
@@ -213,5 +217,15 @@ flatframe[['band_singer', 'song']] = flatframe[[
     'band_singer', 'song']].applymap(extract_substring)
 flatframe = flatframe.drop(columns=['song_url', 'singer_url'])
 
-flatframe.to_csv('data/billboard.csv', index=False)
+active_year = pd.DataFrame(columns=['band_singer', 'active_years'])
+for year in range(1959, 2023):
+    with open("../../data/year_info/{0}singer_active_info.csv".format(str(year)), "r") as f:
+        curyearinfo = pd.read_csv(f)
+        active_year = pd.concat([active_year, curyearinfo], axis=0,
+                                ignore_index=True, copy=True)
+        
+active_year = active_year['active_years']
+
+flatframe = pd.concat([flatframe, active_year], axis=1)
+flatframe.to_csv("../../data/active_years.csv")
 # %%

@@ -1,101 +1,101 @@
 ,band_singer,singer_url,active_years
-0,['Drake'],['/wiki/Drake_(musician)'],
-1,['Ed Sheeran'],['/wiki/Ed_Sheeran'],
-2,"['Bebe Rexha', 'Florida Georgia Line']","['/wiki/Bebe_Rexha', '/wiki/Florida_Georgia_Line']",2010
-3,"['Camila Cabello', 'Young Thug']","['/wiki/Camila_Cabello', '/wiki/Young_Thug']",2010
-4,"['Post Malone', '21 Savage']","['/wiki/Post_Malone', '/wiki/21_Savage']",2013
-5,"['Post Malone', 'Ty Dolla Sign']","['/wiki/Post_Malone', '/wiki/Ty_Dolla_Sign']",2004
-6,"['Cardi B', 'Bad Bunny', 'J Balvin']","['/wiki/Cardi_B', '/wiki/Bad_Bunny', '/wiki/J_Balvin']",
-7,"['Zedd', 'Maren Morris', 'Grey']","['/wiki/Zedd', '/wiki/Maren_Morris', '/wiki/Grey_(duo)']",2002 2015 2015
-8,['Drake'],['/wiki/Drake_(musician)'],
-9,"['Maroon 5', 'Cardi B']","['/wiki/Maroon_5', '/wiki/Cardi_B']",1994
-10,['Drake'],['/wiki/Drake_(musician)'],
-11,['Juice Wrld'],['/wiki/Juice_Wrld'],2015 2019
-12,['Post Malone'],['/wiki/Post_Malone'],
-13,"['Bruno Mars', 'Cardi B']","['/wiki/Bruno_Mars', '/wiki/Cardi_B']",
-14,['Ella Mai'],['/wiki/Ella_Mai'],2014
-15,['Dua Lipa'],['/wiki/Dua_Lipa'],
-16,['XXXTentacion'],['/wiki/XXXTentacion'],2013 2018
-17,['Camila Cabello'],['/wiki/Camila_Cabello'],
-18,"['Khalid', 'Normani']","['/wiki/Khalid_(singer)', '/wiki/Normani']",2016
-19,['Ariana Grande'],['/wiki/Ariana_Grande'],
-20,['Bazzi'],['/wiki/Bazzi_(singer)'],2013
-21,['Imagine Dragons'],['/wiki/Imagine_Dragons'],2008
-22,"['BlocBoy JB', 'Drake']","['/wiki/BlocBoy_JB', '/wiki/Drake_(musician)']",2012
-23,['Taylor Swift'],['/wiki/Taylor_Swift'],
-24,"['Lil Baby', 'Drake']","['/wiki/Lil_Baby', '/wiki/Drake_(musician)']",2015
-25,"['Marshmello', 'Anne-Marie']","['/wiki/Marshmello', '/wiki/Anne-Marie']",2015
-26,['Halsey'],['/wiki/Halsey_(singer)'],
-27,"['Tyga', 'Offset']","['/wiki/Tyga', '/wiki/Offset_(rapper)']",
-28,['NF'],['/wiki/NF_(rapper)'],
-29,"['G-Eazy', 'ASAP Rocky', 'Cardi B']","['/wiki/G-Eazy', '/wiki/ASAP_Rocky', '/wiki/Cardi_B']",2006
-30,"['6ix9ine', 'Nicki Minaj', 'Murda Beatz']","['/wiki/6ix9ine', '/wiki/Nicki_Minaj', '/wiki/Murda_Beatz']",2012–2018 2020–present 2011
-31,['Dan + Shay'],['/wiki/Dan_%2B_Shay'],2013
-32,['Portugal. The Man'],['/wiki/Portugal._The_Man'],2004
-33,"['Migos', 'Nicki Minaj', 'Cardi B']","['/wiki/Migos', '/wiki/Nicki_Minaj', '/wiki/Cardi_B']",2008
-34,['Lauv'],['/wiki/Lauv'],2008
-35,['5 Seconds of Summer'],['/wiki/5_Seconds_of_Summer'],2011
-36,['Imagine Dragons'],['/wiki/Imagine_Dragons'],2008
-37,"['Offset', 'Metro Boomin']","['/wiki/Offset_(rapper)', '/wiki/Metro_Boomin']",2009
-38,['Post Malone'],['/wiki/Post_Malone'],
-39,"['The Weeknd', 'Kendrick Lamar']","['/wiki/The_Weeknd', '/wiki/Kendrick_Lamar']",
-40,['Selena Gomez'],['/wiki/Selena_Gomez'],
-41,['Travis Scott'],['/wiki/Travis_Scott'],
-42,"['Migos', 'Drake']","['/wiki/Migos', '/wiki/Drake_(musician)']",2008
-43,['Lil Pump'],['/wiki/Lil_Pump'],2015
-44,"['G-Eazy', 'Halsey']","['/wiki/G-Eazy', '/wiki/Halsey_(singer)']",2006
-45,['Shawn Mendes'],['/wiki/Shawn_Mendes'],
-46,"['Kendrick Lamar', 'SZA']","['/wiki/Kendrick_Lamar', '/wiki/SZA_(singer)']",
-47,['Migos'],['/wiki/Migos'],2008
-48,['Sam Smith'],['/wiki/Sam_Smith'],
-49,"['Kendrick Lamar', 'Zacari']","['/wiki/Kendrick_Lamar', '/wiki/Zacari']",2016
-50,['Childish Gambino'],['/wiki/Donald_Glover'],
-51,['Drake'],['/wiki/Drake_(musician)'],
-52,['Kane Brown'],['/wiki/Kane_Brown'],2014
-53,['Cardi B'],['/wiki/Cardi_B'],
-54,"['Lil Dicky', 'Chris Brown']","['/wiki/Lil_Dicky', '/wiki/Chris_Brown']",2011
+0,['Drake'],['/wiki/Drake_(musician)'],2001–present
+1,['Ed Sheeran'],['/wiki/Ed_Sheeran'],2004–present
+2,"['Bebe Rexha', 'Florida Georgia Line']","['/wiki/Bebe_Rexha', '/wiki/Florida_Georgia_Line']",2010–present 2010
+3,"['Camila Cabello', 'Young Thug']","['/wiki/Camila_Cabello', '/wiki/Young_Thug']",2012–present 2010–present
+4,"['Post Malone', '21 Savage']","['/wiki/Post_Malone', '/wiki/21_Savage']",2011–present 2013–present
+5,"['Post Malone', 'Ty Dolla Sign']","['/wiki/Post_Malone', '/wiki/Ty_Dolla_Sign']",2011–present 2004–present
+6,"['Cardi B', 'Bad Bunny', 'J Balvin']","['/wiki/Cardi_B', '/wiki/Bad_Bunny', '/wiki/J_Balvin']",2015–present 2013–present 2004–present
+7,"['Zedd', 'Maren Morris', 'Grey']","['/wiki/Zedd', '/wiki/Maren_Morris', '/wiki/Grey_(duo)']",2002–present 2002–present 2015 2015
+8,['Drake'],['/wiki/Drake_(musician)'],2001–present
+9,"['Maroon 5', 'Cardi B']","['/wiki/Maroon_5', '/wiki/Cardi_B']",1994–present 2015–present
+10,['Drake'],['/wiki/Drake_(musician)'],2001–present
+11,['Juice Wrld'],['/wiki/Juice_Wrld'],2015–2019
+12,['Post Malone'],['/wiki/Post_Malone'],2011–present
+13,"['Bruno Mars', 'Cardi B']","['/wiki/Bruno_Mars', '/wiki/Cardi_B']",2004–present 2015–present
+14,['Ella Mai'],['/wiki/Ella_Mai'],2014–present
+15,['Dua Lipa'],['/wiki/Dua_Lipa'],2014–present
+16,['XXXTentacion'],['/wiki/XXXTentacion'],2013–2018
+17,['Camila Cabello'],['/wiki/Camila_Cabello'],2012–present
+18,"['Khalid', 'Normani']","['/wiki/Khalid_(singer)', '/wiki/Normani']",2016–present 2012–present
+19,['Ariana Grande'],['/wiki/Ariana_Grande'],2008–present
+20,['Bazzi'],['/wiki/Bazzi_(singer)'],2013–present
+21,['Imagine Dragons'],['/wiki/Imagine_Dragons'],2008–present
+22,"['BlocBoy JB', 'Drake']","['/wiki/BlocBoy_JB', '/wiki/Drake_(musician)']",2012–present 2001–present
+23,['Taylor Swift'],['/wiki/Taylor_Swift'],2004–present
+24,"['Lil Baby', 'Drake']","['/wiki/Lil_Baby', '/wiki/Drake_(musician)']",2015–present 2001–present
+25,"['Marshmello', 'Anne-Marie']","['/wiki/Marshmello', '/wiki/Anne-Marie']",2015–present 2013–present
+26,['Halsey'],['/wiki/Halsey_(singer)'],2012–present
+27,"['Tyga', 'Offset']","['/wiki/Tyga', '/wiki/Offset_(rapper)']",2004–present 2002–present
+28,['NF'],['/wiki/NF_(rapper)'],2010–present
+29,"['G-Eazy', 'ASAP Rocky', 'Cardi B']","['/wiki/G-Eazy', '/wiki/ASAP_Rocky', '/wiki/Cardi_B']",2006–present 2007–present 2015–present
+30,"['6ix9ine', 'Nicki Minaj', 'Murda Beatz']","['/wiki/6ix9ine', '/wiki/Nicki_Minaj', '/wiki/Murda_Beatz']",2012–2018 2020–present 2004–present 2011–present
+31,['Dan + Shay'],['/wiki/Dan_%2B_Shay'],2013–present
+32,['Portugal. The Man'],['/wiki/Portugal._The_Man'],2004–present
+33,"['Migos', 'Nicki Minaj', 'Cardi B']","['/wiki/Migos', '/wiki/Nicki_Minaj', '/wiki/Cardi_B']",2008–present 2004–present 2015–present
+34,['Lauv'],['/wiki/Lauv'],2008–present
+35,['5 Seconds of Summer'],['/wiki/5_Seconds_of_Summer'],2011–present
+36,['Imagine Dragons'],['/wiki/Imagine_Dragons'],2008–present
+37,"['Offset', 'Metro Boomin']","['/wiki/Offset_(rapper)', '/wiki/Metro_Boomin']",2002–present 2009–present
+38,['Post Malone'],['/wiki/Post_Malone'],2011–present
+39,"['The Weeknd', 'Kendrick Lamar']","['/wiki/The_Weeknd', '/wiki/Kendrick_Lamar']",2009–present 2003–present
+40,['Selena Gomez'],['/wiki/Selena_Gomez'],2002–present
+41,['Travis Scott'],['/wiki/Travis_Scott'],2008–present
+42,"['Migos', 'Drake']","['/wiki/Migos', '/wiki/Drake_(musician)']",2008–present 2001–present
+43,['Lil Pump'],['/wiki/Lil_Pump'],2015–present
+44,"['G-Eazy', 'Halsey']","['/wiki/G-Eazy', '/wiki/Halsey_(singer)']",2006–present 2012–present
+45,['Shawn Mendes'],['/wiki/Shawn_Mendes'],2013–present
+46,"['Kendrick Lamar', 'SZA']","['/wiki/Kendrick_Lamar', '/wiki/SZA_(singer)']",2003–present 2011–present
+47,['Migos'],['/wiki/Migos'],2008–present
+48,['Sam Smith'],['/wiki/Sam_Smith'],2008–present
+49,"['Kendrick Lamar', 'Zacari']","['/wiki/Kendrick_Lamar', '/wiki/Zacari']",2003–present 2016–present
+50,['Childish Gambino'],['/wiki/Donald_Glover'],2005–present
+51,['Drake'],['/wiki/Drake_(musician)'],2001–present
+52,['Kane Brown'],['/wiki/Kane_Brown'],2014–present
+53,['Cardi B'],['/wiki/Cardi_B'],2015–present
+54,"['Lil Dicky', 'Chris Brown']","['/wiki/Lil_Dicky', '/wiki/Chris_Brown']",2011–present 2002–present
 55,['6ix9ine'],['/wiki/6ix9ine'],2012–2018 2020–present
-56,['Rich the Kid'],['/wiki/Rich_the_Kid'],2010
-57,['Maroon 5'],['/wiki/Maroon_5'],1994
-58,['Cardi B'],['/wiki/Cardi_B'],
-59,"['Selena Gomez', 'Marshmello']","['/wiki/Selena_Gomez', '/wiki/Marshmello']",2015
-60,"['Cardi B', '21 Savage']","['/wiki/Cardi_B', '/wiki/21_Savage']",2013
-61,['Ariana Grande'],['/wiki/Ariana_Grande'],
-62,"['YG', '2 Chainz', 'Nicki Minaj', 'Big Sean']","['/wiki/YG_(rapper)', '/wiki/2_Chainz', '/wiki/Nicki_Minaj', '/wiki/Big_Sean']",2008 2007
-63,['Demi Lovato'],['/wiki/Demi_Lovato'],
-64,['Charlie Puth'],['/wiki/Charlie_Puth'],2009
-65,"['Max', 'Gnash']","['/wiki/Max_Schneider', '/wiki/Gnash_(musician)']",2008 2015
-66,['Khalid'],['/wiki/Khalid_(singer)'],2016
-67,"['Calvin Harris', 'Dua Lipa']","['/wiki/Calvin_Harris', '/wiki/Dua_Lipa']",
-68,['Imagine Dragons'],['/wiki/Imagine_Dragons'],2008
-69,['Jason Aldean'],['/wiki/Jason_Aldean'],1998
-70,['Ed Sheeran'],['/wiki/Ed_Sheeran'],
-71,"['Gucci Mane', 'Migos']","['/wiki/Gucci_Mane', '/wiki/Migos']",2008
-72,"['DJ Khaled', 'Justin Bieber', 'Chance the Rapper', 'Quavo']","['/wiki/DJ_Khaled', '/wiki/Justin_Bieber', '/wiki/Chance_the_Rapper', '/wiki/Quavo']",1998
-73,"['ASAP Ferg', 'Nicki Minaj']","['/wiki/ASAP_Ferg', '/wiki/Nicki_Minaj']",2007
-74,"['Miguel', 'Travis Scott']","['/wiki/Miguel_(singer)', '/wiki/Travis_Scott']",
-75,['Thomas Rhett'],['/wiki/Thomas_Rhett'],2010
-76,"['Benny Blanco', 'Halsey', 'Khalid']","['/wiki/Benny_Blanco', '/wiki/Halsey_(singer)', '/wiki/Khalid_(singer)']",2007 2016
-77,['The Weeknd'],['/wiki/The_Weeknd'],
-78,"['Jay Rock', 'Kendrick Lamar', 'Future', 'James Blake']","['/wiki/Jay_Rock', '/wiki/Kendrick_Lamar', '/wiki/Future_(rapper)', '/wiki/James_Blake_(musician)']",2006 2009
-79,"['Marshmello', 'Bastille']","['/wiki/Marshmello', '/wiki/Bastille_(band)']",2015 2010
-80,"['Darell', 'Bad Bunny', 'Nicky Jam', 'Ozuna']","['/wiki/Darell_(rapper)', '/wiki/Bad_Bunny', '/wiki/Nicky_Jam', '/wiki/Ozuna']",2010 1995
+56,['Rich the Kid'],['/wiki/Rich_the_Kid'],2010–present
+57,['Maroon 5'],['/wiki/Maroon_5'],1994–present
+58,['Cardi B'],['/wiki/Cardi_B'],2015–present
+59,"['Selena Gomez', 'Marshmello']","['/wiki/Selena_Gomez', '/wiki/Marshmello']",2002–present 2015–present
+60,"['Cardi B', '21 Savage']","['/wiki/Cardi_B', '/wiki/21_Savage']",2015–present 2013–present
+61,['Ariana Grande'],['/wiki/Ariana_Grande'],2008–present
+62,"['YG', '2 Chainz', 'Nicki Minaj', 'Big Sean']","['/wiki/YG_(rapper)', '/wiki/2_Chainz', '/wiki/Nicki_Minaj', '/wiki/Big_Sean']",2008–present 1997–present 2004–present 2007–present
+63,['Demi Lovato'],['/wiki/Demi_Lovato'],2002–present
+64,['Charlie Puth'],['/wiki/Charlie_Puth'],2009–present
+65,"['Max', 'Gnash']","['/wiki/Max_Schneider', '/wiki/Gnash_(musician)']",2008–present 2015–present
+66,['Khalid'],['/wiki/Khalid_(singer)'],2016–present
+67,"['Calvin Harris', 'Dua Lipa']","['/wiki/Calvin_Harris', '/wiki/Dua_Lipa']",2002–present 2014–present
+68,['Imagine Dragons'],['/wiki/Imagine_Dragons'],2008–present
+69,['Jason Aldean'],['/wiki/Jason_Aldean'],1998–present
+70,['Ed Sheeran'],['/wiki/Ed_Sheeran'],2004–present
+71,"['Gucci Mane', 'Migos']","['/wiki/Gucci_Mane', '/wiki/Migos']",2001–present 2008–present
+72,"['DJ Khaled', 'Justin Bieber', 'Chance the Rapper', 'Quavo']","['/wiki/DJ_Khaled', '/wiki/Justin_Bieber', '/wiki/Chance_the_Rapper', '/wiki/Quavo']",1998–present 2007–present 2011–present 2008–present
+73,"['ASAP Ferg', 'Nicki Minaj']","['/wiki/ASAP_Ferg', '/wiki/Nicki_Minaj']",2007–present 2004–present
+74,"['Miguel', 'Travis Scott']","['/wiki/Miguel_(singer)', '/wiki/Travis_Scott']",2000–present 2008–present
+75,['Thomas Rhett'],['/wiki/Thomas_Rhett'],2010–present
+76,"['Benny Blanco', 'Halsey', 'Khalid']","['/wiki/Benny_Blanco', '/wiki/Halsey_(singer)', '/wiki/Khalid_(singer)']",2007–present 2012–present 2016–present
+77,['The Weeknd'],['/wiki/The_Weeknd'],2009–present
+78,"['Jay Rock', 'Kendrick Lamar', 'Future', 'James Blake']","['/wiki/Jay_Rock', '/wiki/Kendrick_Lamar', '/wiki/Future_(rapper)', '/wiki/James_Blake_(musician)']",2006–present 2003–present 2011-present 2009–present
+79,"['Marshmello', 'Bastille']","['/wiki/Marshmello', '/wiki/Bastille_(band)']",2015–present 2010–present
+80,"['Darell', 'Bad Bunny', 'Nicky Jam', 'Ozuna']","['/wiki/Darell_(rapper)', '/wiki/Bad_Bunny', '/wiki/Nicky_Jam', '/wiki/Ozuna']",2010–present 2013–present 1995–present 2012–present
 81,['Florida Georgia Line'],['/wiki/Florida_Georgia_Line'],2010
-82,"['N.E.R.D', 'Rihanna']","['/wiki/N.E.R.D', '/wiki/Rihanna']",1999–2005 2008–present
-83,"['Logic', 'Alessia Cara', 'Khalid']","['/wiki/Logic_(musician)', '/wiki/Alessia_Cara', '/wiki/Khalid_(singer)']",2016
-84,"['Justin Timberlake', 'Chris Stapleton']","['/wiki/Justin_Timberlake', '/wiki/Chris_Stapleton']",2001
-85,['Drake'],['/wiki/Drake_(musician)'],
-86,['Kenny Chesney'],['/wiki/Kenny_Chesney'],1988
-87,['XXXTentacion'],['/wiki/XXXTentacion'],2013 2018
-88,"['Maroon 5', 'SZA']","['/wiki/Maroon_5', '/wiki/SZA_(singer)']",1994
-89,"['Nicky Jam', 'J Balvin']","['/wiki/Nicky_Jam', '/wiki/J_Balvin']",1995
-90,['YoungBoy Never Broke Again'],['/wiki/YoungBoy_Never_Broke_Again'],2015
-91,['Ella Mai'],['/wiki/Ella_Mai'],2014
-92,['Daddy Yankee'],['/wiki/Daddy_Yankee'],
-93,['XXXTentacion'],['/wiki/XXXTentacion'],2013 2018
-94,['Brett Young'],['/wiki/Brett_Young_(singer)'],2007
-95,['Luke Combs'],['/wiki/Luke_Combs'],2014
-96,"['Rae Sremmurd', 'Juicy J']","['/wiki/Rae_Sremmurd', '/wiki/Juicy_J']",2010
-97,['Dua Lipa'],['/wiki/Dua_Lipa'],
-98,"['J Balvin', 'Willy William', 'Beyoncé']","['/wiki/J_Balvin', '/wiki/Willy_William', '/wiki/Beyonc%C3%A9']",2003
-99,['Imagine Dragons'],['/wiki/Imagine_Dragons'],2008
+82,"['N.E.R.D', 'Rihanna']","['/wiki/N.E.R.D', '/wiki/Rihanna']",1999 2003–present
+83,"['Logic', 'Alessia Cara', 'Khalid']","['/wiki/Logic_(musician)', '/wiki/Alessia_Cara', '/wiki/Khalid_(singer)']",2010–2020 2021–present 2014–present 2016–present
+84,"['Justin Timberlake', 'Chris Stapleton']","['/wiki/Justin_Timberlake', '/wiki/Chris_Stapleton']",1992–present 2001
+85,['Drake'],['/wiki/Drake_(musician)'],2001–present
+86,['Kenny Chesney'],['/wiki/Kenny_Chesney'],1988–present
+87,['XXXTentacion'],['/wiki/XXXTentacion'],2013–2018
+88,"['Maroon 5', 'SZA']","['/wiki/Maroon_5', '/wiki/SZA_(singer)']",1994–present 2011–present
+89,"['Nicky Jam', 'J Balvin']","['/wiki/Nicky_Jam', '/wiki/J_Balvin']",1995–present 2004–present
+90,['YoungBoy Never Broke Again'],['/wiki/YoungBoy_Never_Broke_Again'],2015–present
+91,['Ella Mai'],['/wiki/Ella_Mai'],2014–present
+92,['Daddy Yankee'],['/wiki/Daddy_Yankee'],1994–2023
+93,['XXXTentacion'],['/wiki/XXXTentacion'],2013–2018
+94,['Brett Young'],['/wiki/Brett_Young_(singer)'],2007–present
+95,['Luke Combs'],['/wiki/Luke_Combs'],2014–present
+96,"['Rae Sremmurd', 'Juicy J']","['/wiki/Rae_Sremmurd', '/wiki/Juicy_J']",2010–present 1987–present
+97,['Dua Lipa'],['/wiki/Dua_Lipa'],2014–present
+98,"['J Balvin', 'Willy William', 'Beyoncé']","['/wiki/J_Balvin', '/wiki/Willy_William', '/wiki/Beyonc%C3%A9']",2004–present 2003–present 1997–present
+99,['Imagine Dragons'],['/wiki/Imagine_Dragons'],2008–present
