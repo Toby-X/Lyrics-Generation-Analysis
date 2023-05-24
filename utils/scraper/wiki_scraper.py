@@ -229,3 +229,17 @@ active_year = active_year['active_years']
 flatframe = pd.concat([flatframe, active_year], axis=1)
 flatframe.to_csv("../../data/active_years.csv")
 # %%
+df = pd.read_csv("../../data/active_years.csv", index_col=0)
+
+def first_active_year(x):
+    # use re to extract the first 4-digit year info
+    match = re.search(r"(\d{4})", str(x))
+    if match:
+        return match.group(1)
+    else:
+        return x
+    
+df['active_years'] = df['active_years'].apply(first_active_year)
+df = df.dropna()
+df.to_csv('../../data/first_active_years.csv')
+# %%
