@@ -1,5 +1,6 @@
 #-*-coding:utf-8-*-
 library(glmnet)
+library(kernlab)
 # library(data.table)
 # library(tictoc)
 # library(parallel)
@@ -16,13 +17,13 @@ train_other = read.csv("data/train_other.csv")
 
 corr = apply(dat_train[,14:(ncol(dat_train)-1)],2,cor,y=train_other$year)
 boxplot(corr)
-sum(abs(corr)>0.05)
+sum(abs(corr)>0.07)
 idx_avail = abs(corr)>.1
 dat_train_word = dat_train[,14:(ncol(dat_train)-1)]
 dat_train_word = dat_train_word[,idx_avail]
 dat_train_fil = cbind(dat_train[,1:13],dat_train_word,dat_train[,ncol(dat_train)])
 clf.tmp = glmnet(data.matrix(dat_train_fil[,-ncol(dat_train_fil)]),as.factor(dat_train_fil[,ncol(dat_train_fil)]),
-                 alpha = 0,lambda = .1,family = "multinomial")
+                 alpha = 0,lambda = .5,family = "multinomial")
 dat_test_word = dat_test[,14:(ncol(dat_test)-1)]
 dat_test_word = dat_test_word[,idx_avail]
 dat_test_fil = cbind(dat_test[,1:13],dat_test_word,dat_test[,ncol(dat_test)])
@@ -30,6 +31,12 @@ pred = predict(clf.tmp,data.matrix(dat_test_fil[,-ncol(dat_test_fil)]),type="cla
 mean(pred == dat_test_fil[,ncol(dat_test_fil)])
 sum(pred==0)
 sum(dat_test_fil[,ncol(dat_test_fil)]==5)
+
+
+svm.tmp = ksvm(data.matrix(dat_train_fil[,-ncol(dat_train_fil)]),as.factor(dat_train_fil[,ncol(dat_train_fil)]),
+     kernel="rbfdot",kpar="automatic")
+pred = predict(svm.tmp,dat_test_fil[,-ncol(dat_test_fil)],type="response")
+mean(pred == dat_test_fil[,ncol(dat_test_fil)])
 
 # normalization of word frequency
 freq_mean = colMeans(dat_train[,14:(ncol(dat_train)-1)])
