@@ -15,18 +15,16 @@ dat_test = read.csv("data/test_data_all.csv")
 dat_test = dat_test[,-1]
 train_other = read.csv("data/train_other.csv")
 
-corr = apply(dat_train[,14:(ncol(dat_train)-1)],2,cor,y=train_other$year)
+corr = apply(dat_train[,14:(ncol(dat_train)-2)],2,cor,y=train_other$active_years)
 boxplot(corr)
-sum(abs(corr)>0.07)
-idx_avail = abs(corr)>.1
-dat_train_word = dat_train[,14:(ncol(dat_train)-1)]
-dat_train_word = dat_train_word[,idx_avail]
-dat_train_fil = cbind(dat_train[,1:13],dat_train_word,dat_train[,ncol(dat_train)])
+sum(abs(corr)>0.025)
+idx_avail = abs(corr)>.025
+dat_train_word = dat_train[,idx_avail]
+dat_train_fil = cbind(dat_train[,1:13],dat_train_word,dat_train[,(ncol(dat_train)-1):ncol(dat_train)])
 clf.tmp = glmnet(data.matrix(dat_train_fil[,-ncol(dat_train_fil)]),as.factor(dat_train_fil[,ncol(dat_train_fil)]),
                  alpha = 0,lambda = .5,family = "multinomial")
-dat_test_word = dat_test[,14:(ncol(dat_test)-1)]
-dat_test_word = dat_test_word[,idx_avail]
-dat_test_fil = cbind(dat_test[,1:13],dat_test_word,dat_test[,ncol(dat_test)])
+dat_test_word = dat_test[,idx_avail]
+dat_test_fil = cbind(dat_test[,1:13],dat_test_word,dat_test[,(ncol(dat_test)-1):ncol(dat_test)])
 pred = predict(clf.tmp,data.matrix(dat_test_fil[,-ncol(dat_test_fil)]),type="class")
 mean(pred == dat_test_fil[,ncol(dat_test_fil)])
 sum(pred==0)
@@ -46,7 +44,7 @@ dat_test[,14:(ncol(dat_test)-1)] = t((t(dat_test[,14:(ncol(dat_test)-1)])-freq_m
 
 # base model
 # perform cross validation on elastic net
-lam = log(seq(from = exp(1e-2), to = exp(1), length=100))
+lam = log(seq(from = exp(1e-2), to = exp(1.5), length=100))
 idx = rep(1:5,length.out=nrow(dat_train))
 set.seed(516)
 idx = sample(idx)
