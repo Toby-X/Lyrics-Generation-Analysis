@@ -10,9 +10,9 @@ library(kernlab)
 # cl = makeCluster(numCores)
 # registerDoSNOW(cl)
 dat_train = read.csv("data/train_data_all.csv")
-dat_train = dat_train[,-1]
+dat_train = dat_train[,-c(1,2)]
 dat_test = read.csv("data/test_data_all.csv")
-dat_test = dat_test[,-1]
+dat_test = dat_test[,-c(1,2)]
 train_other = read.csv("data/train_other.csv")
 
 corr = apply(dat_train[,14:(ncol(dat_train)-2)],2,cor,y=train_other$active_years)
@@ -246,14 +246,14 @@ for (k in 1:5) {
 }
 plot(rev(lam),colMeans(err.tmp),"l",xlab = "lambda",ylab = "error rate")
 
-# ridge lambda = .7
+# ridge lambda = 1.8
 set.seed(3701)
 label_00 = dat_train$label.1
 idx00 = (1:length(label_00))[label_00==4]
 boot00 = sample(idx00,sum(label_00!=4)/2-sum(label_00==4),replace = T)
 dat_train_00 = rbind(dat_train,dat_train[boot00,])
-m1 = glmnet(data.matrix(dat_train_00[,-ncol(dat_train)]),dat_train_00[,ncol(dat_train)]==4
-            ,family="binomial",alpha = 0,lambda=.7)
+clf00 = glmnet(data.matrix(dat_train_00[,-ncol(dat_train)]),dat_train_00[,ncol(dat_train)]==4
+            ,family="binomial",alpha = 0,lambda=1.8)
 pre.res = predict(m1,data.matrix(dat_test[,-ncol(dat_test)]),type = "class")
 pred=  pre.res
 pred = sapply(pred, ch2int)
@@ -328,15 +328,31 @@ plot(rev(lam),colMeans(err.tmp),"l",xlab = "lambda",ylab = "error rate")
 
 
 
-# ridge lambda = .7
+# ridge lambda = .48
 set.seed(3701)
 label_10 = dat_train$label.1
 idx10 = (1:length(label_10))[label_10==5]
 boot10 = sample(idx10,sum(label_10!=5)/2-sum(label_10==5),replace = T)
 dat_train_10 = rbind(dat_train,dat_train[boot10,])
-m1 = glmnet(data.matrix(dat_train_10[,-ncol(dat_train)]),dat_train_10[,ncol(dat_train)]==5
-            ,family="binomial",alpha = 0,lambda=.7)
-pre.res = predict(m1,data.matrix(dat_test[,-ncol(dat_test)]),type = "class")
+clf10 = glmnet(data.matrix(dat_train_10[,-ncol(dat_train)]),dat_train_10[,ncol(dat_train)]==5
+            ,family="binomial",alpha = 0,lambda=.48)
+pre.res = predict(clf10,data.matrix(dat_test[,-ncol(dat_test)]),type = "class")
 pred=  pre.res
 pred = sapply(pred, ch2int)
 mean((pred!=(dat_test[,ncol(dat_train_10)]==5)))
+
+predict_mul <- function(X){
+  pre60 = predict(clf60,data.matrix(X),type="response")
+  pre70 = predict(clf70,data.matrix(X),type="response")
+  pre80 = predict(clf80,data.matrix(X),type="response")
+  pre90 = predict(clf90,data.matrix(X),type="response")
+  pre00 = predict(clf00,data.matrix(X),type="response")
+  pre10 = predict(clf10,data.matrix(X),type="response")
+  
+  pre = cbind(pre60,pre70,pre80,pre90,pre00,pre10)
+  class = apply(pre,1,which.max)-1
+  return(class)
+}
+
+pre = predict_mul(dat_test[,-ncol(dat_test)])
+mean(pre!=dat_test[,ncol(dat_test)])
