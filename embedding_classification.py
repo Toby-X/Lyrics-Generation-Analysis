@@ -44,8 +44,8 @@ from nltk.corpus import stopwords
 import pickle
 
 # load data
-test_lyrics = pd.read_csv("../data/df_test.csv",index_col=0)
-train_lyrics = pd.read_csv("../data/df_train.csv",index_col=0)
+test_lyrics = pd.read_csv("./data/df_test.csv",index_col=0)
+train_lyrics = pd.read_csv("./data/df_train.csv",index_col=0)
 
 
 def str2list(s):
@@ -61,7 +61,7 @@ all_lyrics = test_lyrics['lyrics'].tolist() + train_lyrics['lyrics'].tolist()
 size = 2000
 # model = FastText(all_lyrics, min_count=1, vector_size=size, workers=4, window=10, sg=1)
 # model.save(f"../models/fasttext_{size}.model")
-model = FastText.load(f"../models/fasttext_{size}.model")
+model = FastText.load(f"./models/fasttext_{size}.model")
 
 # add a new column to the data matrix
 test_lyrics['embedded_lyrics'] = test_lyrics['lyrics'].apply(
@@ -78,26 +78,33 @@ print(vectorizer)
 tfidf_matrix_train = vectorizer.transform([' '.join(lyric) for lyric in train_lyrics['lyrics']])
 tfidf_matrix_test = vectorizer.transform([' '.join(lyric) for lyric in test_lyrics['lyrics']])
 
-# Map years to decade categories
+# Map years to 6 decade categories 
 y_train_decades = np.where(train_lyrics['year'] < 1960, '1960s',
                            np.where(train_lyrics['year'] > 2020, '2010s',
                                     (train_lyrics['year'] // 10 * 10).astype(str) + 's'))
-
 y_test_decades = np.where(test_lyrics['year'] < 1960, '1960s',
                           np.where(test_lyrics['year'] > 2020, '2010s',
                                    (test_lyrics['year'] // 10 * 10).astype(str) + 's'))
 
+# Map years to binary classes: "before 2000" and "after 2000"
+y_train_binary = np.where(train_lyrics['year'] < 2000, 0, 1)
+y_test_binary = np.where(test_lyrics['year'] < 2000, 0, 1)
 
-# Map years to decade categories
-y_train_decades = np.where(train_lyrics['year'] < 1960, '1960s',
-                           np.where(train_lyrics['year'] > 2020, '2010s',
-                                    (train_lyrics['year'] // 10 * 10).astype(str) + 's'))
+# Map years to 4 classes: "60s, 70s, and 80s", "90s", "00s", "10s"
+y_train_4classes = np.where(train_lyrics['year'] < 1990, 0,
+                            np.where(train_lyrics['year'] < 2000, 1,
+                                     np.where(train_lyrics['year'] < 2010, 2, 3)))
+y_test_4classes = np.where(test_lyrics['year'] < 1990, 0,
+                           np.where(test_lyrics['year'] < 2000, 1,
+                                    np.where(test_lyrics['year'] < 2010, 2,3)))
 
-y_test_decades = np.where(test_lyrics['year'] < 1960, '1960s',
-                          np.where(test_lyrics['year'] > 2020, '2010s',
-                                   (test_lyrics['year'] // 10 * 10).astype(str) + 's'))
+X_train = [np.max(embeddings, axis=0)
+           for embeddings in train_lyrics['embedded_lyrics']]
 
- # %%
+X_test = [np.max(embeddings, axis=0)
+          for embeddings in test_lyrics['embedded_lyrics']]
+
+# %%
 # Average Word Embeddings using TF-IDF weights
 tfidf_feature_names = vectorizer.get_feature_names_out()
 
@@ -124,10 +131,10 @@ X_train = [np.max(embeddings, axis=0)
 X_test = [np.max(embeddings, axis=0)
           for embeddings in test_lyrics['embedded_lyrics']]
 
+# %% Grid search
 # =============================================================================
 # Section 3: SVM for Classification
 # =============================================================================
-# %% Grid search
 from sklearn.svm import SVC
 from sklearn.model_selection import GridSearchCV
 
@@ -157,6 +164,7 @@ accuracy = accuracy_score(y_test_decades, y_pred_decades)
 print("SVC Accuracy:", accuracy)
 
 # %% without grid search
+# decades: 6 classes
 svc_model = SVC(kernel='rbf')
 svc_model.fit(X_train, y_train_decades)
 
@@ -165,15 +173,36 @@ y_pred_decades = svc_model.predict(X_test)
 
 # Evaluate the model
 accuracy = accuracy_score(y_test_decades, y_pred_decades)
-print("Accuracy:", accuracy)
-print(model.get_params())
+print("6 classes accuracy:", accuracy)
 
+# 4 classes
+svc_model = SVC(kernel='rbf')
+svc_model.fit(X_train, y_train_4classes)
+
+# Predict on the test set
+y_pred_4classes = svc_model.predict(X_test)
+
+# Evaluate the model
+accuracy = accuracy_score(y_test_4classes, y_pred_4classes)
+print("4 classes accuracy:", accuracy)
+
+# 2 classes
+svc_model = SVC(kernel='rbf')
+svc_model.fit(X_train, y_train_binary)
+
+# Predict on the test set
+y_pred_binary = svc_model.predict(X_test)
+
+# Evaluate the model
+accuracy = accuracy_score(y_test_binary, y_pred_binary)
+print("2 classes accuracy:", accuracy)
+
+# %% Logistic Regression with L2 Penalty
 # =============================================================================
 # Section 4: Logistic Regression for Classification
 # =============================================================================
 from sklearn.linear_model import LogisticRegression
 from sklearn.kernel_approximation import RBFSampler
-# %% Logistic Regression with L2 Penalty
 # ridge regression
 ridge_model = LogisticRegression(penalty='l2', solver='liblinear')
 ridge_model.fit(X_train, y_train_decades)
@@ -187,7 +216,19 @@ lasso_model = LogisticRegression(penalty='l1', solver='liblinear')
 lasso_model.fit(X_train, y_train_decades)
 y_pred_lasso = lasso_model.predict(X_test)
 accuracy_lasso = accuracy_score(y_test_decades, y_pred_lasso)
-print("Lasso Accuracy:", accuracy_lasso)
+print("Lasso 6 classes accuracy:", accuracy_lasso)
+
+lasso_model = LogisticRegression(penalty='l1', solver='liblinear')
+lasso_model.fit(X_train, y_train_binary)
+y_pred_lasso_binary = lasso_model.predict(X_test)
+accuracy_lasso = accuracy_score(y_test_binary, y_pred_lasso_binary)
+print("Lasso 2 classes Accuracy:", accuracy_lasso)
+
+lasso_model = LogisticRegression(penalty='l1', solver='liblinear')
+lasso_model.fit(X_train, y_train_4classes)
+y_pred_lasso_4classes = lasso_model.predict(X_test)
+accuracy_lasso = accuracy_score(y_test_4classes, y_pred_lasso_4classes)
+print("Lasso 4 classes accuracy:", accuracy_lasso)
 
 # %% Kernel Logistic Regression
 # Initialize the RBFSampler
