@@ -104,7 +104,8 @@ for epoch in range(num_epochs):
             input_ids = input_ids.to(device)
             attention_mask = attention_mask.to(device)
             outputs = model(input_ids, attention_mask=attention_mask)
-            embeddings = outputs.last_hidden_state.mean(dim=1)
+            logits = outputs.logits
+            embeddings = torch.softmax(logits, dim=1)
             test_embeddings.append(embeddings.detach().cpu().numpy())
 
     train_embeddings = np.concatenate(train_embeddings)
