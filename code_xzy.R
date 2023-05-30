@@ -15,8 +15,9 @@ dat_test = read.csv("data/test_data_all.csv")
 dat_test = dat_test[,-c(1,2)]
 train_other = read.csv("data/train_other.csv")
 
-corr = apply(dat_train[,14:(ncol(dat_train)-2)],2,cor,y=train_other$active_years)
+corr = apply(dat_train[,14:(ncol(dat_train)-2)],2,cor,y=train_other$year)
 boxplot(corr)
+title(main="Features vs Year")
 sum(abs(corr)>0.025)
 idx_avail = abs(corr)>.025
 dat_train_word = dat_train[,idx_avail]
@@ -356,3 +357,59 @@ predict_mul <- function(X){
 
 pre = predict_mul(dat_test[,-ncol(dat_test)])
 mean(pre!=dat_test[,ncol(dat_test)])
+
+library(xgboost)
+depth = 3:8
+min_child_weight = seq(from=1,to=4,length=100)
+acc = matrix(rep(0,length(depth)*length(min_child_weight)),nrow=length(depth))
+acc.tmp = rep(0,5)
+for (i in 1:length(depth)) {
+  for (j in 1:length(min_child_weight)){
+    for (k in 1:5) {
+      bstSparse = xgboost(data=data.matrix(dat_train[idx!=k,-ncol(dat_train)]),label=data.matrix(dat_train[idx!=k,ncol(dat_train)])
+                          ,max.depth=depth[i],min_child_weight=min_child_weight[j],eta=.3,nthread=7,nrounds = 2,objective="multi:softmax",num_class=6)
+      pre = predict(bstSparse,data.matrix(dat_train[idx==k,-ncol(dat_train)]))
+      acc.tmp[k] = mean(pre==dat_train[idx==k,ncol(dat_train)])
+    }
+    acc[i,j] = mean(acc.tmp)
+  }
+}
+
+i = 5
+for (j in 54:length(min_child_weight)){
+  for (k in 1:5) {
+    bstSparse = xgboost(data=data.matrix(dat_train[idx!=k,-ncol(dat_train)]),label=data.matrix(dat_train[idx!=k,ncol(dat_train)])
+                        ,max.depth=depth[i],min_child_weight=min_child_weight[j],eta=.3,nthread=7,nrounds = 2,objective="multi:softmax",num_class=6)
+    pre = predict(bstSparse,data.matrix(dat_train[idx==k,-ncol(dat_train)]))
+    acc.tmp[k] = mean(pre==dat_train[idx==k,ncol(dat_train)])
+  }
+  acc[i,j] = mean(acc.tmp)
+}
+
+i = 6
+for (j in 1:length(min_child_weight)){
+  for (k in 1:5) {
+    bstSparse = xgboost(data=data.matrix(dat_train[idx!=k,-ncol(dat_train)]),label=data.matrix(dat_train[idx!=k,ncol(dat_train)])
+                        ,max.depth=depth[i],min_child_weight=min_child_weight[j],eta=.3,nthread=7,nrounds = 2,objective="multi:softmax",num_class=6)
+    pre = predict(bstSparse,data.matrix(dat_train[idx==k,-ncol(dat_train)]))
+    acc.tmp[k] = mean(pre==dat_train[idx==k,ncol(dat_train)])
+  }
+  acc[i,j] = mean(acc.tmp)
+}
+
+rowSums(acc)
+# max.depth = 7, min_child_weight=2.6
+plot(min_child_weight,acc[5,],"l")
+
+bstSparse = xgboost(data=data.matrix(dat_train[,-ncol(dat_train)]),label=data.matrix(dat_train[,ncol(dat_train)])
+                    ,max.depth=7,min_child_weight=2.6,eta=.2,nthread=6,nrounds = 2,objective="multi:softmax",num_class=6)
+pre = predict(bstSparse,data.matrix(dat_test[,-ncol(dat_test)]))
+mean(pre==dat_test[,ncol(dat_test)])
+
+save.image("Boosting_tuning.RData")
+
+svm.tmp = ksvm(data.matrix(dat_train[,-ncol(dat_train)]),as.factor(dat_train[,ncol(dat_train)]),
+               kernel="rbfdot",kpar="automatic")
+pred = predict(svm.tmp,dat_test[,-ncol(dat_test)],type="response")
+mean(pred == dat_test[,ncol(dat_test)])
+

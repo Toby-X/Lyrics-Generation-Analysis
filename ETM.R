@@ -44,4 +44,4 @@ space      <- subset(manifolded$embed_2d, type %in% "centers")
 textplot_embedding_2d(space)
 space      <- subset(manifolded$embed_2d, rank <= 15)
 textplot_embedding_2d(space, title = "ETM topics", subtitle = "embedded in 2D using UMAP", 
-                      encircle = F, points = TRUE)
+                      encircle = T, points = TRUE)
