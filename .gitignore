@@ -1,5 +1,19 @@
+# vscode 
 .vscode
+
+# Rstudio
+.Rhistory
+*.RData
+.Rproj
+
+# jupyter notebook
+.ipynb_checkpoints
+
+# Python
 __pycache__
+
+# Project files
 models
-Figures/*
+Figures/html
 BERTmodel
+lyrics-data

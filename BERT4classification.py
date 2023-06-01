@@ -1,5 +1,5 @@
 # %%
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split,cross_val_score, StratifiedKFold
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
 from transformers import BertTokenizer, BertForSequenceClassification
@@ -25,54 +25,67 @@ def label_years(year):
     else:
         return 5
     
-df = pd.read_csv("./data/billboard_lyrics_genres.csv") # Load the lyrics data
+df = pd.read_csv("./data/lyrics-data/lyrics_and_metadata_1950_2019.csv")
 df.dropna(inplace=True)  # Remove missing values
 lyrics = df['lyrics'].to_list()  # Convert the lyrics column to a list
-labels = df['year'].map(label_years).to_list()  # Convert the year column to a list
+labels = df['release_date'].map(label_years).to_list()  # Convert the year column to a list
 
-# Step 2: Split the data
-X_train, X_test, y_train, y_test = train_test_split(lyrics, labels, test_size=0.2, random_state=42)
-
-# Convert data to BERT input format
-tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-train_encodings = tokenizer(X_train, truncation=True, padding=True,return_tensors="pt")
-test_encodings = tokenizer(X_test, truncation=True, padding=True,return_tensors="pt")
-
-print("Shapes of train_encodings.input_ids and X_train:")
-print(train_encodings.input_ids.shape, len(X_train))
-
-print("Shapes of train_encodings.attention_mask and X_train:")
-print(train_encodings.attention_mask.shape, len(X_train))
-
-# Convert labels to tensors
-train_labels = torch.tensor(y_train, dtype=torch.long)
-test_labels = torch.tensor(y_test, dtype=torch.long)
-
-# Create train and test datasets
-train_dataset = torch.utils.data.TensorDataset(train_encodings.input_ids.squeeze(), train_encodings.attention_mask.squeeze(), train_labels)
-test_dataset = torch.utils.data.TensorDataset(test_encodings.input_ids.squeeze(), test_encodings.attention_mask.squeeze(), test_labels)
-
-train_dataloader = torch.utils.data.DataLoader(train_dataset, batch_size=16, shuffle=True)
-test_dataloader = torch.utils.data.DataLoader(test_dataset, batch_size=16, shuffle=False)
 
 # %%
 # Step 3: Fine-tune BERT
-model = BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=6)
 
 # Hyperparameters
+batch_size = 16
 learning_rate = 1e-5
-optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
 loss_fn = torch.nn.CrossEntropyLoss()
-num_epochs = 3
-total_steps = len(train_dataloader) * num_epochs
-progress_bar = tqdm(total=total_steps, desc="Training")
+num_epochs = 100
+
+# Step 3: Split the data
+X_train_val, X_test, y_train_val, y_test = train_test_split(lyrics, labels, test_size=0.2, random_state=42)
+
+# Convert data to BERT input format
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+test_encodings = tokenizer(X_test, truncation=True, padding=True,return_tensors="pt")
+test_labels = torch.tensor(y_test, dtype=torch.long)
+test_dataset = torch.utils.data.TensorDataset(test_encodings.input_ids.squeeze(), test_encodings.attention_mask.squeeze(), test_labels)
+test_dataloader = torch.utils.data.DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
+
 
 # Train the model
-device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
+model = BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=6)
+optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
+device = torch.device('cuda:4') if torch.cuda.is_available() else torch.device('cpu')
 model.to(device)
 
+# Train the model with cross-validation and track accuracy
+train_accuracies = []
+val_accuracies = []
+
 for epoch in range(num_epochs):
+    # Create train and validation datasets
+    X_train, X_val, y_train, y_val = train_test_split(X_train_val, y_train_val, test_size=0.2)
+
+    train_encodings = tokenizer(X_train, truncation=True, padding=True,return_tensors="pt")
+    val_encodings = tokenizer(X_val, truncation=True, padding=True, return_tensors="pt")
+
+    val_labels = torch.tensor(y_val, dtype=torch.long)
+    train_labels = torch.tensor(y_train, dtype=torch.long)
+
+    train_dataset = torch.utils.data.TensorDataset(train_encodings.input_ids.squeeze(), train_encodings.attention_mask.squeeze(), train_labels)
+    val_dataset = torch.utils.data.TensorDataset(val_encodings.input_ids.squeeze(), val_encodings.attention_mask.squeeze(), val_labels)
+
+    train_dataloader = torch.utils.data.DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+    val_dataloader = torch.utils.data.DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
+
+
+    # Reset the progress bar for each epoch
+    progress_bar = tqdm(total=len(train_dataloader), desc=f"Epoch {epoch + 1}/{num_epochs}")
+    
+    # Training loop
     model.train()
+    train_preds = []
+    train_targets = []
+
     for batch in train_dataloader:
         optimizer.zero_grad()
         input_ids, attention_mask, labels = batch
@@ -80,45 +93,68 @@ for epoch in range(num_epochs):
         attention_mask = attention_mask.to(device)
         labels = labels.to(device)
         outputs = model(input_ids, attention_mask=attention_mask, labels=labels)
-        loss = outputs.loss
+        logits = outputs.logits
+        preds = torch.argmax(logits, dim=1)
+        loss = loss_fn(logits, labels)
         loss.backward()
         optimizer.step()
 
+        train_preds.extend(preds.cpu().numpy())
+        train_targets.extend(labels.cpu().numpy())
+
         progress_bar.update(1)
 
-    # Step 4: Encode the data
-    model.eval()
-    with torch.no_grad():
-        train_embeddings = []
-        for batch in train_dataloader:
-            input_ids, attention_mask, _ = batch
-            input_ids = input_ids.to(device)
-            attention_mask = attention_mask.to(device)
-            outputs = model(input_ids, attention_mask=attention_mask)
-            embeddings = outputs.last_hidden_state.mean(dim=1)
-            train_embeddings.append(embeddings.detach().cpu().numpy())
+    # Calculate training accuracy
+    train_accuracy = accuracy_score(train_targets, train_preds)
+    train_accuracies.append(train_accuracy)
 
-        test_embeddings = []
-        for batch in test_dataloader:
-            input_ids, attention_mask, _ = batch
+    # Validation loop
+    model.eval()
+    val_preds = []
+    val_targets = []
+
+    with torch.no_grad():
+        for batch in val_dataloader:
+            input_ids, attention_mask, labels = batch
             input_ids = input_ids.to(device)
             attention_mask = attention_mask.to(device)
+            labels = labels.to(device)
             outputs = model(input_ids, attention_mask=attention_mask)
             logits = outputs.logits
-            embeddings = torch.softmax(logits, dim=1)
-            test_embeddings.append(embeddings.detach().cpu().numpy())
+            preds = torch.argmax(logits, dim=1)
 
-    train_embeddings = np.concatenate(train_embeddings)
-    test_embeddings = np.concatenate(test_embeddings)
+            val_preds.extend(preds.cpu().numpy())
+            val_targets.extend(labels.cpu().numpy())
 
-    # Step 5: Train a classifier
-    classifier = SVC(kernel='rbf')
-    classifier.fit(train_embeddings, y_train)
+    # Calculate validation accuracy
+    val_accuracy = accuracy_score(val_targets, val_preds)
+    val_accuracies.append(val_accuracy)
+    progress_bar.set_postfix({"Training Accuracy": train_accuracy, "Validation Accuracy": val_accuracy})
 
-    # Step 6: Evaluate the model
-    y_pred = classifier.predict(test_embeddings)
-    accuracy = accuracy_score(y_test, y_pred)
-    print("Accuracy:", accuracy)
+    progress_bar.close()
 
-progress_bar.close()
-# %%
+# Test loop
+model.eval()
+test_preds = []
+test_targets = []
+
+with torch.no_grad():
+    for batch in test_dataloader:
+        input_ids, attention_mask, labels = batch
+        input_ids = input_ids.to(device)
+        attention_mask = attention_mask.to(device)
+        labels = labels.to(device)
+        outputs = model(input_ids, attention_mask=attention_mask)
+        logits = outputs.logits
+        preds = torch.argmax(logits, dim=1)
+
+        test_preds.extend(preds.cpu().numpy())
+        test_targets.extend(labels.cpu().numpy())
+
+# Calculate test accuracy
+test_accuracy = accuracy_score(test_targets, test_preds)
+print(f"Test Accuracy: {test_accuracy}")
+
+# Final validation accuracy
+final_val_accuracy = np.mean(val_accuracies)
+print(f"Final Mean Validation Accuracy: {final_val_accuracy}")
