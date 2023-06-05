@@ -9,13 +9,14 @@ from torch.nn import functional as F
 # =============================================================================
 
 # Define the hyperparameters
-embed_dim = 100
+embed_dim = 500
 sequence_len = 100
-input_dim = embed_dim * sequence_len
+tfidf_dim = 50000
+input_dim = embed_dim * sequence_len + tfidf_dim
 hidden_dim = 400
 latent_dim = 20
 num_epochs = 20
-batch_size = 16
+batch_size = 32
 learning_rate = 1e-3
 
 
@@ -99,28 +100,29 @@ df.dropna(inplace=True)  # Remove missing values
 lyrics = df['lyrics'].to_list()  # Convert the lyrics column to a list
 labels = df['release_date'].map(label_years).to_list()  # Convert the year column to a list
 
+
 class LyricsDataset(Dataset):
-    def __init__(self, lyrics, labels, num_words=100000, sequence_length=sequence_len,embedding_dim=embed_dim):
+    def __init__(self, lyrics, labels,vectorizer, num_words=100000, sequence_length=sequence_len,embedding_dim=embed_dim):
         self.sequence_length = sequence_length
         self.embedding_dim = embedding_dim
         self.tokenizer = Tokenizer(num_words=num_words, oov_token="<OOV>")
         self.tokenizer.fit_on_texts(lyrics)
 
         # TF-IDF Vectorizer
-        self.tfidf = TfidfVectorizer(max_features=num_words)
+        self.tfidf = vectorizer
         tfidf_matrix = self.tfidf.fit_transform(lyrics)
         print("TF-IDF matrix shape: ", tfidf_matrix.shape)
 
         # Word2Vec
-        if os.path.exists("../models/word2vec.model"):
-            print("Loading Word2Vec model...")
-            self.w2v_model = Word2Vec.load("../models/word2vec.model")
+        if os.path.exists(f"../models/word2vec_{embed_dim}.model"):
+            print(f"Loading Word2Vec model_{embed_dim}...")
+            self.w2v_model = Word2Vec.load(f"../models/word2vec.model")
         else:
-            print("Training Word2Vec model...")
+            print(f"Training Word2Vec model_{embed_dim}...")
             tokenized_lyrics = [word_tokenize(sentence) for sentence in lyrics]
             self.w2v_model = Word2Vec(sentences=tokenized_lyrics,vector_size=embedding_dim, window=10, min_count=1, workers=4, sg=1)
             self.w2v_model.train(tokenized_lyrics, total_examples=len(tokenized_lyrics), epochs=20)
-            self.w2v_model.save("../models/word2vec.model")
+            self.w2v_model.save(f"../models/word2vec_{embed_dim}.model")
 
         embedding_matrix = np.zeros((num_words, embedding_dim))
 
@@ -176,8 +178,8 @@ def train(model, criterion, optimizer, dataloader, device):
 
         rec_loss = F.binary_cross_entropy(outputs, inputs, reduction='sum')
         kl_div_loss = -0.5 * torch.sum(1 + logvar - mu.pow(2) - logvar.exp())
-        print("rec_loss: ", rec_loss.item())
-        print("kl_div_loss: ", kl_div_loss.item())
+        # print("rec_loss: ", rec_loss.item())
+        # print("kl_div_loss: ", kl_div_loss.item())
 
         loss = rec_loss + kl_div_loss
         loss.backward()
@@ -195,8 +197,8 @@ def evaluate(model, criterion, dataloader, device):
 
             rec_loss = F.binary_cross_entropy(outputs, inputs, reduction='sum')
             kl_div_loss = -0.5 * torch.sum(1 + logvar - mu.pow(2) - logvar.exp())
-            print("rec_loss: ", rec_loss.item())
-            print("kl_div_loss: ", kl_div_loss.item())
+            # print("rec_loss: ", rec_loss.item())
+            # print("kl_div_loss: ", kl_div_loss.item())
 
             loss = rec_loss + kl_div_loss
             running_loss += loss.item()
@@ -206,8 +208,13 @@ def evaluate(model, criterion, dataloader, device):
 for epoch in range(num_epochs):
     # split the training data into training and validation sets
     X_train, X_val, y_train, y_val = train_test_split(X_train_val, y_train_val, test_size=0.2, random_state=42)
-    train_data = LyricsDataset(X_train, y_train)
-    valid_data = LyricsDataset(X_val, y_val)
+    # Create the vectorizer
+    vectorizer = TfidfVectorizer(max_features=tfidf_dim, ngram_range=(1, 2), stop_words='english')
+
+    # Fit on the training data
+    vectorizer.fit(X_train)
+    train_data = LyricsDataset(X_train, y_train,vectorizer=vectorizer)
+    valid_data = LyricsDataset(X_val, y_val,vectorizer=vectorizer)
     train_loader = DataLoader(train_data, batch_size=batch_size, shuffle=True)
     valid_loader = DataLoader(valid_data, batch_size=batch_size, shuffle=False)
 
