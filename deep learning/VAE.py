@@ -221,12 +221,13 @@ for epoch in range(num_epochs):
     train_loss = train(model, criterion, optimizer, train_loader, device)
     val_loss = evaluate(model, criterion, valid_loader, device)
     print(f"Epoch {epoch+1}/{num_epochs}.. Train loss: {train_loss}.. Validation loss: {val_loss}")
-
+# %%
 # =============================================================================
 # 4. Evaluate the model
 # =============================================================================
-
-test_data = LyricsDataset(X_test, y_test)
+vectorizer = TfidfVectorizer(max_features=tfidf_dim, ngram_range=(1, 2), stop_words='english')
+vectorizer.fit(X_test)
+test_data = LyricsDataset(X_test, y_test,vectorizer)
 test_loader = DataLoader(test_data, batch_size=batch_size, shuffle=False)
 test_loss = evaluate(model, criterion, test_loader, device)
 print(f"Final Test loss: {test_loss}")
