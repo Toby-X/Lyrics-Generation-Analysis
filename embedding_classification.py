@@ -337,8 +337,3 @@ with open('linkage_matrix.pkl', 'wb') as file:
 plt.figure(figsize=(15, 15))
 dendrogram(linkage_matrix)
 plt.show()
-
-# %%
-# =============================================================================
-# Section 6: Neural Network for Classification
-# =============================================================================

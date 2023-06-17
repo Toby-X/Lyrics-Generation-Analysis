@@ -13,8 +13,6 @@ import re
 from gensim.parsing.preprocessing import strip_multiple_whitespaces
 from nltk.stem.wordnet import WordNetLemmatizer
 from bertopic import BERTopic
-# from cuml.cluster import HDBSCAN
-# from cuml.manifold import UMAP
 from umap import UMAP
 from hdbscan import HDBSCAN
 from bertopic.vectorizers import ClassTfidfTransformer
@@ -91,7 +89,7 @@ def process_combination(*args):
 
     print("Figures saved!\nSaving model...")
     topic_model.save(f"{data_subfolder}/BERTmodel")
-    # print(f"Model saved!\nFinished combination{args}!")
+    print(f"Model saved!\nFinished combination{args}!")
 
 # =============================================================================
 # main funtion
@@ -122,10 +120,6 @@ if not os.path.exists("data/corpus.csv"):
         lyrics_paragraphs = lyrics.split("\n\n")  # split by paragraphs
         lyrics_sentences = [sentence.strip() for paragraph in lyrics_paragraphs for sentence in paragraph.split(".")]
         lyrics_sentences = [sentence for sentence in lyrics_sentences if sentence]
-        
-        # split into lyrics_sentences
-        # corpus.extend(lyrics_sentences)
-        # year.extend([row["year"]] * len(lyrics_sentences))
 
         # split into lyrics_paragraphs
         corpus.extend(lyrics_paragraphs)
