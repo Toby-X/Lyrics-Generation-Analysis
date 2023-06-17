@@ -13,6 +13,7 @@ import gensim.downloader as api
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import GridSearchCV
 
 # %%
 # =============================================================================
@@ -176,6 +177,7 @@ df['label'] = np.where(df['year'] < 2000, 0, 1)
 np.random.seed(515)
 idx = np.repeat(range(10),len(df.iloc[:,0])//10+1)
 df["idx"] = np.random.choice(idx[range(len(df.iloc[:,0]))],size=len(df.iloc[:,0]))
+
 df_train = df.loc[df["idx"]!=0,:]
 df_test = df.loc[df["idx"]==0,:]
 
@@ -277,12 +279,19 @@ from sklearn.linear_model import LogisticRegression
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 
-mr = LogisticRegression(penalty='l1',solver="liblinear",max_iter=10000).fit(data_train_scaled.iloc[:,:(data_train_scaled.shape[1]-1)],np.array(df_train["label"]))
-pred = mr.predict(data_test_scaled.iloc[:,:(data_test_scaled.shape[1]-1)])
+# Grid search & cross validation
+model_l1 = LogisticRegression(penalty='l1',solver="liblinear",max_iter=10000)
+grid_search = GridSearchCV(model_l1, param_grid={'C':np.logspace(-3,3,7)}, cv=5, scoring='accuracy', n_jobs=-1)
+grid_search.fit(data_train_scaled.iloc[:,:(data_train_scaled.shape[1]-1)],np.array(df_train["label"]))
+
+# Best model
+best_model = grid_search.best_estimator_
+pred = best_model.predict(data_test_scaled.iloc[:,:(data_test_scaled.shape[1]-1)])
 print("2 classes accuracy: {:.4f}".format(sum(pred == df_test["label"])/len(pred)))  # todo
 
 # Visualization: word cloud
-mr_coef_all = mr.coef_
+# Draw 5 pictures and choose the most beautiful one
+mr_coef_all = best_model.coef_
 plt.figure(figsize=(20,10))
 for j in range(5):
     for k in range(1):  # todo
