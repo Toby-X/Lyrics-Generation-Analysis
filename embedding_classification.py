@@ -58,10 +58,14 @@ train_lyrics['lyrics'] = train_lyrics['lyrics'].apply(str2list)
 
 # FastText embedding
 all_lyrics = test_lyrics['lyrics'].tolist() + train_lyrics['lyrics'].tolist()
-size = 2000
-# model = FastText(all_lyrics, min_count=1, vector_size=size, workers=4, window=10, sg=1)
-# model.save(f"../models/fasttext_{size}.model")
-model = FastText.load(f"./models/fasttext_{size}.model")
+size = 200
+if not os.path.exists(f"./models/fasttext_{size}.model"):
+    print(f"Training FastText model_{size}...")
+    model = FastText(all_lyrics, min_count=1, vector_size=size, workers=4, window=10, sg=1)
+    model.save(f"./models/fasttext_{size}.model")
+else:
+    print(f"Loading FastText model_{size}...")
+    model = FastText.load(f"./models/fasttext_{size}.model")
 
 # add a new column to the data matrix
 test_lyrics['embedded_lyrics'] = test_lyrics['lyrics'].apply(
@@ -118,11 +122,6 @@ X_train_tfidf = [np.average(embeddings, axis=0, weights=[weights_df_train.loc[wo
                  for lyric, embeddings in zip(train_lyrics['lyrics'], train_lyrics['embedded_lyrics'])]
 X_test_tfidf = [np.average(embeddings, axis=0, weights=[weights_df_test.loc[word, 'weight'] if word in weights_df_test.index else 0 for word in lyric])
                 for lyric, embeddings in zip(test_lyrics['lyrics'], test_lyrics['embedded_lyrics'])]
-
-# X_train_tfidf = [np.average(embeddings, axis=0, weights=[weights_df_train.loc[word, 'weight'] for word in lyric]) 
-#                  for lyric, embeddings in zip(train_lyrics['lyrics'], train_lyrics['embedded_lyrics'])]
-# X_test_tfidf = [np.average(embeddings, axis=0, weights=[weights_df_test.loc[word, 'weight'] for word in lyric]) 
-#                 for lyric, embeddings in zip(test_lyrics['lyrics'], test_lyrics['embedded_lyrics'])]
 
 # max pooling
 X_train = [np.max(embeddings, axis=0)
@@ -256,46 +255,33 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy.interpolate import griddata
 
-# Number of songs and dimensions
 n_songs = len(X_train)
 n_dims = len(X_train[0])
-
-# Create a grid for the songs and dimensions
 songs, dims = np.meshgrid(np.arange(n_songs), np.arange(n_dims))
 
-# Convert list of arrays into a 2D array
 Z = np.vstack(X_train).T
 
-# Flatten the original coordinates to 1D arrays
 x1 = songs.flatten()
 x2 = dims.flatten()
 z = Z.flatten()
 
-# Create a new grid of 100x100 points
 new_songs = np.linspace(songs.min(), songs.max(), 100)
 new_dims = np.linspace(dims.min(), dims.max(), 100)
 new_songs, new_dims = np.meshgrid(new_songs, new_dims)
-
-# Interpolate the data using cubic interpolation
 new_Z = griddata((x1, x2), z, (new_songs, new_dims), method='cubic')
 
-# Create a 3D plot
 fig = plt.figure(figsize=(15, 15))
 ax = fig.add_subplot(111, projection='3d')
-
-# Create a surface plot with the 'coolwarm' colormap
 surface = ax.plot_surface(new_songs, new_dims, new_Z, cmap='coolwarm')
 
-# Adjust the viewing angle
-ax.view_init(30, 30)
+ax.view_init(30, 10)
 
-# Add a colorbar to show the mapping from values to colors
 fig.colorbar(surface, shrink=0.5, aspect=5)
 
 # Add contour lines to highlight specific value ranges
-cset = ax.contourf(new_songs, new_dims, new_Z, zdir='z', offset=Z.min(), cmap='coolwarm', alpha=0.5)
-cset = ax.contourf(new_songs, new_dims, new_Z, zdir='x', offset=songs.min(), cmap='coolwarm', alpha=0.5)
-cset = ax.contourf(new_songs, new_dims, new_Z, zdir='y', offset=dims.max(), cmap='coolwarm', alpha=0.5)
+cset = ax.contourf(new_songs, new_dims, new_Z, zdir='z', offset=Z.min(), cmap='coolwarm', alpha=0)
+cset = ax.contourf(new_songs, new_dims, new_Z, zdir='x', offset=songs.min(), cmap='coolwarm', alpha=0)
+cset = ax.contourf(new_songs, new_dims, new_Z, zdir='y', offset=dims.max(), cmap='coolwarm', alpha=0)
 
 ax.set_xlabel('Songs')
 ax.set_ylabel('Dimensions')
@@ -304,7 +290,7 @@ ax.set_title('3D plot of Lyrics Embeddings')
 
 plt.show()
 
-# %% plot the embedding of words
+# %%
 # =============================================================================
 # Section 6: Plotting the Clustering Results of Words
 # =============================================================================
@@ -316,24 +302,30 @@ import matplotlib.pyplot as plt
 # Get the word embeddings
 word_vectors = model.wv.vectors
 
-# Define the clustering model
-cluster_model = AgglomerativeClustering(distance_threshold=0, n_clusters=None)
+if not os.path.exists('models/cluster_model.pkl'):
+    # Define the clustering model
+    cluster_model = AgglomerativeClustering(distance_threshold=0, n_clusters=None)
 
-# Fit the model to the data
-cluster_model = cluster_model.fit(word_vectors)
+    # Fit the model to the data
+    cluster_model = cluster_model.fit(word_vectors)
 
-# Create a linkage matrix
-linkage_matrix = linkage(word_vectors, 'ward')
+    # Create a linkage matrix
+    linkage_matrix = linkage(word_vectors, 'ward')
 
-# Save the model
-with open('cluster_model.pkl', 'wb') as file:
-    pickle.dump(cluster_model, file)
+    with open('models/cluster_model.pkl', 'wb') as file:
+        pickle.dump(cluster_model, file)
 
-# Save the linkage matrix
-with open('linkage_matrix.pkl', 'wb') as file:
-    pickle.dump(linkage_matrix, file)
+    with open('models/linkage_matrix.pkl', 'wb') as file:
+        pickle.dump(linkage_matrix, file)
+                      
+else:
+    with open('models/cluster_model.pkl', 'rb') as file:
+        cluster_model = pickle.load(file)
 
-# Plot the dendrogram
+    with open('models/linkage_matrix.pkl', 'rb') as file:
+        linkage_matrix = pickle.load(file)
+
 plt.figure(figsize=(15, 15))
 dendrogram(linkage_matrix)
 plt.show()
+# %%

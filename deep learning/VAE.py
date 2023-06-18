@@ -9,9 +9,9 @@ from torch.nn import functional as F
 # =============================================================================
 
 # Define the hyperparameters
-embed_dim = 500
+embed_dim = 200
 sequence_len = 100
-tfidf_dim = 50000
+tfidf_dim = 20000
 input_dim = embed_dim * sequence_len + tfidf_dim
 hidden_dim = 400
 latent_dim = 20
@@ -46,7 +46,7 @@ class VAE(nn.Module):
     def reparameterize(self, mu, logvar):
         std = torch.exp(0.5*logvar)
         eps = torch.randn_like(std)
-        return mu + eps*std  #TODO: Reparameterization trick
+        return mu + eps*std
 
     def decode(self, z):
         return self.decoder(z)
@@ -111,7 +111,7 @@ class LyricsDataset(Dataset):
         # TF-IDF Vectorizer
         self.tfidf = vectorizer
         tfidf_matrix = self.tfidf.fit_transform(lyrics)
-        print("TF-IDF matrix shape: ", tfidf_matrix.shape)
+        # print("TF-IDF matrix shape: ", tfidf_matrix.shape)
 
         # Word2Vec
         if os.path.exists(f"../models/word2vec_{embed_dim}.model"):
@@ -132,19 +132,19 @@ class LyricsDataset(Dataset):
                 count += 1
                 embedding_matrix[i] = self.w2v_model.wv[word]
         
-        print("Number of words in Word2Vec vocabulary: ", count)
+        # print("Number of words in Word2Vec vocabulary: ", count)
 
         sequences = self.tokenizer.texts_to_sequences(lyrics)
         sequences = pad_sequences(sequences, maxlen=self.sequence_length)
-        print('sequences shape:', sequences.shape)
+        # print('sequences shape:', sequences.shape)
 
         # Reshape the embedding matrix
         reshaped_embedding = embedding_matrix[sequences].reshape(len(sequences), -1)
-        print('reshaped_embedding shape:', reshaped_embedding.shape)
+        # print('reshaped_embedding shape:', reshaped_embedding.shape)
 
         tfidf_matrix = tfidf_matrix.toarray()
         self.x_data = np.concatenate([tfidf_matrix, reshaped_embedding], axis=1)
-        print('x_data shape:', self.x_data.shape)
+        # print('x_data shape:', self.x_data.shape)
         self.y_data = labels
         self.n_samples = len(self.x_data)
 
@@ -197,8 +197,8 @@ def evaluate(model, criterion, dataloader, device):
 
             rec_loss = F.binary_cross_entropy(outputs, inputs, reduction='sum')
             kl_div_loss = -0.5 * torch.sum(1 + logvar - mu.pow(2) - logvar.exp())
-            # print("rec_loss: ", rec_loss.item())
-            # print("kl_div_loss: ", kl_div_loss.item())
+            print("rec_loss: ", rec_loss.item())
+            print("kl_div_loss: ", kl_div_loss.item())
 
             loss = rec_loss + kl_div_loss
             running_loss += loss.item()
