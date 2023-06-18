@@ -1,5 +1,9 @@
 # Lyrics-Generation-Analysis
 
+## Paper
+
+`Statistical_Learning_Paper.pdf` is the course paper.
+
 ## Project Structure
 
 In `preprocess.ipynb` we preprocess the data and transform original data into word frequency table.
