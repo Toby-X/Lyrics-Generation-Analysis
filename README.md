@@ -22,6 +22,10 @@ In `deep learning/neural_classifier.py` we trained a neural network to perform l
 
 In `deep learning/VAE.py` we experimented with a Variational Auto-encoder to learn the features of lyrics in a low-dimensional latent space.
 
+In `Topic_Modeling.Rmd` we trained several unsupervised learning algotihms, including PCA, UMAP, t-SNE to find support for time period division.
+
+In `song_test.Rmd` we perform EDA and related exploration.
+
 ## Original Data
 
 `data/billboard_lyrics_genres.csv` is the original data scraped with genere.
