@@ -37,13 +37,11 @@ def custom_loss(outputs, labels,hidden_outputs, alpha=1.0, beta=0.01):
     criterion = nn.CrossEntropyLoss()
     loss1 = criterion(outputs, labels)
 
-    """
     # Perform clustering on the hidden outputs
+    # this loss is controlle by the hyperparameter alpha
     kmeans = KMeans(n_clusters=6, random_state=0,n_init='auto').fit(hidden_outputs.detach().numpy())
-
     cluster_labels = torch.tensor(kmeans.labels_)
     loss2 = nn.MSELoss()(labels.float(), cluster_labels.float())
-    """
 
     # L1 regularization
     l1_reg = torch.tensor(0.)
@@ -101,8 +99,8 @@ X_train_val, X_test, y_train_val, y_test = train_test_split(X, y, test_size=0.2,
 num_epochs = 100
 batch_size = 16
 weight_decay = 0.01  # l2 penalty
-alpha = 0.0
-beta = 0.0000  # l1 penalty
+alpha = 1
+beta = 0.00001  # l1 penalty
 loss_fn = custom_loss
 
 model = LyricsClassifier()
