@@ -5,11 +5,8 @@ from gensim.utils import simple_preprocess
 from gensim.parsing.preprocessing import remove_stopwords
 from gensim import corpora
 from collections import defaultdict
-import pprint
 import re
-from gensim import models
-from scipy.sparse import lil_matrix, hstack, csr_matrix, vstack
-import gensim.downloader as api
+from scipy.sparse import lil_matrix, hstack, csr_matrix
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LogisticRegression

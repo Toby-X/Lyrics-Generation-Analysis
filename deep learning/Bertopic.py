@@ -92,7 +92,7 @@ def process_combination(*args):
     print(f"Model saved!\nFinished combination{args}!")
 
 # =============================================================================
-# main funtion
+# main function
 # =============================================================================
 
 if not os.path.exists("data/corpus.csv"):
