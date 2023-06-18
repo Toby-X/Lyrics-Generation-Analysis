@@ -25,10 +25,10 @@ def label_years(year):
     else:
         return 5
     
-df = pd.read_csv("./data/lyrics-data/lyrics_and_metadata_1950_2019.csv")
+df = pd.read_csv("../data/lyrics4Bert.csv")
 df.dropna(inplace=True)  # Remove missing values
 lyrics = df['lyrics'].to_list()  # Convert the lyrics column to a list
-labels = df['release_date'].map(label_years).to_list()  # Convert the year column to a list
+labels = df['year'].map(label_years).to_list()  # Convert the year column to a list
 
 
 # %%
@@ -38,7 +38,7 @@ labels = df['release_date'].map(label_years).to_list()  # Convert the year colum
 batch_size = 16
 learning_rate = 1e-5
 loss_fn = torch.nn.CrossEntropyLoss()
-num_epochs = 100
+num_epochs = 20
 
 # Step 3: Split the data
 X_train_val, X_test, y_train_val, y_test = train_test_split(lyrics, labels, test_size=0.2, random_state=42)
@@ -54,12 +54,13 @@ test_dataloader = torch.utils.data.DataLoader(test_dataset, batch_size=batch_siz
 # Train the model
 model = BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=6)
 optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
-device = torch.device('cuda:4') if torch.cuda.is_available() else torch.device('cpu')
+device = torch.device('cuda:2') if torch.cuda.is_available() else torch.device('cpu')
 model.to(device)
 
 # Train the model with cross-validation and track accuracy
 train_accuracies = []
 val_accuracies = []
+test_accuracies = []
 
 for epoch in range(num_epochs):
     # Create train and validation datasets
@@ -131,6 +132,30 @@ for epoch in range(num_epochs):
     val_accuracies.append(val_accuracy)
     progress_bar.set_postfix({"Training Accuracy": train_accuracy, "Validation Accuracy": val_accuracy})
 
+    # Test loop
+    model.eval()
+    test_preds = []
+    test_targets = []
+
+    with torch.no_grad():
+        for batch in test_dataloader:
+            input_ids, attention_mask, labels = batch
+            input_ids = input_ids.to(device)
+            attention_mask = attention_mask.to(device)
+            labels = labels.to(device)
+            outputs = model(input_ids, attention_mask=attention_mask)
+            logits = outputs.logits
+            preds = torch.argmax(logits, dim=1)
+
+            test_preds.extend(preds.cpu().numpy())
+            test_targets.extend(labels.cpu().numpy())
+
+    # Calculate test accuracy
+    test_accuracy = accuracy_score(test_targets, test_preds)
+    test_accuracies.append(test_accuracy)
+    print(f"Test Accuracy: {test_accuracy}")
+
+
     progress_bar.close()
 
 # Test loop
@@ -155,6 +180,23 @@ with torch.no_grad():
 test_accuracy = accuracy_score(test_targets, test_preds)
 print(f"Test Accuracy: {test_accuracy}")
 
-# Final validation accuracy
-final_val_accuracy = np.mean(val_accuracies)
-print(f"Final Mean Validation Accuracy: {final_val_accuracy}")
+# %%
+# visualize training process
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(10, 5))
+
+plt.plot(train_accuracies, label='train', color='blue')
+plt.plot(val_accuracies, label='validation', color='green')
+plt.plot(test_accuracies, label='test', color='red')
+
+plt.title('Accuracy Over Epochs')
+
+plt.xticks(range(0, len(train_accuracies), max(len(train_accuracies)//10, 1)))
+
+plt.xlabel('Epoch')
+plt.ylabel('Accuracy')
+plt.legend()
+plt.show()
+plt.savefig('BERT_accuracy.png')
+# %%
