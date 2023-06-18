@@ -1,0 +1,760 @@
+---
+title: "Final Project.Rmd"
+author: "Cenhao Zhu"
+date: "2023-05-17"
+output: html_document
+---
+
+```{r}
+train_TM <- read.csv(file="/Users/zhucenhao/Desktop/statistics/统计学习导论/Final Project/train_data.csv")
+test_TM <- read.csv(file="/Users/zhucenhao/Desktop/statistics/统计学习导论/Final Project/test_data.csv")
+```
+
+```{r}
+# get the stop_word dictionary
+stop_word <- stopwords::stopwords(language = "en", source = "snowball", simplify = TRUE)
+word_delete_stop <- tidytext::stop_words
+```
+
+```{R}
+# 3875 columns
+song <- rbind(train_TM, test_TM)
+```
+
+```{r}
+song$word_count<- rowSums(song[,-c(1,3875)])
+```
+
+```{r}
+### delete columns with word_count < 50, 36 songs in total
+nrow(subset(song, word_count < 50))
+```
+
+```{R}
+# Delete 21 60s songs; 11 70s songs; 1 90s songs; and 2 10s songs
+result <- aggregate(word_count ~ label.1, data=song, FUN=function(x) sum(x < 50))
+colnames(result) <- c("label.1", "count_A_lt_50")
+```
+
+```{r}
+# screen those songs with less than 50 word counts
+song_screen <- subset(song, word_count > 50)
+
+# compute the average lyrics length for each decade
+word_count_decade_average <- aggregate(song_screen$word_count, by=list(song_screen$label.1), FUN=mean)
+colnames(word_count_decade_average) <- c("label.1", "average_word_count")
+```
+
+```{r}
+# delete_words_index <- c(13, 14, 29, 30, 59, 60, 66, 79, 103, 121, 143, 177, 246, 249, 251, 252, 254, 290, 303, 304, 327, 351, 392, 427, 457, 464, 478, 484, 500, 505, 544, 669, 683, 709, 737, 772, 773, 798, 865, 921, 983, 1097, 1116, 1244, 1259, 1590, 1779, 1780, 1782, 1864, 1873, 1895, 1952, 1959, 1989, 1990, 1991, 1993, 2002, 2007, 2047, 2072, 2077, 2113, 2182, 2231, 2253, 2381, 2454, 2511, 2747, 2934, 2935, 2984, 3018, 3104, 3112, 3123, 3138, 3164, 3225, 3264, 3287, 3354, 3363, 3391, 3550, 3567, 3570, 3620, 3632, 3633, 3634)
+
+delete_words_manual <- as.vector(read.csv(file="/Users/zhucenhao/Desktop/statistics/统计学习导论/Final Project/manual_delete.txt"))
+delete_words_manual <- delete_words_manual$x
+```
+
+```{r}
+# Delete the words which contain symbols like dot
+delete_word_dot <- grep("\\.", colnames(song_screen), value = TRUE)
+delete_word_dot <- delete_word_dot[-9]
+```
+
+```{r}
+# delete the words with less than three characters
+delete_word_char <- colnames(song_screen[,nchar(colnames(song_screen)) < 3])
+```
+
+```{r}
+# delete words starting with contributors (not in the lyric)
+delete_word_contributor <- grep("\\contributor", colnames(song_screen), value = TRUE)
+```
+
+
+```{r}
+# select words that have high correlation
+# compute correlation between column A and the remaining columns
+correlations <- cor(song_screen[,-c(1,3875, 3876)], song_screen$label.1)
+
+# output the column names with correlations above 0.05
+high_cor_words <- names(correlations[abs(correlations) > 0.05,])
+```
+
+```{r}
+delete_word_pooled <- c(delete_words_manual, delete_word_char, delete_word_contributor, delete_word_dot, stop_word, word_delete_stop$word)
+```
+
+```{r}
+# calculate percentage of non-zero values in each column
+percent_nonzero <- apply(song_screen[,-c(1,3875,3876)], 2, function(x) sum(x != 0) / length(x))
+
+# identify which columns have more than 10% non-zero values (words that exist in more than 10% of the songs)
+hot_words <- names(percent_nonzero[percent_nonzero > 0.1])
+```
+
+```{r}
+hot_words[!hot_words %in% delete_word_pooled]
+# suggest us to delete "yeah", "just", "now", "ooh", "got", "wanna", "gonna", "hey", "things", "gotta", "gone", "come", "embed", "say", "said", "told", "thing", "see", "hear","aha:, "izz", "vincent", "simon", "anne", "bennie", "ben")
+```
+
+
+```{r}
+# delete some of the frequent appeared words
+delete_word_supplement <- c("yeah", "just", "now", "ooh", "got", "wanna", "gonna", "hey", "things", "gotta", "gone", "come", "embed", "say", "said", "told", "thing", "see", "hear", "aha", "izz", "vincent", "simon", "anne", "bennie", "ben", "aww")
+delete_word_pooled <- c(delete_word_pooled, delete_word_supplement)
+# 408 words are deleted
+delete_word_pooled <- unique(delete_word_pooled)
+```
+
+```{r}
+# see which of the correlation words intersect with high-correlation words
+intersect(delete_word_pooled, high_cor_words)
+```
+
+
+```{r}
+# 3244 columns
+song_screen <- song_screen[, !colnames(song_screen) %in% delete_word_pooled]
+```
+
+
+```{r}
+# merge 60s, 70s and 80s into one category
+song$label_new <- ifelse(song$label.1 %in% c(0, 1, 2), 0,
+                     ifelse(song$label.1 == 3, 1,
+                            ifelse(song$label.1 == 4, 2,
+                                   ifelse(song$label.1 == 5, 3, NA))))
+```
+
+```{r}
+# List all the remaining lyrics
+lyrics_screen <- colnames(song_screen)
+```
+
+```{r}
+# delete words that are names (Don't Run)
+delete_word_name <- unique(babynames::babynames$name)
+delete_word_name <- tolower(delete_word_name)
+intersect(lyrics_screen, delete_word_name[1:3000])
+```
+
+```{r}
+delete_word_name_manual <- c("jenny", "louie", "jimmy", "may", "wah", "joe", "lisa", "george", "tommy", "judy", "jason", "luke", "monica", "emily", "james", "lucy", "sam", "johnson", "bob")
+```
+
+```{r}
+song_screen <- song_screen[, !colnames(song_screen[,-c(3243, 3244)]) %in% delete_word_name_manual]
+
+# List all the remaining lyrics, 
+lyrics_screen <- colnames(song_screen[,!colnames(song_screen) %in% c("label.1", "word_count")])
+```
+
+```{r}
+write.csv(song_screen, file="/Users/zhucenhao/Desktop/statistics/统计学习导论/Final Project/data_cleaned2_csv")
+```
+
+```{r}
+delete_word_all <- c(delete_word_pooled, delete_word_name_manual)
+delete_word_all <- unique(delete_word_all)
+write.csv(delete_word_all, file="/Users/zhucenhao/Desktop/statistics/统计学习导论/Final Project/delete_word_list2.txt")
+```
+
+
+
+
+
+```{r}
+# Count number of non-zero entries in each column
+non_zero_counts <- apply(song_screen[,-c(3225, 3226)], 2, function(x) sum(x != 0))
+cloud_count <- data.frame(word = names(non_zero_counts), freq = non_zero_counts)
+wordcloud2::wordcloud2(cloud_count[1:250,], size = .5)
+```
+
+```{r}
+# Count words' occurances (normalized)
+non_zero_counts2 <- apply(song_screen[,-c(3225, 3226)], 2, function(x) sum(x)/song_screen$word_count)
+cloud_count2 <- data.frame(word = names(non_zero_counts), freq = non_zero_counts)
+wordcloud2::wordcloud2(cloud_count2[1:250,], size = .5)
+```
+
+```{r}
+# Count number of non-zero entries in each column
+cloud_count <- list()
+for (i in 1:6)
+{
+  song_screen_decade <- song_screen[song_screen$label.1 == i-1,]
+  non_zero_counts <- apply(song_screen_decade[,-c(3515, 3516)], 2, function(x) sum(x != 0))
+  cloud_count[[i]] <- data.frame(word = names(non_zero_counts), freq = non_zero_counts)
+}
+```
+
+```{r}
+# top hot songs
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+
+# create a new data frame with the top 20 words for each decade
+top_words <- song_screen[,-3516] %>% 
+  gather(word, count, -decades) %>% 
+  group_by(decades) %>% 
+  top_n(20, count) %>% 
+  arrange(desc(count))
+
+# plot the top words for each decade
+ggplot(top_words, aes(x = reorder(word, count), y = count, fill = decades)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ decades, scales = "free_x", nrow = 5) +
+  scale_y_continuous(expand = c(0, 0)) +
+  coord_flip() +
+  labs(x = "Word", y = "Count", title = "Top 20 Words by Decade")
+```
+
+```{r}
+library(gridExtra)
+
+# Create a list of ggplot objects for each decade
+plots <- list()
+# Define colors for each plot
+colors <- c("red", "blue", "yellow", "green", "purple", "orange")
+
+for (i in 1:6) 
+{
+  df_sorted <- cloud_count[[i]][order(-cloud_count[[i]]$freq),]
+  top_20 <- head(df_sorted, 20)
+
+  plot_title <- paste0("top_words_", c("60s", "70s", "80s", "90s", "00s", "10s")[i])
+  
+  # Use different fill colors for each plot
+  fill_color <- colors[i]
+  
+  plots[[i]] <- ggplot(data = top_20, aes(x = freq, y = reorder(word, freq))) + 
+    geom_bar(fill=fill_color, stat = "identity") + 
+    labs(title = plot_title,
+         x = "Frequency", y = "Words")
+}
+
+# Arrange the plots in a 2x3 grid
+grid.arrange(grobs = plots, ncol = 3)
+```
+
+```{r}
+library(tidytext)
+library(dplyr)
+library(tidyr)
+
+n_song_total <- 5085
+
+# Convert the data frame to a tidy format
+song_name_label <- as.character(rownames(song_screen))
+song_screen_tfdif <- cbind(song_screen, song_name_label)
+
+# Convert the data frame to a tidy format
+song_words<- song_screen_tfdif[-c(3515, 3516)] %>%
+    gather(word, count, -song_name_label)
+
+# Calculate the TF for each word in each song
+song_words <- song_words %>%
+    group_by(song_name_label) %>%
+    mutate(tf = count / sum(count))
+    
+# Calculate the IDF for each word
+word_idf <- song_words %>%
+    group_by(word) %>%
+    summarise(n_songs = n_distinct(song_name)) %>%
+    mutate(idf = log(n_song_total/ (n_songs + 1)))
+
+# Join the TF and IDF values
+song_words <- song_words %>%
+    left_join(word_idf)
+
+# Calculate the TF-IDF values for each word in each song
+song_words <- song_words %>%
+    mutate(tf_idf = tf * idf)
+
+# Pivot the data frame to a wide format
+song_tfidf <- song_words %>%
+    select(song_name_label, word, tf_idf) %>%
+    spread(word, tf_idf)
+```
+
+```{r}
+# top hot songs
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+
+# create a new data frame with the top 20 words for each decade
+top_words <- song_screen[,-3516] %>% 
+  gather(word, count, -decades) %>% 
+  group_by(decades) %>% 
+  top_n(20, count) %>% 
+  arrange(desc(count))
+
+# plot the top words for each decade
+ggplot(top_words, aes(x = reorder(word, count), y = count, fill = decades)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ decades, scales = "free_x", nrow = 5) +
+  scale_y_continuous(expand = c(0, 0)) +
+  coord_flip() +
+  labs(x = "Word", y = "Count", title = "Top 20 Words by Decade")
+```
+
+
+```{r}
+library(dplyr)
+library(dbplyr)
+top_words <- song_screen %>%
+  group_by(label.1) %>%
+  summarise(across(everything(), sum)) %>%
+  pivot_longer( names_to = "word", values_to = "count") %>%
+  top_n(20, count)
+```
+
+
+####### Not run
+```{r}
+# Specify the classes for the first five columns
+col_classes <- c("integer", "integer", "character", "character", "integer")
+
+# Read in the first five columns of the CSV file
+song_name <- data.table::fread(file="/Users/zhucenhao/Desktop/statistics/统计学习导论/Final Project/df_train.csv", select=c(1,3:5), header=TRUE)
+```
+
+```{r}
+song_name
+```
+
+############
+
+
+
+
+
+```{r}
+TM_matrix <- t(as.matrix(song_screen))
+TM_matrix <- TM_matrix[-c(3225, 3226),]
+
+word_count <- song_screen$word_count
+
+# Normalize the columns
+TM_matrix_normalized <- matrix(0, nrow=3224, ncol=5085)
+for (i in 1: 3224)
+{
+  TM_matrix_normalized[i,] <- TM_matrix[i,]/song_screen$word_count
+}
+```
+
+
+```{r}
+### suggested K0 = rounded(1.5*K)
+###            L = 10*K
+norm_score <- function(K, K0, m, D, Mquantile=0, scatterplot=FALSE, VHMethod = 'SVS')
+{
+  library('TopicScore')
+  library('rARPACK')
+  library('nnls')
+  p <- dim(D)[1]
+  n <- dim(D)[2]
+  M <- rowMeans(D)
+  M_trunk <- pmin(M,quantile(M,Mquantile))
+  
+  obj <- svds(sqrt(M_trunk^(-1))*D, K)
+  Xi <- obj$u
+  
+  #Step 1
+  Xi[,1] <- abs(Xi[,1])
+  R <- apply(Xi[,2:K],2,function(x) x/Xi[,1])
+  
+  num_restart=1
+  
+  #Step 2
+  if (VHMethod == 'SVS')
+  {
+    vertices_est_obj <- vertices_est(R,K0,m, num_restart)
+    V <- vertices_est_obj$V
+    theta <- vertices_est_obj$theta
+  } 
+  else if (VHMethod == 'SP')
+  {
+    vertices_est_obj <- successiveProj(R, K)
+    V <- vertices_est_obj$V
+    theta <- NULL
+  } 
+  else if (VHMethod == 'SVS-SP')
+  {
+    vertices_est_obj <- vertices_est_SP(R, m)
+    V <- vertices_est_obj$V
+    theta <- NULL
+  }
+  
+  
+  if (scatterplot)
+  {
+    print('wrong!')
+    par(mar=c(1,1,1,1))
+    plot(R[,1],R[,2])
+    points(V[,1],V[,2],col=2,lwd=5)
+  }
+  
+  #Step 3
+  Pi <- cbind(R, rep(1,p))%*%solve(cbind(V,rep(1,K)))
+  Pi <- pmax(Pi,0)
+  temp <- rowSums(Pi)
+  Pi <- apply(Pi,2,function(x) x/temp)
+  
+  # Step 4
+  A_hat <- sqrt(M_trunk)*Xi[,1]*Pi
+  
+  # Step 5
+  temp <- colSums(A_hat)
+  A_hat <- t(apply(A_hat,1,function(x) x/temp))
+  
+  return(list(A_hat=A_hat, R=R,V=V, Pi=Pi, theta=theta))
+}
+```
+
+```{r}
+successiveProj <- function(R, K)
+{
+  # succesive projection on rows of R
+  n <- dim(R)[1]
+  
+  Y <- cbind(rep(1,n),R)
+  indexSet = c()
+  while (length(indexSet) < K)
+  {
+    l2Norms <- apply(Y,1,function(x) sqrt(sum(x^2)))
+    index <- which(l2Norms == max(l2Norms))
+    indexSet <- c(indexSet, index)
+    u <- Y[index,] / sqrt(sum(Y[index,]^2))
+    Y <- t(apply(Y,1,function(x) x-sum(x*u)*u))
+  }
+  return(list(V=R[indexSet,], indexSet=indexSet))
+}
+```
+
+```{r}
+vertices_est_SP <- function(R,m)
+{
+  library(quadprog)
+  K <- dim(R)[2] + 1
+  
+  obj <- kmeans(R,m,iter.max=K*100,nstart = K*10)
+  theta <- as.matrix(obj$centers)
+  return(successiveProj(theta, K))
+}
+```
+
+```{r}
+A_hat <- norm_score(K=3, K0=5, m=30, TM_matrix_normalized, Mquantile = 0.1, scatterplot = "TRUE", VHMethod = "SVS")$A_hat
+```
+
+```{R}
+# To find anchor words
+A_hat_visualize <- apply(A_hat, 1, function(x) x / sum(x))
+A_hat_visualize <- t(A_hat_visualize)
+```
+
+```{r}
+###### Don't Run
+
+# Find entries larger than 0.9
+high_entries <- which(A_hat_visualize > 0.98, arr.ind = TRUE)
+
+# Print the results
+if (length(high_entries) == 0) {
+  cat("No entries larger than 0.9 found.\n")
+} else {
+  cat(sprintf("%d entries larger than 0.9 found:\n", length(high_entries)))
+  for (i in 1:nrow(high_entries)) {
+    cat(sprintf("Row: %d, Column: %d, Value: %.2f\n", high_entries[i, 1], high_entries[i, 2], A_hat_visualize[high_entries[i, 1], high_entries[i, 2]]))
+  }
+}
+```
+
+ 
+```{R}
+# Sorting columns in descending order and print the row index of top 10
+top_10_1 <- sort(A_hat_visualize[,1], decreasing = TRUE)[1:10]
+top_10_1_index <- which(A_hat_visualize[,1] %in% top_10_1)
+lyrics_screen[top_10_1_index]
+
+top_10_2 <- sort(A_hat_visualize[,2], decreasing = TRUE)[1:10]
+top_10_2_index <- which(A_hat_visualize[,2] %in% top_10_2)
+lyrics_screen[top_10_2_index]
+
+top_10_3 <- sort(A_hat_visualize[,3], decreasing = TRUE)[1:10]
+top_10_3_index <- which(A_hat_visualize[,3] %in% top_10_3)
+lyrics_screen[top_10_3_index]
+```
+
+
+```{r}
+compute_W_from_AD <- function(A_hat, D)
+{
+  library(Matrix)
+  # can also be used as computing A from W and D
+  K <-dim(A_hat)[2]
+  n <- dim(D)[2]
+  
+  W_hat <- matrix(0, K, n)
+  M <- rbind(diag(K-1), rep(-1,K-1))
+  bM <- diag(K)[,K]
+  Dmat <- 2*t(A_hat%*%M)%*%(A_hat%*%M)
+  Amat <- t(M)
+  bvec <- -bM
+  
+  AM <- A_hat%*%M
+  AbM <- A_hat%*%bM
+  for (i in 1:n)
+  {
+    dvec <- 2*t(D[,i]-AbM)%*%AM
+    # Dmat <- matrix(nearPD(Dmat)$mat, nrow(Dmat), ncol(Dmat))
+    # Dmat <- nearPD(Dmat)
+    qp_sol <- quadprog::solve.QP(Dmat, dvec, Amat, bvec)$solution
+    W_hat[,i] <- c(qp_sol, 1-sum(qp_sol))
+  }
+  W_hat <- pmax(W_hat,0)
+  
+  return(W_hat)
+}
+```
+
+
+```{r}
+W_hat <- compute_W_from_AD(A_hat, TM_matrix_normal)
+```
+
+```{r}
+# Find entries larger than 0.9
+high_entries_W <- which(W_hat > 0.9, arr.ind = TRUE)
+```
+
+```{r}
+song_indice1 <- high_entries_W[high_entries_W[,1]==1, 2]-1
+song_indice2 <- high_entries_W[high_entries_W[,1]==2, 2]-1
+song_indice3 <- high_entries_W[high_entries_W[,1]==3, 2]-1
+```
+
+```{r}
+song_name[which(song_name$ID %in% song_indice1), ]$year
+```
+
+```{r}
+library(dplyr)
+song_unique <- song %>% distinct()
+```
+
+```{r}
+library(readr)
+library(Rtsne)
+
+# set.seed(1) # for reproducibility
+tsne <- Rtsne(song_unique[,-3663], dims = 2, check_duplicates= FALSE, perplexity=50, verbose=TRUE, max_iter = 2000)
+```
+
+
+
+```{r}
+colors = rainbow(length(unique(song$label.1)))
+names(colors) = unique(song$label.1)
+```
+
+```{r}
+par(mgp=c(2.5,1,0))
+plot(tsne$Y, t='n', main="tSNE", xlab="tSNE dimension 1", ylab="tSNE dimension 2", "cex.main"=2, "cex.lab"=1.5)
+text(tsne$Y, labels=song$label.1, col=colors[song$label.1])
+```
+
+
+
+
+
+
+
+###### New Test
+
+####### TF-IDF
+
+```{r}
+# Calculate term frequency (tf)
+tf <- apply(song_screen[,-c(3225, 3226)], MARGIN = 1, FUN = function(x) x/sum(x))
+ 
+# Calculate inverse document frequency (idf)
+idf <- log10(ncol(song_screen[,-c(3225, 3226)])/apply(song_screen[,-c(3225, 3226)], MARGIN = 2, FUN = function(x) sum(x > 0)))
+
+# Calculate tf-idf
+song_tf_idf <- t(as.data.frame(tf * idf))
+
+song_tf_idf <- cbind(song_tf_idf,  song_screen[,c(3225, 3226)])
+```
+
+```{r}
+# create new column based on A values
+song_screen$label_new <- ifelse(song_screen$label.1 %in% c(0, 1, 2), 0, 1)
+
+label.1_new <- ifelse(song_screen$label.1 == 0, "1960s",
+            ifelse(song_screen$label.1  == 1, "1970s",
+                   ifelse(song_screen$label.1  == 2, "1980s",
+                          ifelse(song_screen$label.1  == 3, "1990s",
+                                 ifelse(song_screen$label.1  == 4, "2000s", "2010s")))))
+
+label.2_new <- ifelse(song_screen$label_new == 0, "Cold War", "pro Cold War")
+```
+
+```{r}
+library(readr)
+library(Rtsne)
+
+# set.seed(1) # for reproducibility
+tsne <- Rtsne(song_screen[,-c(3225,3226,3227)], dims = 2, check_duplicates= FALSE, perplexity=50, verbose=TRUE, max_iter = 1000)
+```
+
+
+```{r}
+### Don't Run
+par(mgp=c(2.5,1,0))
+plot(tsne$Y, t='n', main="tSNE", xlab="tSNE dimension 1", ylab="tSNE dimension 2", "cex.main"=2, "cex.lab"=1.5)
+text(tsne$Y, labels=song_screen$label.1, col=c("red", "blue","yellow", "green", "black", "purple"))
+```
+
+```{r}
+final_tSNE_6 <- cbind(as.data.frame(tsne$Y), label.1_new) 
+
+fig_tSNE_6 <- plot_ly(final_tSNE_6, x = ~final_tSNE_6[,1], y = ~final_tSNE_6[,2], color = ~label.1_new, colors = c("red", "blue","yellow", "green", "black", "purple"), type = 'scatter', mode = 'markers')%>%  
+  layout(
+    plot_bgcolor = "#e5ecf6",
+    legend=list(title=list(text='decade')), 
+    xaxis = list( title = "tSNE Dimension 1"),  
+    yaxis = list( title = "tSNE Dimension 2")) 
+
+fig_tSNE_6
+```
+
+
+```{r}
+#### Don't Run
+par(mgp=c(2.5,1,0))
+plot(tsne$Y, t='n', main="tSNE", xlab="tSNE dimension 1", ylab="tSNE dimension 2", "cex.main"=2, "cex.lab"=1.5)
+text(tsne$Y, labels=song_screen$label_new, col=c("red", "blue"))
+```
+
+```{r}
+final_tSNE_2 <- cbind(as.data.frame(tsne$Y), label.2_new) 
+
+fig_tSNE_2 <- plot_ly(final_tSNE_2, x = ~final_tSNE_2[,1], y = ~final_tSNE_2[,2], color = ~label.2_new, colors = c("red", "blue"), type = 'scatter', mode = 'markers')%>%  
+  layout(
+    plot_bgcolor = "#e5ecf6",
+    legend=list(title=list(text='time period')), 
+    xaxis = list( title = "tSNE Dimension 1"),  
+    yaxis = list( title = "tSNE Dimension 2")) 
+
+fig_tSNE_2
+```
+
+
+
+```{r}
+### UMAP 
+library(plotly) 
+library(umap) 
+song_screen.data = song_screen[, -c(3225, 3226, 3227)] 
+# song_screen.labels = song_screen[, "Species"] 
+song_screen.umap = umap(song_screen.data, n_components = 2, random_state = 15) 
+layout <- song_screen.umap[["layout"]] 
+layout <- data.frame(layout) 
+
+final <- cbind(layout, label.1_new) 
+
+fig <- plot_ly(final, x = ~X1, y = ~X2, color = ~label.1_new, colors = c("red", "blue","yellow", "green", "black", "purple"), type = 'scatter', mode = 'markers')%>%  
+  layout(
+    plot_bgcolor = "#e5ecf6",
+    legend=list(title=list(text='decade')), 
+    xaxis = list( title = "UMAP Dimension 1"),  
+    yaxis = list( title = "UMAP Dimension 2"))
+
+fig
+
+```
+
+```{R}
+final2 <-  cbind(layout, label.2_new)
+  
+plot_ly(final, x = ~X1, y = ~X2, color = ~label.2_new, colors = c("red", "blue"), type = 'scatter', mode = 'markers')%>%  
+  layout(
+    plot_bgcolor = "#e5ecf6",
+    legend=list(title=list(text='decade')), 
+    xaxis = list( title = "UMAP Dimension 1"),  
+    yaxis = list( title = "UMAP Dimension 2"))
+```
+
+
+##### TF-IDF Data
+
+```{r}
+### UMAP 
+library(plotly) 
+library(umap) 
+song_screen_tfidf.data = song_tf_idf[, -c(3225, 3226)] 
+# song_screen.labels = song_screen[, "Species"] 
+song_screen_tfidf.umap = umap(song_screen_tfidf.data, n_components = 2, random_state = 15) 
+layout_tfidf <- song_screen_tfidf.umap[["layout"]] 
+layout_tfidf <- data.frame(layout_tfidf) 
+
+final_tfidf <- cbind(layout_tfidf, label.1_new) 
+final_tfidf_modified <- final_tfidf[!apply(abs(final_tfidf[,c(1,2)]) > 10, 1, any), ]
+
+plot_ly(final_tfidf_modified, x = ~X1, y = ~X2, color = ~label.1_new, colors = c("red", "blue","yellow", "green", "black", "purple"), type = 'scatter', mode = 'markers')%>%  
+  layout(
+    plot_bgcolor = "#e5ecf6",
+    legend=list(title=list(text='decade')), 
+    xaxis = list( title = "UMAP TF-IDF Dimension 1"),  
+    yaxis = list( title = "UMAP TF-IDF Dimension 2"))
+```
+
+```{R}
+final_tfidf2 <- cbind(layout_tfidf, label.2_new) 
+final_tfidf_modified2 <- final_tfidf2[!apply(abs(final_tfidf2[,c(1,2)]) > 10, 1, any), ]
+  
+plot_ly(final_tfidf_modified2, x = ~X1, y = ~X2, color = ~label.2_new, colors = c("red", "blue"), type = 'scatter', mode = 'markers')%>%  
+  layout(
+    plot_bgcolor = "#e5ecf6",
+    legend=list(title=list(text='decade')), 
+    xaxis = list( title = "UMAP TF-IDF Dimension 1"),  
+    yaxis = list( title = "UMAP TF-IDF Dimension 2"))
+```
+
+
+
+
+```{r}
+library(readr)
+library(Rtsne)
+
+# set.seed(1) # for reproducibility
+tsne_tfidf <- Rtsne(song_screen_tfidf.data, dims = 2, check_duplicates= FALSE, perplexity=25, verbose=TRUE, max_iter = 1000)
+```
+
+```{r}
+final_tfidf_tSNE_2 <- cbind(as.data.frame(tsne_tfidf$Y), label.2_new) 
+
+plot_ly(final_tfidf_tSNE_2, x = ~final_tfidf_tSNE_2[,1], y = ~final_tfidf_tSNE_2[,2], color = ~label.2_new, colors = c("red", "blue"), type = 'scatter', mode = 'markers')%>%  
+  layout(
+    plot_bgcolor = "#e5ecf6",
+    legend=list(title=list(text='time period')), 
+    xaxis = list( title = "tSNE TF-IDF Dimension 1"),  
+    yaxis = list( title = "tSNE TF_IDF Dimension 2")) 
+
+```
+
+```{r}
+final_tfidf_tSNE_6 <- cbind(as.data.frame(tsne_tfidf$Y), label.1_new) 
+
+plot_ly(final_tfidf_tSNE_6, x = ~final_tfidf_tSNE_6[,1], y = ~final_tfidf_tSNE_6[,2], color = ~label.1_new, colors = c("red", "blue","yellow", "green", "black", "purple"), type = 'scatter', mode = 'markers')%>%  
+  layout(
+    plot_bgcolor = "#e5ecf6",
+    legend=list(title=list(text='time period')), 
+    xaxis = list( title = "tSNE TF-IDF Dimension 1"),  
+    yaxis = list( title = "tSNE TF_IDF Dimension 2")) 
+
+```
+

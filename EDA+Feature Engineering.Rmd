@@ -1,0 +1,503 @@
+---
+title: "prince_song_test"
+author: "Cenhao Zhu"
+date: "2023-05-28"
+output: html_document
+---
+
+```{r}
+#define some colors to use throughout
+my_colors <- c("#E69F00", "#56B4E9", "#009E73", "#CC79A7", "#D55E00")
+
+theme_lyrics <- function() 
+{
+  theme(plot.title = element_text(hjust = 0.5),
+        axis.text.x = element_blank(), 
+        axis.ticks = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.position = "none")
+}
+```
+
+```{r}
+song_original <- read.csv("/Users/zhucenhao/Desktop/statistics/统计学习导论/Final Project/df_cluster.csv", stringsAsFactors = FALSE)
+```
+
+```{r}
+library(dplyr)
+song_new <- song_original %>% 
+  select(song_label=X, song_name=title, band_singer, lyrics, year, numword, num_lines, num_paras, av_word_line, av_word_line)
+```
+
+
+```{R}
+glimpse(song_new)
+```
+
+```{R}
+str(song_new[139, ]$lyrics, nchar.max = 1000)
+```
+
+```{r}
+# function to expand contractions in an English-language source
+fix.contractions <- function(doc) {
+  # "won't" is a special case as it does not expand to "wo not"
+  doc <- gsub("won't", "will not", doc)
+  doc <- gsub("can't", "can not", doc)
+  doc <- gsub("n't", " not", doc)
+  doc <- gsub("'ll", " will", doc)
+  doc <- gsub("'re", " are", doc)
+  doc <- gsub("'ve", " have", doc)
+  doc <- gsub("'m", " am", doc)
+  doc <- gsub("'d", " would", doc)
+  # 's could be 'is' or could be possessive: it has no expansion
+  doc <- gsub("'s", "", doc)
+  return(doc)
+}
+```
+
+```{r}
+# fix (expand) contractions
+song_new$lyrics <- sapply(song_new$lyrics, fix.contractions)
+```
+
+```{r}
+# convert everything to lower case
+song_new$lyrics <- sapply(song_new$lyrics, tolower)
+```
+
+```{r}
+str(song_new[139, ]$lyrics, nchar.max = 1000)
+```
+
+```{r}
+summary(song_new)
+```
+
+```{r}
+#create the decade column
+song_new <- song_new %>%
+  mutate(decade = 
+           ifelse(song_new$year %in% 1959:1970, "1960s", 
+           ifelse(song_new$year %in% 1971:1980, "1970s", 
+           ifelse(song_new$year %in% 1981:1990, "1980s", 
+           ifelse(song_new$year %in% 1991:2000, "1990s", 
+           ifelse(song_new$year %in% 2001:2010, "2000s", 
+           ifelse(song_new$year %in% 2011:2022, "2010s", 
+                  "NA")))))))
+```
+
+```{r}
+undesirable_words <- read.csv("/Users/zhucenhao/Desktop/statistics/统计学习导论/Final Project/delete_word_list.txt")
+undesirable_words <- undesirable_words$x
+```
+
+```{r}
+word_delete_stop <- tidytext::stop_words
+```
+
+```{r}
+library(tidytext)
+library(dplyr)
+library(stringr)
+
+song_words_filtered <- song_new %>%
+  unnest_tokens(word, lyrics) %>%
+  anti_join(word_delete_stop) %>%
+  distinct() %>%
+  filter(!word %in% undesirable_words) %>%
+  filter(nchar(word) > 2) %>%
+  count(word) %>%
+  filter(n >= 25) %>%
+  select(word) %>%
+  inner_join(song_new %>% unnest_tokens(word, lyrics), by = "word") %>%
+  distinct()
+```
+
+```{r}
+library(ggplot2)
+song_words_filtered %>%
+  count(word, sort = TRUE) %>%
+  top_n(10) %>%
+  ungroup() %>%
+  mutate(word = reorder(word, n)) %>%
+  ggplot() +
+    geom_col(aes(word, n), fill = "red") +
+    theme(legend.position = "none", 
+          plot.title = element_text(hjust = 0.5),
+          panel.grid.major = element_blank()) +
+    xlab("") + 
+    ylab("Song Count") +
+    ggtitle("Most Frequently Used Words in all songs") +
+    coord_flip()
+```
+
+```{r}
+song_words_counts <- song_words_filtered %>%
+  count(word, sort = TRUE) 
+
+library(wordcloud2)
+wordcloud2(song_words_counts[1:300, ], size = .5)
+```
+
+
+```{r}
+library(ggthemes)
+timeless_words <- song_words_filtered %>% 
+  filter(decade != 'NA') %>%
+  group_by(decade) %>%
+  count(word, decade, sort = TRUE) %>%
+  slice(seq_len(10)) %>%
+  ungroup() %>%
+  arrange(decade,n) %>%
+  mutate(row = row_number()) 
+
+timeless_words %>%
+  ggplot(aes(row, n, fill = decade)) +
+    geom_col(show.legend = NULL) +
+    labs(x = NULL, y = "Song Count") +
+    ggtitle("Timeless Words") + 
+    theme_lyrics() + 
+    facet_wrap(~decade, scales = "free", ncol = 3) +
+    scale_x_continuous(  # This handles replacement of row 
+      breaks = timeless_words$row, # notice need to reuse data frame
+      labels = timeless_words$word) +
+    coord_flip()
+```
+
+
+```{r}
+library(tidytext)
+tfidf_words_decade <- song_new %>%
+  unnest_tokens(word, lyrics) %>%
+  anti_join(word_delete_stop) %>%
+  distinct() %>%
+  filter(!word %in% undesirable_words & decade != 'NA') %>%
+  filter(nchar(word) > 2) %>%
+  count(word) %>%
+  filter(n >= 25) %>%
+  select(word) %>%
+  inner_join(song_new %>% unnest_tokens(word, lyrics), by = "word") %>%
+  distinct() %>%
+  count(decade, word, sort = TRUE) %>%
+  ungroup() %>%
+  bind_tf_idf(word, decade, n) %>%
+  arrange(desc(tf_idf))
+
+top_tfidf_words_decade <- tfidf_words_decade %>% 
+  group_by(decade) %>% 
+  slice(seq_len(8)) %>%
+  ungroup() %>%
+  arrange(decade, tf_idf) %>%
+  mutate(row = row_number())
+
+top_tfidf_words_decade %>%
+  ggplot(aes(x = row, tf_idf, fill = decade)) +
+    geom_col(show.legend = NULL) +
+    labs(x = NULL, y = "TF-IDF") + 
+    ggtitle("Important Words using TF-IDF by Decade") +
+    theme_lyrics() +  
+    facet_wrap(~decade, 
+               ncol = 3, nrow = 2, 
+               scales = "free") +
+    scale_x_continuous(  # this handles replacement of row 
+      breaks = top_tfidf_words_decade$row, # notice need to reuse data frame
+      labels = top_tfidf_words_decade$word) +
+    coord_flip()
+```
+
+
+```{r}
+lex_diversity_per_year <- song_new %>%
+  filter(decade != "NA") %>%
+  unnest_tokens(word, lyrics) %>%
+  group_by(song_name,year) %>%
+  summarise(lex_diversity = n_distinct(word)) %>%
+  # filter out the outliers where lex_diversity is over 400
+  filter(lex_diversity < 400 && lex_diversity > 20) %>%
+  arrange(desc(lex_diversity)) 
+
+diversity_plot <- lex_diversity_per_year %>%
+  ggplot(aes(year, lex_diversity)) +
+    geom_point(color = my_colors[2],
+               alpha = .4, 
+               size = 4, 
+               position = "jitter") + 
+    stat_smooth(color = "black", se = FALSE, method = "lm") +
+    geom_smooth(aes(x = year, y = lex_diversity), se = FALSE,
+                color = "blue", lwd = 2) +
+    ggtitle("Lexical Diversity") +
+    xlab("") + 
+    ylab("") +
+    scale_color_manual(values = my_colors) +
+    theme_classic() 
+
+diversity_plot
+```
+
+
+```{r}
+lex_density_per_year <- song_new %>%
+  filter(decade != "NA") %>%
+  unnest_tokens(word, lyrics) %>%
+  group_by(song_name,year) %>%
+  summarise(lex_density = n_distinct(word)/n()) %>%
+  filter(lex_density < 0.95 && lex_density > 0.1) %>%
+  arrange(desc(-lex_density))
+
+density_plot <- lex_density_per_year %>%
+  ggplot(aes(year, lex_density)) + 
+    geom_point(color = my_colors[4],
+               alpha = .4, 
+               size = 4, 
+               position = "jitter") + 
+    stat_smooth(color = "black", 
+                se = FALSE, 
+                method = "lm") +
+    geom_smooth(aes(x = year, y = lex_density), 
+                se = FALSE,
+                color = "blue", 
+                lwd = 2) +
+    ggtitle("Lexical Density") + 
+    xlab("") + 
+    ylab("") +
+    scale_color_manual(values = my_colors) +
+    theme_classic()
+
+density_plot
+```
+
+
+```{r}
+lyric_length_per_year <- song_new %>%
+  filter(decade != "NA") %>%
+  unnest_tokens(word, lyrics) %>%
+  group_by(song_name, year) %>%
+  summarise(lyric_length = n()) %>%
+  # filter out the outliers where lyric length is over 1200 or less than 50
+  filter(lyric_length < 800 && lyric_length > 50) %>%
+  arrange(desc(lyric_length)) 
+
+length_plot <- lyric_length_per_year %>%
+  ggplot(aes(year, lyric_length)) +
+    geom_point(color = my_colors[1],
+               alpha = .4, 
+               size = 4, 
+               position = "jitter") + 
+    stat_smooth(color = "black", se = FALSE, method = "lm") +
+    geom_smooth(aes(x = year, y = lyric_length), se = FALSE,
+                color = "blue", lwd = 2) +
+    ggtitle("Lyric_Length") +
+    xlab("") + 
+    ylab("") +
+    scale_color_manual(values = my_colors) +
+    theme_classic() 
+
+length_plot
+```
+
+```{r}
+# these undesirable words have been deleted
+
+average_nchar_per_year <- song_new %>%
+  filter(decade != "NA") %>%
+  unnest_tokens(word, lyrics) %>%
+  group_by(song_name, year) %>%
+  summarise(average_nchar=sum(nchar(word))/n()) %>%
+  filter(average_nchar < 6) %>%
+  arrange(desc(average_nchar)) 
+
+# average_nchar_per_year <- song_words_filtered %>% 
+#   filter(decade != 'NA') %>%
+#   group_by(song_name, year) %>%
+#   summarise(average_nchar=sum(nchar(word))/n()) %>%
+#   arrange(desc(average_nchar)) 
+
+nchar_plot <- average_nchar_per_year %>%
+  ggplot(aes(year, average_nchar)) +
+    geom_point(color = my_colors[3],
+               alpha = .4, 
+               size = 4, 
+               position = "jitter") + 
+    stat_smooth(color = "black", se = FALSE, method = "lm") +
+    geom_smooth(aes(x = year, y = average_nchar), se = FALSE,
+                color = "blue", lwd = 2) +
+    ggtitle("Average_nchar") +
+    xlab("") + 
+    ylab("") +
+    scale_color_manual(values = my_colors) +
+    theme_classic() 
+
+nchar_plot
+```
+
+
+
+
+
+
+```{r}
+song_new_tidy <- song_new %>%
+  unnest_tokens(word, lyrics) %>%
+  anti_join(word_delete_stop) %>%
+  filter(!word %in% undesirable_words) %>%
+  filter(nchar(word) > 2)
+```
+
+```{R}
+glimpse(song_new_tidy)
+```
+
+
+```{r}
+# Find the top 1000 used words 
+ number_of_words <- 7000
+
+top_words_per_decade <- song_new_tidy %>%
+  group_by(decade) %>%
+  mutate(decade_word_count = n()) %>%
+  group_by(decade, word) %>%
+  mutate(word_count = n(),
+         word_pct = word_count / decade_word_count * 100) %>%
+  select(word, decade, decade_word_count, word_count, word_pct) %>%
+  distinct() %>%
+  ungroup() %>%
+  arrange(word_pct) %>%
+  top_n(number_of_words) %>%
+  select(decade, word, word_pct)
+
+top_words <- top_words_per_decade %>%
+  ungroup() %>%
+  group_by(word) %>%
+  mutate(multi_chart = n()) %>%
+  filter(multi_chart < 6) %>%
+  select(decade, top_word = word)
+
+sixties_words <- lapply(top_words[top_words$decade == "1960s",],
+                        as.character)
+seventies_words <- lapply(top_words[top_words$decade == "1970s",],
+                          as.character)
+eighties_words <- lapply(top_words[top_words$decade == "1980s",],
+                        as.character)
+nineties_words <- lapply(top_words[top_words$decade == "1990s",],
+                          as.character)
+first_words <- lapply(top_words[top_words$decade == "2000s",],
+                        as.character)
+twenties_words <- lapply(top_words[top_words$decade == "2010s",],
+                          as.character)
+
+
+features_func_chart <- function(data, remove) {
+  features <- data %>%
+  group_by(song_name) %>%
+  mutate(word_frequency = n(),
+         lexical_diversity = n_distinct(word),
+         lexical_density = lexical_diversity/word_frequency,
+         sixties_word_count = 
+           sum(ifelse(word %in% sixties_words$top_word,1,0)),
+         seventies_word_count = 
+           sum(ifelse(word %in% seventies_words$top_word,1,0)),
+         eighties_word_count = 
+           sum(ifelse(word %in% eighties_words$top_word,1,0)),
+         nineties_word_count = 
+           sum(ifelse(word %in% nineties_words$top_word,1,0)),
+         first_word_count = 
+           sum(ifelse(word %in% first_words$top_word,1,0)),
+         twenties_word_count =
+           sum(ifelse(word %in% twenties_words$top_word,1,0))
+         ) %>%
+  select(-remove) %>%
+  distinct() %>% #to obtain one record per document
+  ungroup()
+
+features$decade <- as.factor(features$decade)
+return(features)
+}
+
+#remove these fields from the passed dataframe
+remove <- c("word", "song_label", "band_singer", "year", "numword", "num_lines", "num_paras", "av_word_line")
+song_summary <- features_func_chart(song_new_tidy, remove)
+```
+
+```{r}
+
+features_func_chart <- function(data, remove) {
+  features <- data %>%
+  group_by(song_name) %>%
+  mutate(word_frequency = n(),
+         lexical_diversity = n_distinct(word),
+         lexical_density = lexical_diversity/word_frequency
+         ) %>%
+  select(-remove) %>%
+  distinct() %>% #to obtain one record per document
+  ungroup()
+
+features$decade <- as.factor(features$decade)
+return(features)
+}
+
+#remove these fields from the passed dataframe
+remove <- c("word", "song_label", "band_singer", "year", "numword", "num_lines", "num_paras", "av_word_line")
+song_summary <- features_func_chart(song_new_tidy, remove)
+```
+
+
+
+```{R}
+library(mlr)
+library(randomForest)
+library(xgboost)
+library(kknn)
+
+ task_song_new <- makeClassifTask(id = "Prince", data = song_summary[-1],
+                               target = "decade")
+
+task_prince <- normalizeFeatures(task_song_new, method = "standardize",
+  cols = NULL, range = c(0, 1), on.constant = "quiet")
+
+# n-fold cross-validation
+rdesc <- makeResampleDesc("CV", iters = 10, stratify = TRUE)
+
+## Create a list of learners
+lrns = list(
+makeLearner("classif.randomForest", id = "Random Forest"),
+# makeLearner("classif.logreg", id = "Logistic Regression"),
+makeLearner("classif.rpart", id = "RPART"),
+makeLearner("classif.xgboost", id = "xgBoost"),
+makeLearner("classif.lda", id = "LDA"),
+makeLearner("classif.qda", id = "QDA"),
+makeLearner("classif.ksvm", id = "SVM"),
+makeLearner("classif.naiveBayes", id = "Naive Bayes"),
+makeLearner("classif.kknn", id = "KNN"),
+makeLearner("classif.nnet", id = "Neural Net")
+)
+
+meas = list(acc, timetrain)
+set.seed(123)
+bmr_prince = benchmark(lrns, task_prince, rdesc, measures=meas, show.info = FALSE)
+```
+
+```{R}
+plotBMRSummary(bmr_prince)
+```
+
+```{R}
+library(kableExtra)
+#customize the text tables for consistency using HTML formatting
+my_kable_styling <- function(dat, caption) {
+  kable(dat, "html", escape = FALSE, caption = caption) %>%
+  kable_styling(bootstrap_options = c( "condensed", "bordered"),
+                full_width = FALSE)
+}
+
+#with knn so you can see the numbers
+getBMRAggrPerformances(bmr_prince, as.df = TRUE) %>%
+  select(ModelType = learner.id, Accuracy = acc.test.mean) %>%
+  mutate(Accuracy = round(Accuracy, 4)) %>%
+  arrange(desc(Accuracy)) %>%
+  my_kable_styling("Validation Set Model Comparison")
+```
+
+
+
